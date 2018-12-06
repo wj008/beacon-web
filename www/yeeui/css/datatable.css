@@ -1,0 +1,8 @@
+.yee-datatable-layer{border:1px solid #e6e6e6;background:#FFF;-webkit-box-shadow:0 0 2px rgba(0,0,0,.05);-moz-box-shadow:0 0 2px rgba(0,0,0,.05);box-shadow:0 0 2px rgba(0,0,0,.05);position:relative;overflow-y:auto;overflow-x:hidden}
+.yee-datatable{font-size:12px;border-collapse:collapse;margin:0 0 -1px;background:#FFF;float:left;width:100%}
+.yee-datatable thead th{border:1px solid #e6e6e6;height:39px;padding:0 10px;background:#F2F2F2;line-height:18px;font-weight:700;color:#333;white-space:nowrap}
+.yee-datatable thead tr th{border-left:none}
+.yee-datatable .yee-datatable tbody td{border-top:1px #e6e6e6 solid;border-bottom:1px #e6e6e6 solid;height:36px;line-height:36px;padding:0 10px;font-weight:400;white-space:nowrap;border-left:none}
+.yee-datatable tbody td img{vertical-align:middle;margin:3px}
+.yee-datatable tbody tr.hover td{background:#f5faff}
+.yee-datatable tbody tr.selected td{background:#F0F6FF}/*# sourceMappingURL=datatable.css.map */

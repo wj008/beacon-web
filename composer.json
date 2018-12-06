@@ -1,0 +1,32 @@
+{
+  "name": "wj008/beacon-web",
+  "description": "The \"Beacon Standard Edition\" distribution",
+  "type": "project",
+  "license": "Apache-2.0",
+  "authors": [
+    {
+      "name": "wj008",
+      "email": "26029682@qq.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "sdopx\\plugin\\": "sdopx/plugin",
+      "beacon\\widget\\": "beacon/widget",
+      "app\\": "app"
+    }
+  },
+  "require": {
+    "php": ">=7.0",
+    "wj008/beacon": "^2.1",
+    "wj008/tool": "^2.0"
+  },
+  "extra": {
+    "beacon-app-dir": "app/*",
+    "beacon-config-dir": "config/*",
+    "beacon-runtime-dir": "runtime",
+    "beacon-view-dir": "view/*",
+    "beacon-web-dir": "www/*",
+    "beacon-debug-file": "debug.js"
+  }
+}

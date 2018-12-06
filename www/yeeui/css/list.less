@@ -1,0 +1,168 @@
+html, body {
+  margin: 0;
+  padding: 0;
+  background: #F9F9F9;
+  color: #555;
+}
+
+//最外层
+.yee-wrap {
+  position: relative;
+  padding: 10px 20px;
+  //用于对话框
+  &.yee-dialog {
+    position: relative;
+    padding: 10px;
+  }
+
+  //头部
+  .yee-list-header {
+    line-height: 36px;
+    padding: 0 0 8px 0px;
+    color: #777;
+
+    // border-bottom: 1px solid #e4eaec;
+    //标题
+    .yee-caption {
+      font-size: 18px;
+      color: #333;
+      float: left;
+      display: inline;
+
+      i {
+        color: #32a3ff;
+      }
+    }
+
+    //工具栏
+    .yee-toolbar {
+      color: #777;
+      float: right;
+      display: inline;
+    }
+
+    //清理浮动
+    &:after {
+      content: '.';
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden
+    }
+  }
+
+  //标签栏
+  .yee-tab {
+    margin: 0 0 10px;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid #62b3ff;
+
+    ul {
+      float: left;
+
+      li {
+        height: 35px;
+        line-height: 35px;
+        border-radius: 4px 4px 0 0;
+        font-size: 14px;
+        color: #707070;
+        float: left;
+        margin-right: 3px;
+        background-color: #e5e5e5;
+        cursor: pointer;
+
+        a {
+          color: #707070;
+          display: block;
+          padding: 0 20px
+        }
+      }
+
+      li:last-child {
+        margin-right: 0
+      }
+
+      li.curr {
+        background-color: #62b3ff;
+        color: #fff;
+
+        a {
+          color: #fff
+        }
+      }
+    }
+
+  }
+
+  //标签栏右边
+  .yee-tab-right {
+    float: right;
+    line-height: 35px;
+    height: 35px;
+  }
+
+
+  //搜索栏目
+  .yee-list-search {
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    padding: 5px 15px;
+    border: 1px solid #eaeaea;
+    background: #fff;
+    color: #606060;
+    line-height: 36px;
+    border-bottom: none;
+
+    .senior-item {
+      display: none;
+    }
+
+    &.senior .senior-item {
+      display: block;
+      text-align: left;
+    }
+
+    .yee-cell {
+      display: inline-block;
+      overflow: hidden;
+      margin-right: 0px;
+      vertical-align: middle;
+      text-align: left;
+      line-height: 36px;
+      padding: 5px 8px 5px 0;
+    }
+
+    .yee-label {
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+  }
+
+  .yee-show-table {
+    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, .05);
+    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, .05);
+    box-shadow: 0 0 2px rgba(0, 0, 0, .05);
+    background: #FFF;
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  .yee-show-table th {
+    background: #f9f9f9;
+    line-height: 18px;
+    padding: 10px 5px;
+    font-weight: 700;
+    border: 1px solid #eaeaea;
+    color: #333;
+  }
+
+  .yee-show-table td {
+    padding: 5px;
+    line-height: 20px;
+    border: 1px solid #eaeaea;
+    word-break: keep-all
+  }
+
+}

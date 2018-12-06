@@ -1,0 +1,11 @@
+a.yee-btn,input.yee-btn{font-size:12px;line-height:20px;height:20px;display:inline-block;padding:2px 7px;border:solid 1px #c1c1c1;border-radius:4px;margin:0;background-color:#FFF;color:#777;opacity:.9}
+a.form-btn,input.form-btn{height:35px;line-height:33px;height:30px;line-height:30px;font-size:14px;padding:0 20px;border-radius:3px;cursor:pointer;float:left;margin-right:15px;opacity:.9}
+a.form-btn:hover,a.yee-btn:hover,input.form-btn:hover,input.yee-btn:hover{opacity:1}
+a.form-btn.blue,a.yee-btn.blue,input.form-btn.blue,input.yee-btn.blue{border:1px solid #32a3ff;color:#fff;background:#32a3ff}
+a.form-btn.red,a.yee-btn.red,input.form-btn.red,input.yee-btn.red{border:1px solid #ec5151;color:#fff;background:#ec5151}
+a.form-btn.green,a.yee-btn.green,input.form-btn.green,input.yee-btn.green{border:1px solid #2FBC5E;color:#fff;background:#2FBC5E}
+a.form-btn.yellow,a.yee-btn.yellow,input.form-btn.yellow,input.yee-btn.yellow{border:1px solid #ffd031;color:#fff;background:#ffd031}
+a.form-btn.org,a.yee-btn.org,input.form-btn.org,input.yee-btn.org{border:1px solid #F90;color:#fff;background:#F90}
+a.form-btn.org2,a.yee-btn.org2,input.form-btn.org2,input.yee-btn.org2{border:1px solid #F60;color:#fff;background:#F60}
+a.form-btn.normal,a.yee-btn.normal,input.form-btn.normal,input.yee-btn.normal{border:1px solid #a0a0a0;background-color:#f1f1f1;color:#909090}
+a.form-btn.disabled,a.form-btn.disabled:hover,a.form-btn[disabled],a.form-btn[disabled]:hover,a.yee-btn.disabled,a.yee-btn.disabled:hover,a.yee-btn[disabled],a.yee-btn[disabled]:hover,input.form-btn.disabled,input.form-btn.disabled:hover,input.form-btn[disabled],input.form-btn[disabled]:hover,input.yee-btn.disabled,input.yee-btn.disabled:hover,input.yee-btn[disabled],input.yee-btn[disabled]:hover{background:#f7f7f7;color:#999;border:solid 1px #e1e1e1}/*# sourceMappingURL=btn.css.map */

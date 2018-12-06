@@ -1,0 +1,72 @@
+//上传
+.form-inp.up-file + a.yee-btn {
+  border: 1px solid #e1e1e1;
+  vertical-align: middle;
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+  padding: 0 10px;
+  border-radius: 3px;
+  margin-left: 2px;
+  cursor: pointer;
+  display: inline-block;
+
+  &:before {
+    color: #a0a0a0;
+    font-family: YeeFont !important;
+    content: '\f0ff';
+    width: 15px;
+    display: inline-block;
+    margin-right: 3px;
+    margin-left: -5px
+  }
+}
+
+.form-inp.up-image + div.yee-img-wrap {
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+
+  .img-btn {
+    border-radius: 3px;
+    background-image: url("img/drive_upload.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px #eee solid;
+    float: left;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .img-bgnone {
+    background-image: none;
+  }
+
+  .img-del {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 14px;
+    height: 14px;
+    background-image: url("img/pic_close.png");
+  }
+
+  .img-item {
+    border: 1px #eee solid;
+    float: left;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding: 0px;
+    position: relative;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+}
+
+input.form-inp.up-image.yee-input-error + div.yee-img-wrap {
+  .img-btn {
+    border: 1px #ffcdb2 dotted;
+  }
+}
+

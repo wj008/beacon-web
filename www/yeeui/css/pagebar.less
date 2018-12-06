@@ -1,0 +1,64 @@
+/*分页样式*/
+.yee-pagebar {
+  transition: all .15s ease-in;
+  width: 100%;
+  padding: 10px 0;
+  height: 24px;
+
+  .pagebar {
+    float: left;
+
+    .break, a, b {
+      text-decoration: none;
+      color: #666;
+      display: inline-block;
+      height: 20px;
+      line-height: 20px;
+      float: left;
+      margin-right: 3px;
+      padding: 2px 7px;
+      -webkit-border-radius: 3px;
+      -moz-border-radius: 3px;
+      border-radius: 3px;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, .75);
+      cursor: pointer
+    }
+
+    input.page-inp {
+      height: 24px;
+      line-height: 24px;
+      float: left;
+      width: 40px;
+      text-align: center;
+      border-radius: 3px;
+      border: 1px solid #e1e1e1;
+      margin-right: 3px
+    }
+
+    .break {
+      background: 0 0;
+      cursor: default
+    }
+
+    a {
+      border: 1px solid #e1e1e1;
+      background-color: #FFF
+    }
+
+    a:hover {
+      box-shadow: 0 0 2px rgba(0, 0, 0, .2)
+    }
+
+    b {
+      border: 1px solid #e1e1e1;
+      background-color: #e1e1e1;
+      color: #FFF
+    }
+  }
+
+  .pagebar-info {
+    float: right;
+    line-height: 22px
+  }
+
+}
