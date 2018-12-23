@@ -59,7 +59,7 @@ class SysMenu extends AdminController
         $this->display('SysMenu.tpl');
     }
 
-    public function editSortAction(int $id = 0, int $sort = 0)
+    public function sortAction(int $id = 0, int $sort = 0)
     {
         DB::update('@pf_sys_menu', ['sort' => $sort], $id);
         $this->success('更新排序成功');

@@ -25,14 +25,14 @@ class InputPlugin
         unset($param['field']);
         $code = [];
         if ($field->beforeText) {
-            $code[] = '<span class="before">' . htmlspecialchars($field->beforeText) . '</span>';
+            $code[] = '<span class="before"> ' . htmlspecialchars($field->beforeText) . '</span>';
         }
         if ($field->type == 'check') {
             $code[] = '<label>';
         }
         $code[] = $field->code($param);
         if ($field->afterText) {
-            $code[] = '<span class="after">' . htmlspecialchars($field->afterText) . '</span>';
+            $code[] = '<span class="after"> ' . htmlspecialchars($field->afterText) . '</span>';
         }
         if ($field->type == 'check') {
             $code[] = '</label>';
