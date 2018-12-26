@@ -24,9 +24,6 @@ class InputPlugin
         $field = isset($param['field']) ? $param['field'] : new Field(null, $param);
         unset($param['field']);
         $code = [];
-        if ($field->getForm() != null) {
-            $field->getForm()->createDynamic($field);
-        }
         if ($field->beforeText) {
             $code[] = '<span class="before"> ' . htmlspecialchars($field->beforeText) . '</span>';
         }
