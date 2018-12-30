@@ -15,6 +15,11 @@ Yee.config({
         'jquery-mousewheel': 'third/jquery.mousewheel.min.js',
         'base64': window.atob ? '' : 'base64.min.js',
         'xheditor': 'xheditor/xheditor-1.2.2.min.js',
+        'xheditor-lang': 'xheditor/xheditor_lang/zh-cn.js',
+
+        'tinymce': 'tinymce/tinymce.min.js',
+        'tinymce-jquery': 'tinymce/jquery.tinymce.min.js',
+        'tinymce-lang': 'tinymce/langs/zh_CN.js',
     },
     //依赖,加载包的时候自动引入
     depends: {},
