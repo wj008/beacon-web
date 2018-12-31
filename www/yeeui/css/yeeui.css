@@ -162,6 +162,9 @@ abbr,acronym{border:0}
 .form-inp.linkage{margin-right:5px}
 .form-inp.date,.form-inp.datetime{background-image:url(img/yee.date.png);background-position:right 5px center;background-repeat:no-repeat}
 .form-inp.upload{width:260px;vertical-align:middle;border-bottom-left-radius:0;border-top-left-radius:0;margin-left:-13px}
+.label-inp .form-inp[type=checkbox]:after,.label-inp .form-inp[type=radio]:after{display:none}
+.label-inp .form-inp[type=checkbox]+span,.label-inp .form-inp[type=radio]+span{border:1px #ddd solid;display:inline-block;padding:0 15px 0 15px;margin-right:6px;background:#fff;cursor:pointer}
+.label-inp .form-inp[type=checkbox]:checked+span,.label-inp .form-inp[type=radio]:checked+span{border:1px #11bbca solid;display:inline-block;background-color:#ebf8fb;color:#0fa7b4;background-image:url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgMjAwIDIwMCIgd2lkdGg9IjE1IiBoZWlnaHQ9IjE1Ij4KPHBhdGggZD0iIE0gMCAwIEwgMjAwIDAgTCAyMDAgMjAwIEwgMCAwIFogIiBmaWxsPSJyZ2IoNDEsMTg5LDE4NSkiLz4KPHBhdGggZD0iIE0gOTggNDkgTCA4OCA2MCBMIDEyNiA5NSBMIDE4NyAyMiBMIDE3NiAxMyBMIDEyNSA3NSBMIDk4IDQ5IFogIiBmaWxsPSIjZmZmIi8+Cjwvc3ZnPg==);background-repeat:no-repeat;background-position:top right}
 select.form-inp{background:#FFF;padding:0 10px;line-height:28px;height:30px}
 select.form-inp option{background:#FFF}
 .container-item{padding:2px 0}

@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Lato);
+
 
 * {
     border: 0;
@@ -60,7 +60,7 @@ body {
     font-family: Lato !important;
     font-size: 14px;
     color: #626262;
-    padding: 10px 25px 25px
+    padding: 5px 10px 10px
 }
 
 .mce-content-body * {
@@ -116,7 +116,7 @@ body {
 }
 
 .mce-content-body p {
-    margin: 10px 0
+    margin: 5px 0
 }
 
 .mce-content-body pre {

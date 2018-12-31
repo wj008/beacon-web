@@ -100,7 +100,7 @@ div.mce-fullscreen {
 .mce-wordcount {
     font-size: inherit;
     text-transform: uppercase;
-    padding: 8px 0
+    padding: 2px 0
 }
 
 div.mce-edit-area {
@@ -268,7 +268,7 @@ div.mce-tinymce-inline {
     font-size: inherit;
     text-transform: uppercase;
     white-space: pre;
-    padding: 8px 0
+    padding: 2px 0
 }
 
 .mce-branding a {
@@ -1726,7 +1726,7 @@ i.mce-i-checkbox {
     display: inline-block;
     *display: inline;
     *zoom: 1;
-    padding: 8px;
+    padding: 2px;
     white-space: normal;
     font-size: inherit
 }
