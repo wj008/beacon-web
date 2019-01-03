@@ -20,6 +20,8 @@ Yee.config({
         'tinymce': 'tinymce/tinymce.min.js',
         'tinymce-jquery': 'tinymce/jquery.tinymce.min.js',
         'tinymce-lang': 'tinymce/langs/zh_CN.js',
+
+        'vue': 'third/vue.min.js',
     },
     //依赖,加载包的时候自动引入
     depends: {},
