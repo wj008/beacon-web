@@ -10,6 +10,7 @@ namespace sdopx\plugin;
 
 
 use beacon\Field;
+use beacon\Form;
 use sdopx\lib\Outer;
 
 /**
@@ -21,8 +22,16 @@ class InputPlugin
 {
     public static function render(array $param, Outer $out)
     {
-        $field = isset($param['field']) ? $param['field'] : new Field(null, $param);
-        unset($param['field']);
+        if (isset($param['field']) && $param['field'] instanceof Field) {
+            $field = $param['field'];
+            unset($param['field']);
+        } else if (isset($param['form']) && $param['form'] instanceof Form && !empty($param['form'])) {
+            $field = $param['form']->getField($param['name']);
+            unset($param['form']);
+            unset($param['name']);
+        } else {
+            $field = new Field(null, $param);
+        }
         $code = [];
         if ($field->beforeText) {
             $code[] = '<span class="before"> ' . htmlspecialchars($field->beforeText) . '</span>';
