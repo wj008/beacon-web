@@ -396,19 +396,19 @@ a.yee-back{font-size:18px;line-height:23px;display:inline-block;text-align:cente
 a.yee-back i{color:#32a3ff}
 .yee-list-search a.form-btn,.yee-list-search input.form-btn{padding:0 15px;margin-right:5px}
 @keyframes myfirst{0%{opacity:0}
-80%{opacity:0}
+60%{opacity:0}
 100%{opacity:1}
 }
 @-moz-keyframes myfirst{0%{opacity:0}
-80%{opacity:0}
+60%{opacity:0}
 100%{opacity:1}
 }
 @-webkit-keyframes myfirst{0%{opacity:0}
-80%{opacity:0}
+60%{opacity:0}
 100%{opacity:1}
 }
 @-o-keyframes myfirst{0%{opacity:0}
-80%{opacity:0}
+60%{opacity:0}
 100%{opacity:1}
 }
-html{animation:myfirst .3s;-moz-animation:myfirst .3s;-webkit-animation:myfirst .3s;-o-animation:myfirst .3s}/*# sourceMappingURL=yeeui.css.map */
+html{animation:myfirst .4s;-moz-animation:myfirst .4s;-webkit-animation:myfirst .4s;-o-animation:myfirst .4s}/*# sourceMappingURL=yeeui.css.map */
