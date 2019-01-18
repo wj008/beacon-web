@@ -29,7 +29,7 @@ mysql 是 5.7 及以上。
 网站目录应该指向 `/www`
 `/www/index.php` 是入口文件。
 
-补充 nginx 配置
+补充 nginx 配置示例
 
 ```
 server {
