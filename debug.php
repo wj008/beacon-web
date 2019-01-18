@@ -32,7 +32,7 @@ function debug($item)
         out('------> ' . $file, 'file', true);
     }
     if ($data !== null && is_array($data) && count($data) > 0) {
-        if ($act == 'info' && count($data) == 2 && is_numeric($data[1])) {
+        if ($act == 'info' && count($data) == 2 && is_string($data[0]) && is_numeric($data[1])) {
             out($data[0] . '    ', 'sql1', false);
             out(intval(floatval($data[1]) * 10000) / 10000, 'sql2', true);
         } else {
