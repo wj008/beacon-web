@@ -1,4 +1,4 @@
-# beacon-standard
+# beacon-web
 The \"Beacon Standard Edition\" distribution
 ### Beacon 介绍
 
