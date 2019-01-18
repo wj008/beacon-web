@@ -7,6 +7,15 @@ The \"Beacon Standard Edition\" distribution
 加星是我的动力。
 如果有问题可以 issues 我。
 
+
+#### 安装
+
+使用 composer 创建项目可以得到完整的应用
+或者直接使用 phpstorm 创建工程时选择 composer 项目对话框底部项目搜索中搜索 wj008 选择 beacon-web 创建项目。
+```
+composer create-project wj008/beacon-web
+```
+
 #### 环境要求 
 
 php 7.0 及以上，我的开发环境是php 7.2
