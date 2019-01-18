@@ -56,7 +56,7 @@ server {
 ```
 
 
-debug.php 需要用命令行运行，最好是在 phpstrom 中直接右键运行，有意向不到的收获。
+debug.php 需要用命令行运行，最好是在 phpstrom 中直接右键运行，有意外不到的收获。
 
 `php debug.php`
 
