@@ -7,15 +7,14 @@ The \"Beacon Standard Edition\" distribution
 加星是我的动力。
 如果有问题可以 issues 我。
 
-
-###环境要求 
+#### 环境要求 
 
 php 7.0 及以上，我的开发环境是php 7.2
 如果是 nginx 请自行设置支持 pathinfo
 
 mysql 是 5.7 及以上。
 
-### 需要设置 url 重写，指向 index.php
+#### 需要设置 url 重写，指向 index.php
 
 
 网站目录应该指向 /www
