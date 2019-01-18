@@ -1,9 +1,16 @@
 # beacon-standard
 The \"Beacon Standard Edition\" distribution
+### Beacon 介绍
+
+这是一个PHP快速开发框架,轻量级简单高效安全的 CMF 框架。
+文档会在有空的时间陆续更新....
+加星是我的动力。
+如果有问题可以 issues 我。
+
 
 ###环境要求 
 
-php 7.0 及以上，我的开发环境是php 7.0
+php 7.0 及以上，我的开发环境是php 7.2
 如果是 nginx 请自行设置支持 pathinfo
 
 mysql 是 5.7 及以上。
