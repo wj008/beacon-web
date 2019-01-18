@@ -16,7 +16,7 @@ mysql 是 5.7 及以上。
 
 补充 nginx 配置
 
-`
+```
 server {
         listen       8082;
         server_name  localhost;
@@ -47,7 +47,7 @@ server {
             include     fastcgi_params;
         }
     }
-`
+```
 
 
 debug.php 需要用命令行运行，
