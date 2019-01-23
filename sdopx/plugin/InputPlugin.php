@@ -27,6 +27,9 @@ class InputPlugin
             unset($param['field']);
         } else if (isset($param['form']) && $param['form'] instanceof Form && !empty($param['form'])) {
             $field = $param['form']->getField($param['name']);
+            if (empty($field)) {
+                $out->throw('form is not found the field：' . $param['name']);
+            }
             unset($param['form']);
             unset($param['name']);
         } else {
