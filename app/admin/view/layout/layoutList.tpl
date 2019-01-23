@@ -25,7 +25,7 @@
 {literal}
     <script>
         $(function () {
-            $("#list").on("change", function (ev, source) {
+            $("#list").on("render", function (ev, source) {
                 if (source && source["pageInfo"]) {
                     $("#records-count").text(source["pageInfo"]["recordsCount"] || "0");
                 }
