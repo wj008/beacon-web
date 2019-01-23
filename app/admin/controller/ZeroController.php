@@ -138,6 +138,47 @@ abstract class ZeroController extends AdminController
     {
         $id = $this->param('id:i');
         $sort = $this->param('sort:i');
+        $kind = $this->param('kind:s');
+        $bind = $this->param('bind:s');
+        //上下调整方式更改排序
+        if (!empty($kind)) {
+            $sql = 'select id,sort';
+            //将排序相同字段绑定
+            if (!empty($bind) && preg_match('@^\w+(,\w+)*$@', $bind)) {
+                $sql .= ',' . $bind;
+            }
+            $sql .= ' from ' . $this->zero['tbName'] . ' where id=?';
+            $row = DB::getRow($sql, $id);
+            if ($row == null) {
+                $this->error('不存在的数据');
+            }
+            $args = [];
+            $temp = explode(',', $bind);
+            $find = '';
+            if (count($temp) > 0) {
+                foreach ($temp as &$item) {
+                    $item = trim($item);
+                    if (empty($item)) {
+                        continue;
+                    }
+                    $args[] = $row[$item];
+                    $find .= $item . '=? and';
+                }
+            }
+            $args[] = $row['sort'];
+            $change = null;
+            if ($kind == 'up') {
+                $change = DB::getRow('select id,sort from ' . $this->zero['tbName'] . ' where ' . $find . ' sort < ? order by sort desc limit 0,1', $args);
+            } else {
+                $change = DB::getRow('select id,sort from ' . $this->zero['tbName'] . ' where ' . $find . ' sort > ? order by sort asc limit 0,1', $args);
+            }
+            if ($change) {
+                DB::update($this->zero['tbName'], ['sort' => $change['sort']], $row['id']);
+                DB::update($this->zero['tbName'], ['sort' => $row['sort']], $change['id']);
+            }
+            $this->success('更新排序成功');
+        }
+        //直接输入形式调整排序
         $row = DB::getRow('select id from ' . $this->zero['tbName'] . ' where id=?', $id);
         if ($row == null) {
             $this->error('不存在的数据');
