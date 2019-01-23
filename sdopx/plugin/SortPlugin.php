@@ -18,10 +18,10 @@ class SortPlugin
         if (!isset($param['id'])) {
             $out->throw('[id] attr is required.');
         }
-        if (!isset($param['value'])) {
-            $out->throw('[value] attr is required.');
-        }
         if (empty($param['kind'])) {
+            if (!isset($param['value'])) {
+                $out->throw('[value] attr is required.');
+            }
             $out->html('<input name="sort" type="text" class="form-inp snumber tc" yee-module="ajax" value="' . htmlspecialchars($param['value']) . '" data-url="' . Route::url(['act' => 'sort', 'id' => $param['id']]) . '"/>');
             return;
         }
@@ -38,7 +38,6 @@ class SortPlugin
             $map2['bind'] = $param['bind'];
             $map1['bind'] = $param['bind'];
         }
-        $out->html(htmlspecialchars($param['value']));
         $out->html(' ');
         $out->html('<a href="' . Route::url($map1) . '" class="blue" yee-module="ajax" on-success="$(\'#list\').emit(\'reload\');">上移</a>');
         $out->html(' | ');
