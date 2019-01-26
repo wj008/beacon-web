@@ -19,7 +19,7 @@
   "require": {
     "php": ">=7.0",
     "wj008/beacon": "^2.0",
-    "wj008/tool": "^2.1"
+    "wj008/tool": "^2.2"
   },
   "extra": {
     "beacon-app-dir": "app/*",
