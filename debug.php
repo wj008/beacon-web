@@ -65,6 +65,7 @@ do {
             $data = json_decode($msg, true);
             debug($data);
         }
+    } else {
+        usleep(50000);
     }
-    usleep(50000);
 } while (true);
