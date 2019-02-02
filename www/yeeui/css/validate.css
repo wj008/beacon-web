@@ -1,11 +1,16 @@
-.yee-field-error:before,.yee-field-valid:before{display:inline-block;font-family:YeeFont!important;margin-right:3px}
-input.yee-input-error,select.yee-input-error,textarea.yee-input-error{background:#FFF9F7;border:1px dotted #ffcdb2}
-input.yee-input-error[type=checkbox]+span,input.yee-input-error[type=radio]+span{border-radius:3px;border:1px dotted #ffcdb2;box-sizing:border-box}
-input.yee-input-error:focus,select.yee-input-error:focus,textarea.yee-input-error:focus{border:1px dotted #ffcdb2;outline:0}
-input.yee-input-valid{background:#F0FCF0;border:1px dotted #96e5cc;border-radius:3px}
-input.yee-input-valid:focus{border:1px dotted #96e5cc}
+input.yee-input-error,select.yee-input-error,textarea.yee-input-error{background:#FFF9F7;border:.5px dotted #ffcdb2}
+input.yee-input-error[type=checkbox]+span,input.yee-input-error[type=radio]+span{border-radius:3px;display:inline-block;height:22px;line-height:22px;border:.5px #ffcdb2 dotted;box-sizing:border-box}
+input.yee-input-error:focus,select.yee-input-error:focus,textarea.yee-input-error:focus{border:.5px dotted #ffcdb2;outline:0}
+input.yee-input-error:focus,select.yee-input-error:focus,textarea.yee-input-error:focus{border:.5px dotted #ffcdb2;outline:0}
+input.yee-input-correct{background:#F0FCF0;border:.5px dotted #96e5cc;border-radius:3px}
+input.yee-input-correct:focus{border:.5px dotted #96e5cc}
+input.select-dialog.yee-input-error+input.select-dialog{background:#FFF9F7;border:.5px dotted #ffcdb2}
+input.select-dialog.yee-input-correct+input.select-dialog{background:#F0FCF0;border:.5px dotted #96e5cc;border-radius:3px}
+input.select-dialog.yee-input-correct+input.select-dialog:focus{border:.5px dotted #96e5cc}
 .yee-field-error{line-height:20px;color:#ec7c5e;margin-left:5px}
-.yee-field-valid{line-height:20px;color:#43d280;margin-left:5px}
+.yee-field-correct{line-height:20px;color:#43d280;margin-left:5px}
 .yee-field-default{color:#909090;margin-left:5px}
-.yee-field-error:before{content:'\efea'}
-.yee-field-valid:before{content:'\efad'}/*# sourceMappingURL=validate.css.map */
+.yee-field-error:before{font-family:YeeFont!important;content:'\efea';display:inline-block;margin-right:3px}
+.yee-field-correct:before{display:inline-block;font-family:YeeFont!important;content:'\efad';margin-right:3px}
+.yee-field-tips{line-height:16px;color:#909090;padding:3px 15px 0 15px}
+.yee-field-tips:before{color:#a0a0a0;font-family:YeeFont!important;content:'\f0ae';width:15px;height:16px;vertical-align:middle;display:inline-block;margin-left:-15px}/*# sourceMappingURL=validate.css.map */
