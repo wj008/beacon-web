@@ -123,7 +123,7 @@ abbr,acronym{border:0}
 .yee-row-inline .inline-cell.none,.yee-row-inline .inline-label.none{display:none}
 .yee-row-inline .inline-label em{font-style:normal;margin-left:5px}
 .yee-row-inline .inline-label em:before{content:'*';color:#E84C3D;margin-right:5px}
-.yee-line{background:#f2f2f2;line-height:30px;padding:0 20px;border-left:3px #1E9FFF solid}
+.yee-line{line-height:30px;padding:0 20px;border-left:3px #1E9FFF solid}
 .yee-row-column{display:inline-block;margin:0;padding:0}
 .yee-line label.line-label{color:#333;font-weight:700;display:inline-block;line-height:30px}
 .yee-line label.line-label.none{display:none}
