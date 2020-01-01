@@ -29,6 +29,11 @@ abstract class ZeroController extends AdminController
         parent::initialize();
     }
 
+    protected function getForm(string $type = '')
+    {
+        return Form::instance($this->zero['actionForm'], $type);
+    }
+
     protected function indexAction()
     {
         if ($this->isAjax()) {
@@ -57,7 +62,7 @@ abstract class ZeroController extends AdminController
 
     protected function addAction()
     {
-        $form = Form::instance($this->zero['actionForm'], 'add');
+        $form = $this->getForm('add');
         if ($this->isGet()) {
             $this->displayForm($form);
             return;
@@ -75,7 +80,7 @@ abstract class ZeroController extends AdminController
     protected function editAction()
     {
         $id = $this->param('id:i');
-        $form = Form::instance($this->zero['actionForm'], 'edit');
+        $form = $this->getForm('edit');
         if ($id == 0) {
             $this->error('参数有误');
         }
@@ -101,7 +106,7 @@ abstract class ZeroController extends AdminController
         if ($id == 0) {
             $this->error('参数有误');
         }
-        $form = Form::instance($this->zero['actionForm']);
+        $form = $this->getForm('delete');
         $form->delete($id);
         $this->success('删除' . $form->title . '成功');
     }
@@ -109,7 +114,7 @@ abstract class ZeroController extends AdminController
     protected function deleteChoiceAction()
     {
         $ids = $this->param('choice:a', []);
-        $form = Form::instance($this->zero['actionForm']);
+        $form = $this->getForm('delete');
         foreach ($ids as $id) {
             $form->delete($id);
         }

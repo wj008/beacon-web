@@ -468,6 +468,17 @@
   background-repeat: no-repeat;
   background-position: top right;
 }
+.label-inp .form-inp[type="radio"]:disabled + span, .label-inp .form-inp[type="checkbox"]:disabled + span {
+  color: #999;
+  background-color: #eeeeee;
+  text-shadow: 1px 1px 1px white;
+}
+.label-inp .form-inp[type="radio"]:checked:disabled + span, .label-inp .form-inp[type="checkbox"]:checked:disabled + span {
+  border: 1px #ccc solid;
+  background-color: #eeeeee;
+  color: #999;
+  text-shadow: 1px 1px 1px white;
+}
 
 select.form-inp {
   background: #FFF;
@@ -496,4 +507,29 @@ select.form-inp {
 
 .xheLayout {
   line-height: 22px;
+}
+.multiple-dialog label {
+  display: inline-block;
+  padding: 1px 5px 1px 10px;
+  background: #f2f4f9;
+  border: 1px solid #a5d4f9;
+  color: #0a86ff;
+  margin-right: 3px;
+  border-radius: 3px;
+}
+
+.multiple-dialog label > i {
+  margin-left: 5px;
+  cursor: pointer;
+  color: #bfd4e0;
+}
+
+.multiple-dialog label > i:hover {
+  color: #2c6fe0;
+}
+
+.multiple-dialog {
+  min-width: 300px;
+  min-height: 20px;
+  display: inline-block;
 }

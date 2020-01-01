@@ -1,31 +1,79 @@
 //按钮--------
-a {
-  color: #333;
-}
-
-a:hover {
-  color: #ec5151;
-}
+@blue: #409eff;
+@red: #f56c6c;
+@green: #67c23a;
+@yellow: #e6a23c;
+@org: #F90;
+@org2: #ff8522;
+@normal: #909399;
+@purple: #a989e8;
 
 [class^="icofont-"], [class*=" icofont-"] {
   margin-right: 2px;
 }
 
 a.yee-btn, input.yee-btn {
-  font-size: 12px;
   line-height: 20px;
   height: 20px;
   display: inline-block;
   padding: 2px 5px;
-  border: 0.5px solid #c1c1c1;
-  border-radius: 3px;
-  margin: 0;
-  background-color: #FFF;
-  color: #777;
-  opacity: 0.8;
+  border: 1px solid #c1c1c1;
+  border-radius: 10px;
+  margin: 1px 0;
+  background-color: #F4F4F5;
+  color: #909399;
   vertical-align: middle;
   cursor: pointer;
+  font-size: 12px;
+  transition: .1s;
+  overflow: hidden;
+}
 
+div.yee-btn-warp {
+  position: relative;
+  display: inline-block;
+  margin: 1px 0;
+}
+
+div.yee-btn-menu {
+  position: fixed;
+  padding: 10px;
+  background: #fff;
+  min-width: 100px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  display: none;
+
+  span.arrow {
+    position: absolute;
+    line-height: 0px;
+    width: 8px;
+    height: 8px;
+    display: block;
+    top: 10px;
+    right: -4px;
+    box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.2);
+    transform: rotate(45deg);
+    display: block;
+    background: #fff;
+  }
+
+  a.yee-btn {
+    display: block;
+    border-radius: 0px;
+    margin: 3px;
+
+    &.blue-bd, &.red-bd, &.green-bd, &.purple-bd, &.yellow-bd, &.org-bd, &.org2-bd {
+      border: none;
+    }
+
+    text-align: center;
+  }
+
+  a.yee-btn:hover {
+    &.blue-bd, &.red-bd, &.green-bd, &.purple-bd, &.yellow-bd, &.org-bd, &.org2-bd {
+      background: #e1e1e1;
+    }
+  }
 }
 
 a.form-btn, input.form-btn {
@@ -33,14 +81,14 @@ a.form-btn, input.form-btn {
   line-height: 28px;
   font-size: 12px;
   padding: 0 8px;
-  border-radius: 3px;
+  border-radius: 10px;
   cursor: pointer;
   margin: 0;
-  opacity: 0.8;
+  opacity: 1;
   display: inline-block;
   vertical-align: middle;
-  border:0.5px  solid #c1c1c1;
-  color: #777;
+  border: 1px solid #c1c1c1;
+  color: #909399;
 }
 
 .yee-submit {
@@ -54,87 +102,110 @@ a.form-btn, input.form-btn {
 
 a.form-btn, input.form-btn, a.yee-btn, input.yee-btn {
   &:hover, &:hover {
-    opacity: 1;
+    opacity: 0.7;
   }
 
   &.blue {
-    border: 0.5px solid #32a3ff;
+    border: 1px solid @blue;
     color: #fff;
-    background: #32a3ff;
+    background: @blue;
   }
 
   &.blue-bd {
-    border: 0.5px solid #32a3ff;
-    color: #32a3ff;
+    border: 1px solid lighten(@blue, 20%);
+    background: lighten(@blue, 42%);
+    color: @blue;
   }
 
   &.red {
-    border: 0.5px solid #ec5151;
+    border: 1px solid @red;
     color: #fff;
-    background: #ec5151;
+    background: @red;
   }
 
   &.red-bd {
-    border:  0.5px solid #ec5051;
-    color: #ec5051;
+    border: 1px solid lighten(@red, 20%);
+    background: lighten(@red, 50%);
+    color: @red;
   }
 
   &.green {
-    border: 0.5px solid #2FBC5E;
+    border: 1px solid @green;
     color: #fff;
-    background: #2FBC5E;
+    background: @green;
   }
 
   &.green-bd {
-    border: 0.5px solid #2FBC5E;
-    color: #2FBC5E;
+    border: 1px solid lighten(@green, 20%);
+    background: lighten(@green, 60%);
+    color: @green;
   }
 
+  &.purple {
+    border: 1px solid @purple;
+    color: #fff;
+    background: @purple;
+  }
+
+  &.purple-bd {
+    border: 1px solid lighten(@purple, 5%);
+    background: lighten(@purple, 50%);
+    color: @purple;
+  }
 
   &.yellow {
-    border: 0.5px solid #ffd031;
+    border: 1px solid @yellow;
     color: #fff;
-    background: #ffd031;
+    background: @yellow;
   }
 
   &.yellow-bd {
-    border: 0.5px solid #ffd031;
-    color: #ffd031;
+    border: 1px solid lighten(@yellow, 20%);
+    background: lighten(@yellow, 50%);
+    color: @yellow;
   }
 
-
   &.org {
-    border: 0.5px solid #F90;
+    border: 1px solid @org;
     color: #fff;
-    background: #F90;
+    background: @org;
   }
 
   &.org-bd {
-    border: 0.5px solid #F90;
-    color: #F90;
+    border: 1px solid lighten(@org, 20%);
+    background: lighten(@org, 50%);
+    color: @org;
   }
 
   &.org2 {
-    border: 0.5px solid #F60;
+    border: 1px solid @org2;
     color: #fff;
-    background: #F60;
+    background: @org2;
   }
 
   &.org2-bd {
-    border: 0.5px solid #F60;
-    color: #F60;
+    border: 1px solid lighten(@org2, 20%);
+    background: lighten(@org2, 50%);
+    color: @org2;
   }
 
   &.normal {
-    border: 0.5px solid #a0a0a0;
-    background-color: #f1f1f1;
-    color: #909090;
+
+    border: 1px solid lighten(@normal, 20%);
+    background: lighten(@normal, 50%);
+    color: @normal;
+  }
+
+  &.normal2 {
+    border: 1px solid @normal;
+    color: #fff;
+    background: @normal;
   }
 
   &.disabled, &.disabled:hover, &[disabled], &[disabled]:hover {
     background: #f7f7f7;
-    color: #999;
-    border:0.5px solid  #e1e1e1;
+    color: #909399;
+    border: 1px solid #e1e1e1;
   }
 }
 
@@ -201,7 +272,16 @@ a.yee-back {
     color: #32a3ff;
   }
 }
-.yee-list-search a.form-btn,.yee-list-search input.form-btn{
+
+.yee-list-search a.form-btn, .yee-list-search input.form-btn {
   padding: 0 15px;
   margin-right: 5px;
+}
+
+.yee-list-search .form-label a.form-btn {
+  padding: 3px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 2px;
+  margin-right: 0px;
 }

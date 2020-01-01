@@ -113,6 +113,8 @@ html, body {
     color: #606060;
     line-height: 36px;
     border-bottom: none;
+    display: flex;
+    justify-content: space-between;
 
     .senior-item {
       display: none;
@@ -141,18 +143,17 @@ html, body {
   }
 
   .yee-show-table {
-    -webkit-box-shadow: 0 0 2px rgba(0, 0, 0, .05);
-    -moz-box-shadow: 0 0 2px rgba(0, 0, 0, .05);
-    box-shadow: 0 0 2px rgba(0, 0, 0, .05);
     background: #FFF;
     border-collapse: collapse;
     width: 100%;
+    //这是从来干嘛的
+    //table-layout: fixed;
   }
 
   .yee-show-table th {
     background: #f9f9f9;
-    line-height: 18px;
-    padding: 10px 5px;
+    line-height: 20px;
+    padding: 6px 5px;
     font-weight: 700;
     border: 1px solid #eaeaea;
     color: #333;
@@ -162,7 +163,135 @@ html, body {
     padding: 5px;
     line-height: 20px;
     border: 1px solid #eaeaea;
-    word-break: keep-all
+    word-break: break-all;
+  }
+}
+
+.yee-list-table {
+  font-size: 12px;
+  border-collapse: collapse;
+  margin: 0px 0px -1px 0px;
+  border-right: 1px #e6e6e6 solid;
+  border-left: 1px #e6e6e6 solid;
+  box-sizing: border-box;
+  background: #FFF;
+  float: left;
+
+  &[yee-module] {
+    opacity: 0;
   }
 
+  transition: opacity 0.2s;
+  opacity: 1;
+
+  thead th {
+    border: 1px #e6e6e6 solid;
+    height: 39px;
+    padding: 0px 10px;
+    background: #F2F2F2;
+    line-height: 18px;
+    font-weight: 700;
+    color: #333;
+    white-space: nowrap;
+    box-sizing: border-box;
+    overflow: hidden;
+
+    &.order {
+      &:after {
+        display: inline-block;
+        font-family: 'YeeFont' !important;
+        content: "\eb5b";
+        font-size: 18px;
+        font-weight: normal;
+        font-style: normal;
+        color: #999;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+      }
+
+      &.down:after {
+        content: "\eb21";
+      }
+
+      &.up:after {
+        content: "\eb24";
+      }
+    }
+
+    border-left: none;
+  }
+
+  tbody td, colgroup col, tbody th {
+    border: 1px #e6e6e6 solid;
+    height: 36px;
+    line-height: 22px;
+    vertical-align: middle;
+    padding: 0px 10px;
+    font-weight: normal;
+    border-left: none;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    img {
+      vertical-align: middle;
+      margin: 3px;
+    }
+  }
+
+  tbody th {
+    background: #f9f9f9;
+  }
+
+  tbody tr {
+    &:hover {
+      background: #f5faff;
+
+      td.tg {
+        background: #f2f3fb;
+      }
+    }
+
+    td.tg {
+      background: #fdfbff;
+    }
+  }
+
+  tbody tr.hover {
+    background: #f5faff;
+
+    td.tg {
+      background: #ecfcfe;
+    }
+  }
+
+  tbody tr.selected {
+    background: #F0F6FF;
+    td.tg {
+      background: #F0F4FF;
+    }
+  }
+}
+
+
+.yee-attention {
+  font-size: 13px;
+  background: #fdf6ec;
+  border-radius: 5px;
+  line-height: 24px;
+  margin-bottom: 5px;
+  padding: 5px 5px;
+  color: #cf6d19;
+}
+
+.yee-message {
+  font-size: 13px;
+  background: #e9f8fd;
+  border-radius: 5px;
+  line-height: 24px;
+  margin-bottom: 5px;
+  padding: 5px 5px;
+  color: #1164cf;
 }
