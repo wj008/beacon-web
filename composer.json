@@ -18,7 +18,7 @@
   },
   "require": {
     "php": ">=7.0",
-    "wj008/beacon": "^2.0"
+    "wj008/beacon": "^2.1"
   },
   "extra": {
     "beacon-app-dir": "app/*",
@@ -26,6 +26,6 @@
     "beacon-runtime-dir": "runtime",
     "beacon-view-dir": "view/*",
     "beacon-web-dir": "www/*",
-    "beacon-debug-file": "debug.js"
+    "beacon-debug-file": "debug.php"
   }
 }
