@@ -34,6 +34,12 @@ abstract class ZeroController extends AdminController
         return Form::instance($this->zero['actionForm'], $type);
     }
 
+    protected function listFilter(array $list)
+    {
+        $origFields = isset($this->zero['origFields']) ? $this->zero['origFields'] : [];
+        return $this->hook($this->zero['templateHook'], $list, $origFields);
+    }
+
     protected function indexAction()
     {
         if ($this->isAjax()) {
@@ -42,23 +48,19 @@ abstract class ZeroController extends AdminController
             //如果有分页
             if (isset($this->zero['pageSize']) && $this->zero['pageSize'] > 0) {
                 $plist = $selector->getPageList($this->zero['pageSize']);
-                if (method_exists($this, 'zeroCount')) {
-                    $plist->setCount($this->zeroCount());
-                }
                 $data['list'] = $plist->getList();
                 $data['pageInfo'] = $plist->getInfo();
             } else {
                 $data['list'] = $selector->getList();
                 $data['pageInfo'] = ['recordsCount' => $selector->getCount()];
             }
-            //修饰数据
-            $origFields = isset($this->zero['origFields']) ? $this->zero['origFields'] : [];
-            $data['list'] = $this->hook($this->zero['templateHook'], $data['list'], $origFields);
+            $data['list'] = $this->listFilter($data['list']);
             $this->success('获取数据成功', $data);
         }
         $this->zeroForSearch();
         $this->display($this->zero['template']);
     }
+
 
     protected function addAction()
     {

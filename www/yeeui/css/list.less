@@ -106,9 +106,9 @@ html, body {
 
   //搜索栏目
   .yee-list-search {
-    box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
+    //box-shadow: 0 1px 2px rgba(0, 0, 0, .1);
     padding: 5px 15px;
-    border: 1px solid #eaeaea;
+    border: 1px solid #EDF1F2;
     background: #fff;
     color: #606060;
     line-height: 36px;
@@ -164,6 +164,31 @@ html, body {
     line-height: 20px;
     border: 1px solid #eaeaea;
     word-break: break-all;
+  }
+
+  .yee-line-table {
+    background: #FFF;
+    border-collapse: collapse;
+    border: 1px solid #eaeaea;
+    width: 100%;
+  }
+
+  .yee-line-table th {
+    background: #f9f9f9;
+    line-height: 20px;
+    padding: 6px 5px;
+    font-weight: 700;
+    color: #333;
+  }
+
+  .yee-line-table td {
+    padding: 5px;
+    line-height: 20px;
+    word-break: break-all;
+  }
+
+  .yee-line-table tr {
+    border-bottom: 1px #eee solid;
   }
 }
 
@@ -269,6 +294,7 @@ html, body {
 
   tbody tr.selected {
     background: #F0F6FF;
+
     td.tg {
       background: #F0F4FF;
     }
