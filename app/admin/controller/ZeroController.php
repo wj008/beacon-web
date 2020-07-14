@@ -29,17 +29,32 @@ abstract class ZeroController extends AdminController
         parent::initialize();
     }
 
+    /**
+     * 获取表单
+     * @param string $type
+     * @return Form
+     */
     protected function getForm(string $type = '')
     {
         return Form::instance($this->zero['actionForm'], $type);
     }
 
-    protected function listFilter(array $list)
+    /**
+     * 列表过滤
+     * @param array $list
+     * @param array $append
+     * @return mixed
+     */
+    protected function listFilter(array $list, array $append = [])
     {
         $origFields = isset($this->zero['origFields']) ? $this->zero['origFields'] : [];
+        $origFields = array_merge($origFields, $append);
         return $this->hook($this->zero['templateHook'], $list, $origFields);
     }
 
+    /**
+     * 首页列表
+     */
     protected function indexAction()
     {
         if ($this->isAjax()) {
@@ -62,6 +77,9 @@ abstract class ZeroController extends AdminController
     }
 
 
+    /**
+     * 添加数据
+     */
     protected function addAction()
     {
         $form = $this->getForm('add');
@@ -79,6 +97,9 @@ abstract class ZeroController extends AdminController
         }
     }
 
+    /**
+     * 编辑数据
+     */
     protected function editAction()
     {
         $id = $this->param('id:i');
@@ -102,6 +123,9 @@ abstract class ZeroController extends AdminController
         }
     }
 
+    /**
+     * 删除数据
+     */
     protected function deleteAction()
     {
         $id = $this->param('id:i');
@@ -113,6 +137,9 @@ abstract class ZeroController extends AdminController
         $this->success('删除' . $form->title . '成功');
     }
 
+    /**
+     * 批量删除数据
+     */
     protected function deleteChoiceAction()
     {
         $ids = $this->param('choice:a', []);
@@ -123,6 +150,9 @@ abstract class ZeroController extends AdminController
         $this->success('删除' . $form->title . '成功');
     }
 
+    /**
+     * 批量审核数据
+     */
     protected function allowChoiceAction()
     {
         $ids = $this->param('choice:a', []);
@@ -132,6 +162,9 @@ abstract class ZeroController extends AdminController
         $this->success('设置审核成功');
     }
 
+    /**
+     * 批量禁用数据
+     */
     protected function revokeChoiceAction()
     {
         $ids = $this->param('choice:a', []);
@@ -141,6 +174,9 @@ abstract class ZeroController extends AdminController
         $this->success('设置禁用成功');
     }
 
+    /**
+     * 设置排序
+     */
     protected function sortAction()
     {
         $id = $this->param('id:i');
@@ -194,6 +230,9 @@ abstract class ZeroController extends AdminController
         $this->success('更新排序成功');
     }
 
+    /**
+     * 切换审核状态
+     */
     protected function toggleAllowAction()
     {
         $id = $this->param('id:i');
