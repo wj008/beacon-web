@@ -1,0 +1,29 @@
+html, body {
+    background: #fff;
+    height: 100%;
+}
+
+.yee-submit {
+    padding: 15px 0 15px 0;
+    text-align: center;
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-top: 1px #eee solid;
+}
+
+.yee-submit .submit-label, .yee-submit .submit-cell {
+    display: inline;
+}
+
+.yee-row .row-label {
+    width: 150px;
+    text-align: right;
+    vertical-align: top;
+}
+
+.yee-panel {
+    padding: 0;
+}

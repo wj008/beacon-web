@@ -5,10 +5,10 @@
     <title>{block name="title"}{/block}</title>
     <link type="text/css" rel="stylesheet" href="/yeeui/css/yeeui.css"/>
     <link type="text/css" rel="stylesheet" href="/icofont/icofont.css"/>
-    <link type="text/css" rel="stylesheet" href="/static/home/css/common.css"/>
-    <link type="text/css" rel="stylesheet" href="/static/home/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="/static/admin/css/dialog.css"/>
     <script src="/yeeui/third/jquery-3.3.1.min.js"></script>
     <script src="/yeeui/yee.js"></script>
+    <script src="/static/admin/js/list.js"></script>
     {block name='header'}{/block}
     {literal}
         <style>
@@ -40,6 +40,5 @@
     {block name='list-information'}{/block}
 </div>
 {block name='footer'}{/block}
-<script src="/static/home/js/list.js"></script>
 </body>
 </html>

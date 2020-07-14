@@ -5,10 +5,10 @@
     <title>{block name='title'}{/block}</title>
     <link type="text/css" rel="stylesheet" href="/yeeui/css/yeeui.css"/>
     <link type="text/css" rel="stylesheet" href="/icofont/icofont.css"/>
-    <link type="text/css" rel="stylesheet" href="/static/home/css/common.css"/>
-    <link type="text/css" rel="stylesheet" href="/static/home/css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="/static/admin/css/dialog.css"/>
     <script src="/yeeui/third/jquery-3.3.1.min.js"></script>
     <script src="/yeeui/yee.js"></script>
+    <script src="/static/admin/js/dialog.js"></script>
     {block name='header'}{/block}
 </head>
 {literal}
@@ -32,24 +32,5 @@
     {block name='form-content'}{/block}
 </div>
 {block name='footer'}{/block}
-{literal}
-    <script>
-        Yee.readyDialog(function (dialog) {
-
-            $(window).on('success', function (ev, ret) {
-                window.top.postMessage('task-notice', '*');
-                dialog.success(ret);
-                window.location.reload();
-            });
-
-            $('a.reload').on('success', function (ev, ret) {
-                window.top.postMessage('task-notice', '*');
-                dialog.success(ret);
-                window.location.reload();
-            });
-
-        });
-    </script>
-{/literal}
 </body>
 </html>
