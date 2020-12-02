@@ -24,17 +24,22 @@ function debug($item)
     if (!is_array($item) || count($item) == 0) {
         return;
     }
-    $act = isset($item[2]) ? $item[2] : 'log';
-    $file = isset($item[1]) ? $item[1] : null;
-    $data = isset($item[0]) ? $item[0] : null;
+    $act = isset($item['act']) ? $item['act'] : 'log';
+    $file = isset($item['file']) ? $item['file'] : null;
+    $data = isset($item['data']) ? $item['data'] : null;
+    $time = isset($item['time']) ? $item['time'] : null;
     if ($file && $tempFile != $file) {
         $tempFile = $file;
-        out('------> ' . $file, 'file', true);
+        out('> ' . $file, 'file', true);
     }
     if ($data !== null && is_array($data) && count($data) > 0) {
-        if ($act == 'info' && count($data) == 2 && is_string($data[0]) && is_numeric($data[1])) {
-            out($data[0] . '    ', 'sql1', false);
-            out(intval(floatval($data[1]) * 10000) / 10000, 'sql2', true);
+        if ($act == 'sql') {
+            if ($time !== null) {
+                out($data[0] . '    ', 'sql1', false);
+                out(intval(floatval($time) * 10000) / 10000, 'sql2', true);
+            } else {
+                out($data[0], 'sql1', true);
+            }
         } else {
             foreach ($data as &$datum) {
                 if (is_array($datum)) {
@@ -59,7 +64,7 @@ echo <<< EOF
 
 EOF;
 do {
-    $msg = stream_socket_recvfrom($socket, 1024 * 20, 0, $peer);
+    $msg = stream_socket_recvfrom($socket, 1024 * 200, 0, $peer);
     if (!empty($msg)) {
         if (preg_match('@^[\{\[].*[\}\]]$@', $msg)) {
             $data = json_decode($msg, true);
