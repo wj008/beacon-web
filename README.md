@@ -18,7 +18,7 @@ composer create-project wj008/beacon-web
 
 #### 环境要求 
 
-php 7.0 及以上，我的开发环境是php 7.2
+php 8.0 及以上，我的开发环境是php 8.0.3
 如果是 nginx 请自行设置支持 pathinfo
 
 mysql 是 5.7 及以上。
