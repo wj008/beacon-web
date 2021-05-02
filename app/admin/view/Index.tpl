@@ -9,9 +9,6 @@
     <script src="/yeeui/third/jquery-3.3.1.min.js"></script>
     <script src="/yeeui/yee.js"></script>
     <script src="/static/admin/js/index.js"></script>
-    <!--[if lt IE 7]>
-    <script type="text/javascript" rc="/static/admin/js/html5.js"></script>
-    <![endif]-->
 </head>
 
 <body>
@@ -51,10 +48,9 @@
                          </div>
                      </li>
 *}
-                    {*<li><a href="{#web_host#}" target="_blank" class="item" title="新窗口打开首页"><i class="icofont icofont-ui-home"></i></a></li>*}
+                    <li><a href="/" target="_blank" class="item" title="新窗口打开首页"><i class="icofont icofont-ui-home"></i></a></li>
                     {* <li><a href="javascript:void(0);" class="item" title="查看全部管理菜单"><i class="icofont icofont-site-map"></i></a></li>*}
-                    <li><a href="{url path='~/index/logout'}" class="item" title="安全退出管理中心"><i
-                                    class="icofont icofont-power"></i></a></li>
+                    <li><a href="{url path='~/index/logout'}" class="item" title="安全退出管理中心"><i class="icofont icofont-power"></i></a></li>
                 </ul>
 
             </div>
@@ -78,8 +74,7 @@
             </div>
         </div>
         <div id="content">
-            <iframe scrolling="auto" name="main" id="main" src="{url path='~/index/welcome'}" frameborder="0"
-                    width="100%" height="100%"></iframe>
+            <iframe scrolling="auto" name="main" id="main" src="{url path='~/index/welcome'}" frameborder="0" width="100%" height="100%"></iframe>
         </div>
     </div>
 </div>

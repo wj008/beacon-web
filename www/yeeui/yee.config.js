@@ -1,11 +1,8 @@
-Yee.config({
-    version: (function () {
-        return '1.0.1';
-        //return new Date().getTime();
-    }()),
+Yee.setConfig({
+    version: '1.0.1',
     //预加载,提前加载的
-    preloading: {
-        'layer': (Yee.isMobile ? 'layer/mobile/layer.js' : 'layer/layer.js')
+    preload: {
+        'layer': window.layer ? '' : (Yee.isMobile ? 'layer/mobile/layer.js' : 'layer/layer.js')
     },
     //模块,可以用 use 引入
     modules: {
@@ -22,7 +19,4 @@ Yee.config({
         'vue': window.Vue ? '' : 'third/vue.min.js',
         'cos': 'third/cos-js-sdk-v5.min.js',
     },
-    //依赖,加载包的时候自动引入
-    depends: {},
-    dataFormat: null
 });

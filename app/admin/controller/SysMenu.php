@@ -1,23 +1,24 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: wj008
- * Date: 2018/2/26
- * Time: 13:33
- */
+
 
 namespace app\admin\controller;
 
 
-use app\admin\form\SysMenuForm;
-use beacon\DB;
+use app\admin\model\SysMenuModel;
+use beacon\core\DB;
+use beacon\core\DBException;
+use beacon\core\Form;
+use beacon\core\Method;
 
-class SysMenu extends AdminController
+class SysMenu extends Admin
 {
-    public function indexAction()
+    /**
+     * @throws DBException
+     */
+    #[Method(act: 'index', method: Method::GET | Method::POST)]
+    public function index()
     {
         if ($this->isAjax()) {
-
             $items = [];
             $name = $this->get('name', '');
             if (!empty($name)) {
@@ -50,72 +51,91 @@ class SysMenu extends AdminController
                     }
                 }
             }
-            $this->assign('list', $items);
-            $this->assign('pageInfo', ['recordsCount' => count($items)]);
-            $data = $this->getAssign();
-            $data['list'] = $this->hook('SysMenu.hook.tpl', $data['list']);
+            $data = [];
+            $data['list'] = $this->hookData($items, 'hook/sys_menu.tpl');
+            $data['pageInfo'] = ['recordsCount' => count($items)];
             $this->success('获取数据成功', $data);
         }
-        $this->display('SysMenu.tpl');
+        $this->display('list/sys_menu.tpl');
     }
 
-    public function sortAction(int $id = 0, int $sort = 0)
+    /**
+     * @param int $id
+     * @param int $sort
+     * @throws DBException
+     */
+    #[Method(act: 'sort', method: Method::GET | Method::POST)]
+    public function sort(int $id = 0, int $sort = 0)
     {
         DB::update('@pf_sys_menu', ['sort' => $sort], $id);
         $this->success('更新排序成功');
     }
 
-    public function addAction()
+    /**
+     * @throws DBException
+     */
+    #[Method(act: 'add', method: Method::GET | Method::POST)]
+    public function add()
     {
-        $form = new SysMenuForm('add');
+        $model = new SysMenuModel();
+        $model->sort = intval(DB::getMax('@pf_sys_menu', 'sort')) + 10;
+        $model->pid = $this->get('pid:i', 0);
+        $form = Form::create($model, 'add');
         if ($this->isGet()) {
             $this->displayForm($form);
             return;
         }
-        if ($this->isPost()) {
-            $form->autoComplete();
-            if (!$form->validation($error)) {
-                $this->error($error);
-            }
-            $form->insert();
-            $this->success('添加' . $form->title . '成功');
-        }
+        $input = $this->completeForm($form);
+        DB::insert('@pf_sys_menu', $input);
+        $this->success('添加菜单信息成功');
     }
 
-    public function editAction(int $id = 0)
+    /**
+     * @param int $id
+     * @throws DBException
+     */
+    #[Method(act: 'edit', method: Method::GET | Method::POST)]
+    public function edit(int $id = 0)
     {
-        $form = new SysMenuForm('edit');
         if ($id == 0) {
             $this->error('参数有误');
         }
-        $form->setValues($form->getRow($id));
+        $form = Form::create(SysMenuModel::class, 'edit');
+        $row = DB::getItem('@pf_sys_menu', $id);
+        if (!$row) {
+            $this->error("数据不存在");
+        }
+        $form->setData($row);
         if ($this->isGet()) {
             $this->displayForm($form);
             return;
         }
-        if ($this->isPost()) {
-            $form->autoComplete();
-            if (!$form->validation($error)) {
-                $this->error($error);
-            }
-            $form->update($id);
-            $this->success('编辑' . $form->title . '成功');
-        }
+        $input = $this->completeForm($form);
+        DB::update('@pf_sys_menu', $input, $id);
+        $this->success('编辑菜单信息成功');
     }
 
-    public function deleteAction(int $id = 0)
+    /**
+     * @param int $id
+     * @throws DBException
+     */
+    #[Method(act: 'delete', method: Method::GET | Method::POST)]
+    public function delete(int $id = 0)
     {
-        $form = new SysMenuForm('edit');
         if ($id == 0) {
             $this->error('参数有误');
         }
-        $form->delete($id);
-        $this->success('删除' . $form->title . '成功');
+        $row = DB::getItem('@pf_sys_menu', $id);
+        if (!$row) {
+            $this->error("数据不存在");
+        }
+        DB::delete('@pf_sys_menu', $id);
+        $this->success('删除菜单信息成功');
     }
 
+    #[Method(act: 'icon', method: Method::GET)]
     public function iconAction()
     {
-        $this->display('SysMenu.icon.tpl');
+        $this->display('list/sys_menu.icon.tpl');
     }
-
 }

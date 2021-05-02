@@ -1,14 +1,9 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: wj008
- * Date: 2019/1/24
- * Time: 0:18
- */
 
 namespace sdopx\plugin;
 
-use beacon\Route;
+use beacon\core\App;
+use beacon\core\Logger;
 use sdopx\lib\Outer;
 
 class SortPlugin
@@ -22,7 +17,7 @@ class SortPlugin
             if (!isset($param['value'])) {
                 $out->throw('[value] attr is required.');
             }
-            $out->html('<input name="sort" type="text" class="form-inp snumber tc" yee-module="ajax" value="' . htmlspecialchars($param['value']) . '" data-url="' . Route::url(['act' => 'sort', 'id' => $param['id']]) . '"/>');
+            $out->html('<input name="sort" type="text" class="form-inp snumber tc" yee-module="ajax" value="' . htmlspecialchars($param['value']) . '" data-url="' . App::url(['act' => 'sort', 'id' => $param['id']]) . '"/>');
             return;
         }
         $map1 = ['act' => 'sort', 'id' => $param['id']];
@@ -38,9 +33,10 @@ class SortPlugin
             $map2['bind'] = $param['bind'];
             $map1['bind'] = $param['bind'];
         }
+
         $out->html(' ');
-        $out->html('<a href="' . Route::url($map1) . '" class="blue" yee-module="ajax" on-success="$(\'#list\').emit(\'reload\');">上移</a>');
+        $out->html('<a href="' . App::url($map1) . '" class="blue" yee-module="ajax" on-success="$(\'#list\').emit(\'reload\');">上移</a>');
         $out->html(' | ');
-        $out->html('<a href="' . Route::url($map2) . '" class="blue" yee-module="ajax"  on-success="$(\'#list\').emit(\'reload\');">下移</a>');
+        $out->html('<a href="' . App::url($map2) . '" class="blue" yee-module="ajax"  on-success="$(\'#list\').emit(\'reload\');">下移</a>');
     }
 }

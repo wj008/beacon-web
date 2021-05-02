@@ -1,188 +1,109 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: wj008
- * Date: 2018/2/23
- * Time: 18:23
- */
+
 
 namespace app\admin\controller;
 
-use beacon\DB;
-use beacon\Form;
 
-abstract class ZeroController extends AdminController
+use beacon\core\DB;
+
+
+class ZeroController extends Admin
 {
-    protected $zero = [];
 
-    public function initialize()
+    protected function index()
     {
-        $this->zero = $this->zeroLoad();
-        if (isset($this->zero['actionForm'])) {
-            $actionForm = preg_replace_callback('@\\\\zero\\\\form\\\\Zero(.*)$@', function ($m) {
-                return '\\form\\' . $m[1];
-            }, $this->zero['actionForm']);
-            if (class_exists($actionForm)) {
-                $this->zero['actionForm'] = $actionForm;
-            }
+        $config = $this->zeroConfig();
+        if (!$this->isAjax()) {
+            $this->assign('search', $this->getSearchForm());
+            $this->display($config['template']);
+            return;
         }
-        parent::initialize();
-    }
-
-    /**
-     * 获取表单
-     * @param string $type
-     * @return Form
-     */
-    protected function getForm(string $type = '')
-    {
-        return Form::instance($this->zero['actionForm'], $type);
-    }
-
-    /**
-     * 列表过滤
-     * @param array $list
-     * @param array $append
-     * @return mixed
-     */
-    protected function listFilter(array $list, array $append = [])
-    {
-        $origFields = isset($this->zero['origFields']) ? $this->zero['origFields'] : [];
-        $origFields = array_merge($origFields, $append);
-        return $this->hook($this->zero['templateHook'], $list, $origFields);
-    }
-
-    /**
-     * 首页列表
-     */
-    protected function indexAction()
-    {
-        if ($this->isAjax()) {
+        //处理Ajax数据
+        $selector = $this->getSelector();
+        if (isset($config['pageSize'])) {
+            $selector->setPage($config['pageSize']);
+            $data = $selector->pageData();
+        } else {
             $data = [];
-            $selector = $this->zeroSelector();
-            //如果有分页
-            if (isset($this->zero['pageSize']) && $this->zero['pageSize'] > 0) {
-                $plist = $selector->getPageList($this->zero['pageSize']);
-                $data['list'] = $plist->getList();
-                $data['pageInfo'] = $plist->getInfo();
-            } else {
-                $data['list'] = $selector->getList();
-                $data['pageInfo'] = ['recordsCount' => $selector->getCount()];
-            }
-            $data['list'] = $this->listFilter($data['list']);
-            $this->success('获取数据成功', $data);
+            $data['pageInfo'] = ['recordsCount' => $selector->getCount()];
+            $data['list'] = $selector->getList();
         }
-        $this->zeroForSearch();
-        $this->display($this->zero['template']);
+        $data['list'] = $this->hookData($data['list'], $config['hookTemplate']);
+        $this->success('获取数据成功', $data);
     }
 
-
-    /**
-     * 添加数据
-     */
-    protected function addAction()
+    protected function add()
     {
         $form = $this->getForm('add');
         if ($this->isGet()) {
             $this->displayForm($form);
             return;
         }
-        if ($this->isPost()) {
-            $form->autoComplete();
-            if (!$form->validation($error)) {
-                $this->error($error);
-            }
-            $form->insert();
-            $this->success('添加' . $form->title . '成功');
-        }
+        $input = $this->completeForm($form);
+        DB::insert($form->table, $input);
+        $this->success('添加' . $form->title . '成功');
     }
 
-    /**
-     * 编辑数据
-     */
-    protected function editAction()
+    protected function edit()
     {
         $id = $this->param('id:i');
         $form = $this->getForm('edit');
-        if ($id == 0) {
-            $this->error('参数有误');
-        }
-        $row = $form->getRow($id);
-        $form->setValues($row);
         if ($this->isGet()) {
+            $row = DB::getItem($form->table, $id);
+            $form->setData($row);
             $this->displayForm($form);
             return;
         }
-        if ($this->isPost()) {
-            $form->autoComplete();
-            if (!$form->validation($error)) {
-                $this->error($error);
-            }
-            $form->update($id);
-            $this->success('编辑' . $form->title . '成功');
-        }
+        $input = $this->completeForm($form);
+        DB::update($form->table, $input, $id);
+        $this->success('添加' . $form->title . '成功');
     }
 
-    /**
-     * 删除数据
-     */
-    protected function deleteAction()
+    protected function delete()
     {
         $id = $this->param('id:i');
-        if ($id == 0) {
-            $this->error('参数有误');
-        }
         $form = $this->getForm('delete');
-        $form->delete($id);
+        DB::delete($form->table, $id);
         $this->success('删除' . $form->title . '成功');
     }
 
-    /**
-     * 批量删除数据
-     */
-    protected function deleteChoiceAction()
+    protected function deleteChoice()
     {
         $ids = $this->param('choice:a', []);
         $form = $this->getForm('delete');
         foreach ($ids as $id) {
-            $form->delete($id);
+            DB::delete($form->table, $id);
         }
         $this->success('删除' . $form->title . '成功');
     }
 
-    /**
-     * 批量审核数据
-     */
-    protected function allowChoiceAction()
+    protected function allowChoice()
     {
         $ids = $this->param('choice:a', []);
+        $zero = $this->zeroConfig();
         foreach ($ids as $id) {
-            DB::update($this->zero['tbName'], ['allow' => 1], $id);
+            DB::update($zero['table'], ['allow' => 1], $id);
         }
         $this->success('设置审核成功');
     }
 
-    /**
-     * 批量禁用数据
-     */
-    protected function revokeChoiceAction()
+    protected function revokeChoice()
     {
         $ids = $this->param('choice:a', []);
+        $zero = $this->zeroConfig();
         foreach ($ids as $id) {
-            DB::update($this->zero['tbName'], ['allow' => 0], $id);
+            DB::update($zero['table'], ['allow' => 0], $id);
         }
         $this->success('设置禁用成功');
     }
 
-    /**
-     * 设置排序
-     */
-    protected function sortAction()
+    protected function sort()
     {
         $id = $this->param('id:i');
         $sort = $this->param('sort:i');
         $kind = $this->param('kind:s');
         $bind = $this->param('bind:s');
+        $zero = $this->zeroConfig();
         //上下调整方式更改排序
         if (!empty($kind)) {
             $sql = 'select id,sort';
@@ -190,7 +111,7 @@ abstract class ZeroController extends AdminController
             if (!empty($bind) && preg_match('@^\w+(,\w+)*$@', $bind)) {
                 $sql .= ',' . $bind;
             }
-            $sql .= ' from ' . $this->zero['tbName'] . ' where id=?';
+            $sql .= ' from ' . $zero['table'] . ' where id=?';
             $row = DB::getRow($sql, $id);
             if ($row == null) {
                 $this->error('不存在的数据');
@@ -209,39 +130,36 @@ abstract class ZeroController extends AdminController
                 }
             }
             $args[] = $row['sort'];
-            $change = null;
             if ($kind == 'up') {
-                $change = DB::getRow('select id,sort from ' . $this->zero['tbName'] . ' where ' . $find . ' sort < ? order by sort desc limit 0,1', $args);
+                $change = DB::getRow('select id,sort from ' . $zero['table'] . ' where ' . $find . ' sort < ? order by sort desc limit 0,1', $args);
             } else {
-                $change = DB::getRow('select id,sort from ' . $this->zero['tbName'] . ' where ' . $find . ' sort > ? order by sort asc limit 0,1', $args);
+                $change = DB::getRow('select id,sort from ' . $zero['table'] . ' where ' . $find . ' sort > ? order by sort asc limit 0,1', $args);
             }
             if ($change) {
-                DB::update($this->zero['tbName'], ['sort' => $change['sort']], $row['id']);
-                DB::update($this->zero['tbName'], ['sort' => $row['sort']], $change['id']);
+                DB::update($zero['table'], ['sort' => $change['sort']], $row['id']);
+                DB::update($zero['table'], ['sort' => $row['sort']], $change['id']);
             }
             $this->success('更新排序成功');
         }
         //直接输入形式调整排序
-        $row = DB::getRow('select id from ' . $this->zero['tbName'] . ' where id=?', $id);
+        $row = DB::getRow('select id from ' . $zero['table'] . ' where id=?', $id);
         if ($row == null) {
             $this->error('不存在的数据');
         }
-        DB::update($this->zero['tbName'], ['sort' => $sort], $id);
+        DB::update($zero['table'], ['sort' => $sort], $id);
         $this->success('更新排序成功');
     }
 
-    /**
-     * 切换审核状态
-     */
-    protected function toggleAllowAction()
+    protected function toggleAllow()
     {
         $id = $this->param('id:i');
-        $row = DB::getRow('select id,allow from ' . $this->zero['tbName'] . ' where id=?', $id);
+        $zero = $this->zeroConfig();
+        $row = DB::getRow('select id,allow from ' . $zero['table'] . ' where id=?', $id);
         if ($row == null) {
             $this->error('不存在的数据');
         }
         $allow = (intval($row['allow']) == 1 ? 0 : 1);
-        DB::update($this->zero['tbName'], ['allow' => $allow], $id);
+        DB::update($zero['table'], ['allow' => $allow], $id);
         if ($allow == 1) {
             $this->success('设置审核成功');
         }

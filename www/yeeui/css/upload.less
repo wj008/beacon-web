@@ -23,6 +23,7 @@
 }
 
 
+.form-inp.up-img-group + div.yee-img-wrap,
 .form-inp.up-image + div.yee-img-wrap {
   position: relative;
   display: inline-block;
@@ -65,7 +66,9 @@
   }
 }
 
-input.form-inp.up-image.yee-input-error + div.yee-img-wrap {
+input.form-inp.up-img-group.yee-input-error + div.yee-img-wrap,
+input.form-inp.up-image.yee-input-error + div.yee-img-wrap
+{
   .img-btn {
     border: 1px #ffcdb2 dotted;
   }
@@ -292,4 +295,39 @@ div.file-item.word:before {
 
 div.file-item.zip:before {
   content: "\ec24";
+}
+
+.show-file-item {
+  background: url(img/fujian.png) no-repeat 5px 5px;
+  display: inline-block;
+  border: 1px #eee solid;
+  padding: 3px 5px 3px 25px;
+  border-radius: 5px;
+  color: #253a86;
+  min-height: 20px;
+  margin: 5px 10px 5px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.show-file-item:hover {
+  color: #1E9FFF;
+}
+
+.show-img-item {
+  display: inline-block;
+  border: 1px #eee solid;
+  margin: 5px 10px 5px 0;
+  vertical-align: middle;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.show-img-item img {
+  display: inline-block;
+  max-height: 100px;
+  max-width: 120px;
+  float: left;
+  margin: 0;
 }

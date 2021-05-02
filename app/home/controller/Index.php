@@ -2,13 +2,17 @@
 
 namespace app\home\controller;
 
-use beacon\Controller;
+use beacon\core\Controller;
+use beacon\core\Method;
 
 class Index extends Controller
 {
-    public function indexAction()
+    /**
+     * 首页
+     */
+    #[Method(act: 'index', method: Method::GET)]
+    public function index()
     {
-        $this->display('Index.tpl');
+        $this->display('index.tpl');
     }
-
 }

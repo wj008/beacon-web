@@ -6,7 +6,7 @@
 </head>
 <body>
 <div>
-<h1>Beacon PHP 2.0</h1>
+<h1>Beacon PHP 3.0</h1>
 <div>
 欢迎使用 Beacon PHP 快速开发框框,看到该页面表示框架已正常运行。
 </div>

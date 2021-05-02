@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "YeeFont";
+  src: url("font/YeeFont.eot"); /* IE9 */
+  src: url("font/YeeFont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */ url("font/YeeFont.woff") format("woff"), /* chrome firefox */ url("font/YeeFont.ttf") format("truetype"), /* chrome firefox opera safari, Android, iOS 4.2+ */ url("font/YeeFont.svg#uxfonteditor") format("svg"); /* iOS 4.1- */
+}
+
 @import url("base.less");
 @import url("form.less");
 @import url("list.less");
@@ -7,6 +13,8 @@
 @import url("datatable.less");
 @import url("pagebar.less");
 @import url("btn.less");
+@import url("transfer.less");
+
 .scrollbar::-webkit-scrollbar { /*滚动条整体样式*/
   width: 6px; /*高宽分别对应横竖滚动条的尺寸*/
   height: 1px;

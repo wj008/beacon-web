@@ -1,34 +1,38 @@
 <?php
 
+
 namespace app\admin\controller;
 
-/**
- * Created by PhpStorm.
- * User: wj008
- * Date: 2018/1/4
- * Time: 21:01
- */
 
-use beacon\Console;
-use beacon\DB;
-use beacon\Route;
+use beacon\core\App;
+use beacon\core\DB;
+use beacon\core\DBException;
+use beacon\core\Method;
+use beacon\core\Request;
 
-class Index extends AdminController
+class Index extends Admin
 {
-
-
-    public function indexAction()
+    /**
+     * @throws DBException
+     */
+    #[Method(act: 'index', method: Method::GET)]
+    public function index()
     {
         $rows = DB::getList('select * from @pf_sys_menu where pid=0 and allow=1 order by sort asc');
         $this->assign('rows', $rows);
         $adm = DB::getRow('select * from @pf_manage where id=?', $this->adminId);
         $this->assign('adm', $adm);
-        $this->display('Index.tpl');
+        $this->display('index.tpl');
     }
 
-    public function leftAction()
+    /**
+     * 左侧页面
+     * @param int $pid
+     * @throws DBException
+     */
+    #[Method(act: 'left', method: Method::GET)]
+    public function left(int $pid = 0)
     {
-        $pid = $this->get('pid:i', 0);
         $info = DB::getRow('select * from @pf_sys_menu where id=?', $pid);
         $this->assign('info', $info);
         $rows = DB::getList('select * from @pf_sys_menu where pid=? and allow=1 order by sort asc', $pid);
@@ -36,22 +40,32 @@ class Index extends AdminController
             $row['childs'] = DB::getList('select * from @pf_sys_menu where pid=? and allow=1 order by sort asc', $row['id']);
             foreach ($row['childs'] as &$child) {
                 if (!empty($child['url']) && ($child['url'][0] == '~' || $child['url'][0] == '^')) {
-                    $child['url'] = Route::url($child['url']);
+                    $child['url'] = App::url($child['url']);
                 }
             }
         }
         $this->assign('rows', $rows);
-        $this->display('IndexLeft.tpl');
+        $code = $this->fetch('index.left.tpl');
+        $this->success('ok', ['code' => $code]);
     }
 
-    public function logoutAction()
+    /**
+     * 退出
+     */
+    #[Method(act: 'logout', method: Method::GET)]
+    public function logout()
     {
-        $this->delSession();
+        Request::clearSession();
         $this->redirect('~/index');
     }
 
-    public function welcomeAction()
+    /**
+     * 欢迎页面
+     */
+    #[Method(act: 'welcome', method: Method::GET)]
+    public function welcome()
     {
-        $this->display('IndexWelcome.tpl');
+        $this->display('index.welcome.tpl');
     }
+
 }

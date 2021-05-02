@@ -206,7 +206,7 @@ var PageObject = function (url, title) {
     this.remove = function () {
         frame.remove();
         if (tag.mypage != null) {
-            delete(tag.mypage);
+            delete (tag.mypage);
             tag.mypage = null;
         }
         if (tag.is('.idx')) {
@@ -231,18 +231,26 @@ var PageObject = function (url, title) {
 
 
 $(function () {
-
     var atops = $('#main-mune li').on('click', function () {
         atops.removeClass('idx');
         var that = $(this).addClass('idx');
         that.prev('li').addClass('lidx');
         var url = that.find('a').attr('href');
         if (url.length > 0 && url !== '#') {
-            $.ajax({
-                url: url, success: function (html) {
-                    $('#left').html(html);
-                }, cache: false
-            });
+            $.get(url, function (ret) {
+                if (ret.status) {
+                    $('#left').html(ret.code);
+                } else {
+                    Yee.msg(ret.msg);
+                    setTimeout(function () {
+                        if (ret.back) {
+                            window.location.href = ret.back;
+                        } else {
+                            window.location.reload();
+                        }
+                    }, 1000);
+                }
+            }, 'json');
         }
         return false;
     });

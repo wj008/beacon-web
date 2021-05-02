@@ -1,6 +1,6 @@
 $(function () {
 
-    var timer = null;
+    var list = $("#list");
 
     function updataHeight() {
         var winH = $(window).height();
@@ -11,21 +11,16 @@ $(function () {
         var grouH = $('div.group-inc').outerHeight(true) || 0;
         var attentionH = $('div.yee-attention').outerHeight(true) || 0;
         var myH = winH - headH - searchH - barH - tabH - grouH - attentionH - 50;
-        // $('div.yee-datatable-layer').height(myH);
-        $('#list').emit('setHeight', myH);
+        list.emit('setHeight', myH);
     }
 
-    $("#list").on("render", function (ev, source) {
+    list.on("render", function (ev, source) {
         if (source && source["pageInfo"]) {
             $("#records-count").text(source["pageInfo"]["recordsCount"] || "0");
         }
         updataHeight();
     });
-    $(window).on('resize', function () {
-        updataHeight();
-    });
-
-    $("#list").on("order", function (ev, data) {
+    list.on("order", function (ev, data) {
         var form = $("#searchForm"), inp1 = form.find(":input[name=sort]");
         if (inp1.length == 0) {
             inp1 = $('<input type="hidden" name="sort"/>').appendTo(form);
@@ -33,15 +28,18 @@ $(function () {
         inp1.val(data.name + "-" + (data.order == 1 ? "asc" : "desc"));
         $("#searchForm").submit();
     });
+
+    $(window).on('resize', function () {
+        updataHeight();
+    });
+
     var shower = null;
     $(document.body).on('mousedown', '.yee-btn-more a.yee-btn', function (ev) {
         var btn = $(this);
         $('.yee-btn-menu').hide();
         var parent = btn.parents('.yee-btn-warp:first');
         var offset = parent.offset();
-
         var menu = parent.find('.yee-btn-menu');
-
         var translateY = -$(document).scrollTop();
         menu.show();
         var arrow = menu.find('span.arrow');
@@ -53,7 +51,6 @@ $(function () {
             top = docH - menuH;
         }
         menuW = menuW + 30;
-        //console.log(menuW);
         var arrowTop = 10 + (offset.top - top);
         arrow.css('top', arrowTop + 'px');
         menu.css({top: top, left: offset.left - menuW});

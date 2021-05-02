@@ -9,8 +9,8 @@
 namespace sdopx\plugin;
 
 
-use beacon\Field;
-use beacon\Form;
+use beacon\core\Field;
+use beacon\core\Form;
 use sdopx\lib\Outer;
 
 /**
@@ -25,31 +25,30 @@ class InputPlugin
         if (isset($param['field']) && $param['field'] instanceof Field) {
             $field = $param['field'];
             unset($param['field']);
-        } else if (isset($param['form']) && $param['form'] instanceof Form && !empty($param['form'])) {
+            $args = Field::getTagArgs($param);
+            $field->setting($args);
+            if (isset($args['value'])) {
+                $field->bindValue($args['value']);
+            }
+        } else if (isset($param['form']) && $param['form'] instanceof Form && !empty($param['name'])) {
             $field = $param['form']->getField($param['name']);
             if (empty($field)) {
                 $out->throw('form is not found the field：' . $param['name']);
             }
             unset($param['form']);
             unset($param['name']);
+            $args = Field::getTagArgs($param);
+            $field->setting($args);
+            if (isset($args['value'])) {
+                $field->bindValue($args['value']);
+            }
         } else {
-            $field = new Field(null, $param);
+            try {
+                $field = Field::create($param);
+            } catch (\Exception $e) {
+                $out->throw($e->getMessage());
+            }
         }
-        $code = [];
-        if ($field->beforeText) {
-            $code[] = '<span class="before"> ' . htmlspecialchars($field->beforeText) . '</span>';
-        }
-        if ($field->type == 'check') {
-            $code[] = '<label>';
-        }
-        $code[] = $field->code($param);
-        if ($field->afterText) {
-            $code[] = '<span class="after"> ' . htmlspecialchars($field->afterText) . '</span>';
-        }
-        if ($field->type == 'check') {
-            $code[] = '</label>';
-        }
-        $out->html(join('', $code));
+        $out->html($field->render());
     }
-
 }

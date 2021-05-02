@@ -1,8 +1,9 @@
 {
   "name": "wj008/beacon-web",
-  "description": "The \"Beacon Standard Edition\" distribution",
   "type": "project",
   "license": "Apache-2.0",
+  "description": "The \"Beacon Standard Edition\" distribution",
+  "minimum-stability": "stable",
   "authors": [
     {
       "name": "wj008",
@@ -12,13 +13,14 @@
   "autoload": {
     "psr-4": {
       "sdopx\\plugin\\": "sdopx/plugin",
-      "beacon\\widget\\": "beacon/widget",
-      "app\\": "app"
+      "app\\": "app",
+      "libs\\": "libs"
     }
   },
   "require": {
-    "php": ">=7.0",
-    "wj008/beacon": "^2.1"
+    "php": ">=8.0",
+    "wj008/beacon": ">=3.0.1",
+    "wj354/tool": ">=3.0.0"
   },
   "extra": {
     "beacon-app-dir": "app/*",

@@ -9,8 +9,14 @@
 namespace sdopx\plugin;
 
 
-use beacon\Field;
+use beacon\core\Field;
+use beacon\core\Logger;
+use beacon\widget\Button;
+use beacon\widget\Container;
+use beacon\widget\Line;
+use beacon\widget\Single;
 use sdopx\lib\Outer;
+use sdopx\SdopxException;
 
 /**
  * 输出控件行插件
@@ -19,63 +25,75 @@ use sdopx\lib\Outer;
  */
 class FieldRowPlugin
 {
-    //合并行
+    /**
+     * 合并行
+     * @param Field $field
+     * @param Outer $out
+     */
     private static function inline(Field $field, Outer $out)
     {
         if ($field->prev) {
             self::inline($field->prev, $out);
         }
-        if ($field->type == 'button') {
+        if ($field instanceof Button) {
             InputPlugin::render(['field' => $field], $out);
-            if (!empty($field->tips)) {
-                $out->html('<span class="yee-field-tips ' . $field->type . '">' . $field->tips . '</p>');
+            if (!empty($field->prompt)) {
+                $out->html('<span class="yee-field-prompt">' . $field->prompt . '</p>');
             }
         } else {
             $out->html('<div class="yee-row-inline');
-            if ($field->viewHide) {
-                $out->html(' none');
-            }
             $out->html('" id="row_' . $field->boxId . '">' . PHP_EOL);
             if (isset($field->label[0]) && $field->label[0] != '!') {
                 $out->html('<label class="inline-label">' . htmlspecialchars($field->label) . '：</label>' . PHP_EOL);
             }
             $out->html('<span style="margin-right: 10px">' . PHP_EOL);
             InputPlugin::render(['field' => $field], $out);
-            if (!empty($field->tips)) {
-                $out->html('<span class="yee-field-tips ' . $field->type . '">' . $field->tips . '</span>');
+            if (!empty($field->prompt)) {
+                $out->html('<span class="yee-field-prompt">' . $field->prompt . '</span>');
             }
             $out->html('</span>');
             $out->html('</div>');
         }
+
         if ($field->next) {
             self::inline($field->next, $out);
         }
     }
 
-    //渲染行
+    /**
+     * 渲染行
+     * @param array $param
+     * @param Outer $out
+     * @throws SdopxException
+     */
     public static function render(array $param, Outer $out)
     {
-        $field = isset($param['field']) ? $param['field'] : new Field(null, $param);
+        if (!isset($param['field'])) {
+            $out->throw('field 参数缺失');
+        }
+        /** @var Field $field */
+        $field = $param['field'];
         //容器
-        if ($field->type == 'container') {
+        if ($field instanceof Container || $field instanceof Single) {
             InputPlugin::render(['field' => $field], $out);
             return;
         }
-        if ($field->type == 'line') {
+        if ($field instanceof Line) {
             $out->html('<div class="yee-line">');
             $out->html('<label class="line-label">' . htmlspecialchars($field->label) . '</label>');
-            if (!empty($field->tips)) {
-                $out->html('<span style="margin-left: 15px;" class="yee-field-tips ' . $field->type . '">' . $field->tips . '</span>');
+            if (!empty($field->prompt)) {
+                $out->html('<span style="margin-left: 15px;" class="yee-field-prompt">' . $field->prompt . '</span>');
             }
             $out->html('</div>');
             return;
         }
-        $out->html('<div class="yee-row');
-        if ($field->viewHide) {
-            $out->html(' none');
+
+        $out->html('<div class="yee-row" id="row_' . $field->boxId . '">' . PHP_EOL);
+        if ($field->star) {
+            $out->html('<label class="row-label"><em></em>' . htmlspecialchars($field->label) . '：</label>' . PHP_EOL);
+        } else {
+            $out->html('<label class="row-label">' . htmlspecialchars($field->label) . '：</label>' . PHP_EOL);
         }
-        $out->html('" id="row_' . $field->boxId . '">' . PHP_EOL);
-        $out->html('<label class="row-label">' . htmlspecialchars($field->label) . '：</label>' . PHP_EOL);
         $out->html('<div class="row-cell">' . PHP_EOL);
         if ($field->prev) {
             self::inline($field->prev, $out);
@@ -85,13 +103,13 @@ class FieldRowPlugin
         if ($field->next) {
             self::inline($field->next, $out);
         }
-        if (!empty($field->dataValRule) || !empty($field->dataValGroup)) {
+        if (!empty($field->valid)) {
             $out->html('<span id="');
             $out->text($field->boxId);
             $out->html('-validation"></span>' . PHP_EOL);
         }
-        if (!empty($field->tips)) {
-            $out->html('<p class="yee-field-tips ' . $field->type . '">' . $field->tips . '</p>' . PHP_EOL);
+        if (!empty($field->prompt)) {
+            $out->html('<p class="yee-field-prompt">' . $field->prompt . '</p>' . PHP_EOL);
         }
         $out->html('</div>' . PHP_EOL);
         $out->html('</div>');

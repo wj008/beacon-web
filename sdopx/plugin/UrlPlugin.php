@@ -9,7 +9,7 @@
 namespace sdopx\plugin;
 
 
-use beacon\Route;
+use beacon\core\App;
 use sdopx\lib\Outer;
 
 /**
@@ -21,21 +21,22 @@ class UrlPlugin
 {
     public static function render(array $param, Outer $out)
     {
+        $args = (isset($param['args']) && is_array($param['args'])) ? $param['args'] : [];
+        unset($param['args']);
         if (isset($param['path'])) {
             $uri = $param['path'];
+            unset($param['path']);
+            $args = array_merge($args, $param);
+            $out->html(App::url($uri, $args));
         } else {
-            $app = isset($param['app']) ? $param['app'] : Route::get('app');
-            $ctl = isset($param['ctl']) ? $param['ctl'] : Route::get('ctl');
-            $act = isset($param['act']) ? $param['act'] : Route::get('act');
-            $uri = '^/' . $app . '/' . $ctl . '/' . $act;
+            $app = isset($param['app']) ? $param['app'] : App::get('app');
+            $ctl = isset($param['ctl']) ? $param['ctl'] : App::get('ctl');
+            $act = isset($param['act']) ? $param['act'] : 'index';
+            unset($param['app']);
+            unset($param['ctl']);
+            unset($param['act']);
+            $args = array_merge($args, $param);
+            $out->html(App::url(['app' => $app, 'ctl' => $ctl, 'act' => $act], $args));
         }
-        $args = (isset($param['args']) && is_array($param['args'])) ? $param['args'] : [];
-        unset($param['path']);
-        unset($param['app']);
-        unset($param['ctl']);
-        unset($param['act']);
-        unset($param['args']);
-        $args = array_merge($param, $args);
-        $out->text(Route::url($uri, $args));
     }
 }

@@ -1,165 +1,222 @@
 <?php
 
+
 namespace app\admin\controller;
 
 
-/**
- * Created by PhpStorm.
- * User: wj008
- * Date: 2018/1/5
- * Time: 1:26
- */
+use app\admin\model\ManageModel;
+use libs\BtnUtil;
+use beacon\core\App;
+use beacon\core\DB;
+use beacon\core\DBException;
+use beacon\core\DBSelector;
+use beacon\core\Form;
+use beacon\core\Method;
+use beacon\core\Request;
 
 
-use app\admin\form\ManageForm;
-use beacon\Console;
-use beacon\DB;
-use beacon\Request;
-use beacon\SqlSelector;
-
-class Manage extends AdminController
+class Manage extends Admin
 {
-    public function indexAction()
+
+    /**
+     * @throws DBException
+     */
+    #[Method(act: 'index', method: Method::GET | Method::POST)]
+    public function index()
     {
         if ($this->isAjax()) {
-            $selector = new SqlSelector('@pf_manage');
+            $selector = new DBSelector('@pf_manage');
             $name = $this->get('name', '');
             if ($name) {
                 $selector->where("(`name` LIKE CONCAT('%',?,'%') OR realName LIKE CONCAT('%',?,'%'))", [$name, $name]);
             }
-            $sort = $this->get('sort', 'id_asc');
-            switch ($sort) {
-                case 'id_asc':
-                    $selector->order('id asc');
-                    break;
-                case 'id_desc':
-                    $selector->order('id desc');
-                    break;
-                case 'name_asc':
-                    $selector->order('name asc');
-                    break;
-                case 'name_desc':
-                    $selector->order('name desc');
-                    break;
-                case 'realname_asc':
-                    $selector->order('realName asc');
-                    break;
-                case 'realname_desc':
-                    $selector->order('realName desc');
-                    break;
-                case 'type_asc':
-                    $selector->order('type asc');
-                    break;
-                case 'type_desc':
-                    $selector->order('type desc');
-                    break;
-                default:
-                    $selector->order('id asc');
-                    break;
-            }
-            $plist = $selector->getPageList(10);
-            $pageInfo = $plist->getInfo();
-            $list = $this->hook('Manage.hook.tpl', $plist->getList());
-            $this->assign('list', $list);
-            $this->assign('pageInfo', $pageInfo);
-            $data = $this->getAssign();
+            $data = $selector->pageData();
+            $data['list'] = $this->listFilter($data['list']);
             $this->success('获取数据成功', $data);
+            return;
         }
-        $this->display('Manage.tpl');
+        $this->display('list/manage.tpl');
     }
 
-    public function checkNameAction()
+    /**
+     * @param string $name
+     * @param int $id
+     * @throws DBException
+     */
+    #[Method(act: 'check_name', method: Method::GET | Method::POST)]
+    public function checkName(string $name = '', int $id = 0)
     {
-        $username = $this->param('name', '');
-        $id = $this->param('id', 0);
-        $row = DB::getRow('select id from @pf_manage where `name`=? and id<>?', [$username, $id]);
+        $row = DB::getRow('select id from @pf_manage where `name`=? and id<>?', [$name, $id]);
         if ($row) {
             $this->error('用户名已经存在');
         }
         $this->success('用户名可以使用');
     }
 
-    public function addAction()
+    /**
+     * @throws DBException
+     */
+    #[Method(act: 'add', method: Method::GET | Method::POST)]
+    public function add()
     {
-        $form = new ManageForm('add');
+        $form = Form::create(ManageModel::class, 'add');
         if ($this->isGet()) {
             $this->displayForm($form);
             return;
         }
-        if ($this->isPost()) {
-            $values = $form->autoComplete();
-            if (!$form->validation($error)) {
-                $this->error($error);
-            }
-            DB::insert('@pf_manage', $values);
-            $this->success('添加' . $form->title . '成功');
+        $input = $this->completeForm($form);
+        $row = DB::getRow('select id from @pf_manage where `name`=? and id<>?', [$input['name'], 0]);
+        if ($row) {
+            $this->error(['name' => '用户名已经存在']);
         }
+        DB::insert($form->table, $input);
+        $this->success('添加管理员信息成功');
     }
 
-    public function editAction(int $id = 0)
+    /**
+     * @param int $id
+     * @throws DBException
+     */
+    #[Method(act: 'edit', method: Method::GET | Method::POST)]
+    public function edit(int $id = 0)
     {
-        $form = new ManageForm('edit');
-        if ($id == 0) {
-            $this->error('参数有误');
+        $form = Form::create(ManageModel::class, 'edit');
+        $row = DB::getItem('@pf_manage', $id);
+        if ($row == null) {
+            $this->error('用户信息不存在');
         }
-        $row = DB::getRow('select * from @pf_manage where id=?', $id);
-        $form->setValues($row);
+        $pwdField = $form->getField('pwd');
+        $cfmPassField = $form->getField('cfmPass');
+        $pwdField->prompt = '设置账号密码，请输入6-20位字符，如果留空则不修改密码';
+        $pwdField->star = false;
+        $cfmPassField->star = false;
+        unset($pwdField->valid['rule']['r']);
+        unset($cfmPassField->valid['rule']['r']);
         if ($this->isGet()) {
+            $form->setData($row);
+            $form->setHideBox('id', $id);
             $this->displayForm($form);
             return;
         }
-        if ($this->isPost()) {
-            $values = $form->autoComplete();
-            if (!$form->validation($error)) {
-                $this->error($error);
-            }
-            if (empty($this->post('password'))) {
-                unset($values['pwd']);
-            }
-            DB::update('@pf_manage', $values, $id);
-            $this->success('编辑' . $form->title . '成功');
+        $input = $this->completeForm($form);
+        $row = DB::getRow('select id from @pf_manage where `name`=? and id<>?', [$input['name'], $id]);
+        if ($row) {
+            $this->error(['name' => '用户名已经存在']);
         }
+        if (empty($this->post('password'))) {
+            unset($input['pwd']);
+        }
+        DB::update($form->table, $input, $id);
+        $this->success('编辑管理员信息成功');
     }
 
-    public function delAction(int $id = 0)
+    /**
+     * @param int $id
+     * @throws DBException
+     */
+    #[Method(act: 'delete', method: Method::GET | Method::POST)]
+    public function delete(int $id = 0)
     {
-        if ($id == 0) {
-            $this->error('参数有误');
-        }
         if ($id == 1) {
             $this->error('最高管理员不可删除');
         }
+        $row = DB::getItem('@pf_manage', $id);
+        if ($row == null) {
+            $this->error('用户信息不存在');
+        }
         DB::delete('@pf_manage', $id);
-        $this->success('删除账号成功');
+        $this->success('删除用户成功');
     }
 
-    //修改账号密码
-    public function passwordAction()
+
+    /**
+     * 修改个人密码
+     * @throws DBException
+     */
+    #[Method(act: 'password', method: Method::GET | Method::POST)]
+    public function password()
     {
         if ($this->isGet()) {
-            $this->assign('row', $this->getSession());
-            $this->display('Manage.password.tpl');
+            $this->assign('row', Request::getSession());
+            $this->display('form/manage.password.tpl');
             return;
         }
-        if ($this->isPost()) {
-            $oldPass = $this->post('oldPass:s', '');
-            $newPass = $this->post('newPass:s', '');
-            if ($oldPass == '') {
-                $this->error(['oldPass' => '旧密码不可为空']);
-            }
-            if ($newPass == '') {
-                $this->error(['newPass' => '新密码不可为空']);
-            }
-            $row = DB::getRow('select id,pwd from @pf_manage where id=?', $this->adminId);
-            if ($row == null) {
-                $this->error('账号不存在');
-            }
-            if (md5($oldPass) != $row['pwd']) {
-                $this->error(['oldPass' => '旧密码不正确，请重新输入']);
-            }
-            $newPass = md5($newPass);
-            DB::update('@pf_manage', ['pwd' => $newPass], $this->adminId);
-            $this->success('修改密码成功');
+        $oldPass = $this->post('oldPass:s', '');
+        $newPass = $this->post('newPass:s', '');
+        if ($oldPass == '') {
+            $this->error(['oldPass' => '旧密码不可为空']);
         }
+        if ($newPass == '') {
+            $this->error(['newPass' => '新密码不可为空']);
+        }
+        $row = DB::getRow('select id,pwd from @pf_manage where id=?', $this->adminId);
+        if ($row == null) {
+            $this->error('账号不存在');
+        }
+        if (md5($oldPass) != $row['pwd']) {
+            $this->error(['oldPass' => '旧密码不正确，请重新输入']);
+        }
+        $newPass = md5($newPass);
+        DB::update('@pf_manage', ['pwd' => $newPass], $this->adminId);
+        $this->success('修改密码成功');
     }
+
+
+    /**
+     * 处理输出字段
+     * @param array $list
+     * @return array
+     */
+    protected function listFilter(array $list): array
+    {
+        $temp = [];
+        foreach ($list as $rs) {
+            $item = [];
+            $item['id'] = $rs['id'];
+            $item['name'] = $rs['name'];
+            $item['realName'] = $rs['realName'];
+            $item['email'] = $rs['email'];
+            $item['type'] = match (intval($rs['type'])) {
+                1 => '后台管理员',
+                2 => '普通管理员',
+                default => '其他管理员',
+            };
+            $item['isLock'] = match (intval($rs['isLock'])) {
+                1 => '锁定',
+                default => '正常',
+            };
+            $item['lastTime'] = $rs['lastTime'];
+            $item['lastIp'] = $rs['lastIp'];
+            $item['_operate'] = $this->listBtn($rs);
+            $temp[] = $item;
+        }
+        return $temp;
+    }
+
+    /**
+     * 列表按钮
+     * @param $rs
+     * @return string
+     */
+    protected function listBtn($rs): string
+    {
+        $btn = [];
+        $btn['编辑'] = [
+            'url' => App::url(['act' => 'edit', 'id' => $rs['id']]),
+            'icon' => 'icofont-pencil-alt-5',
+            'css' => 'blue-bd'
+        ];
+        if ($rs['id'] != 1) {
+            $btn['删除'] = [
+                'url' => App::url(['act' => 'delete', 'id' => $rs['id']]),
+                'icon' => 'icofont-bin',
+                'css' => 'red-bd',
+                'ajax' => true,
+                'confirm' => '确定要删除该账号了吗？',
+                'reload' => 1
+            ];
+        }
+        return BtnUtil::makeButton($btn);
+    }
+
 }

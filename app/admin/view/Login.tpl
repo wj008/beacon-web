@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -24,7 +24,7 @@
             </div>
             <div class="input-wrap">
                 <input id="code" type="text" name="code" class="form-inp" placeholder="请输入验证码" style="width:120px;"/><i class="icofont-key"></i>
-                <img id="codeImg" align="right" height="40" src="/service/code?r={time()}" alt="看不清楚点击刷新！" onclick="this.src = '/service/code?r=' + Math.random();"/>
+                <img id="codeImg" align="right" height="40" src="/service/img_code?r={time()}" alt="看不清楚点击刷新！" onclick="this.src = '/service/img_code?r=' + Math.random();"/>
             </div>
             <div class="input-wrap">
                 <input type="submit" class="form-btn blue" value="登录"/>
@@ -35,29 +35,22 @@
         </form>
     </div>
 </div>
-
-
 {literal}
     <script>
         $('#username').data({
-            'v@rule': {r: true},
-            'v@message': {r: '账号名不能为空'},
-            'v@output': '#errorInfo'
+            'valid-rule': {r: '账号名不能为空'},
+            'valid-display': '#errorInfo'
         });
         $('#password').data({
-            'v@rule': {r: true},
-            'v@message': {r: '账号密码不能为空'},
-            'v@output': '#errorInfo'
+            'valid-rule': {r: '账号密码不能为空'},
+            'valid-display': '#errorInfo'
         });
         $('#code').data({
-            'v@rule': {r: true},
-            'v@message': {r: '验证码不能为空'},
-            'v@output': '#errorInfo'
+            'valid-rule': {r: '验证码不能为空'},
+            'valid-display': '#errorInfo'
         });
-
         var stars = document.getElementById('stars')
         var star = document.getElementsByClassName('star')
-
         // js随机生成流星
         for (var j = 0; j < 30; j++) {
             var newStar = document.createElement("div")
