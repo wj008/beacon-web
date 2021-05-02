@@ -1,0 +1,260 @@
+@borderColor: #e6eaee;
+@headColor: #f8f8f8;
+.yee-transfer {
+
+  min-height: 300px;
+  min-width: 500px;
+  position: relative;
+  width: 600px;
+
+  .trans-search {
+    padding: 0 0 5px 0;
+    height: 32px;
+    line-height: 32px;
+    // background: #e77d7d;
+    input {
+      margin-right: 5px;
+    }
+  }
+
+  .trans-main {
+    position: absolute;
+    height: calc(100% - 38px);
+    width: 100%;
+  }
+
+  .trans-left {
+    position: absolute;
+    height: 100%;
+    width: calc(50% - 30px);
+    top: 0;
+    left: 0;
+  }
+
+  .trans-middle {
+    position: absolute;
+    height: 100%;
+    width: 60px;
+    top: 0;
+    left: calc(50% - 30px);
+    text-align: center;
+  }
+
+  .trans-right {
+    position: absolute;
+    height: 100%;
+    width: calc(50% - 30px);
+    top: 0;
+    right: 0;
+  }
+
+  .trans-head {
+    height: 32px;
+    line-height: 32px;
+    background: @headColor;
+    padding: 0px 10px;
+    border: 1px @borderColor solid;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+  }
+
+  .trans-head input {
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+
+  .trans-caption {
+    font-size: 14px;
+  }
+
+  .trans-count {
+    color: #999;
+    font-size: 9px;
+    float: right;
+  }
+
+  .trans-warp {
+    height: calc(100% - 70px);
+    overflow-y: auto;
+    background: #fff;
+    box-sizing: border-box;
+    border-left: 1px @borderColor solid;
+    border-right: 1px @borderColor solid;
+
+    &::-webkit-scrollbar {
+      width: 8px;
+      height: 10px;
+      border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #f6f6f6;
+      border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: #e6e6e6;
+      border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: #c9c9c9;
+    }
+
+    &::-webkit-scrollbar-corner {
+      background: #f6f6f6;
+    }
+  }
+
+  .trans-right .trans-warp {
+    height: calc(100% - 38px);
+    border-bottom: 1px #eee solid;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+  }
+
+  .trans-list {
+    font-size: 12px;
+  }
+
+  .trans-item {
+    line-height: 20px;
+    padding: 4px 10px;
+    cursor: pointer;
+    &.selected{
+      color: #ccc;
+    }
+  }
+
+  .trans-item:hover {
+    background: #f7f7f0;
+  }
+
+  .trans-box {
+    width: 20px;
+    display: inline-block;
+    float: left;
+    cursor: pointer;
+
+    input {
+      vertical-align: middle;
+      margin-right: 6px;
+      margin-left: 0;
+    }
+  }
+
+  .trans-text {
+    margin-left: 20px;
+    display: block;
+    cursor: pointer;
+
+    &:after {
+      content: '.';
+      display: block;
+      height: 0;
+      clear: both;
+      visibility: hidden
+    }
+  }
+
+  .trans-foot {
+    height: 32px;
+    line-height: 32px;
+    background: #ffffff;
+    border: 1px #eee solid;
+    border-bottom-right-radius: 3px;
+    border-bottom-left-radius: 3px;
+    text-align: right;
+    padding: 0 10px;
+  }
+
+  .trans-btn-warp {
+    position: absolute;
+    top: calc(50% - 35px);
+    left: 15px;
+  }
+
+  .trans-inc-btn, .trans-dec-btn {
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    text-align: center;
+    display: block;
+    background: #f7f7f7;
+    border: 1px @borderColor solid;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .trans-inc-btn {
+    font-family: "YeeFont" !important;
+  }
+
+  .trans-dec-btn {
+    font-family: "YeeFont" !important;
+    margin-top: 10px;
+  }
+
+  .trans-inc-btn:before {
+
+    content: "\ea98";
+  }
+
+  .trans-dec-btn:before {
+    content: "\ea97";
+  }
+
+
+  .trans-pagebar {
+    display: inline-block;
+    margin-top: 5px;
+
+    .break, a, b {
+      text-decoration: none;
+      color: #333;
+      display: inline-block;
+      height: 18px;
+      line-height: 18px;
+      float: left;
+      margin-right: 3px;
+      padding: 2px 1px;
+      text-shadow: 0 1px 1px rgba(255, 255, 255, .75);
+      cursor: pointer
+    }
+
+    .break {
+      background: 0 0;
+      cursor: default
+    }
+
+    a:hover {
+      color: #1E9FFF;
+    }
+
+    b {
+      color: #1E9FFF;
+    }
+
+    .page-btn {
+      font-family: "YeeFont" !important;
+    }
+
+    .page-btn.prev:before {
+      content: "\ea9d";
+    }
+
+    .page-btn.next:before {
+      content: "\eaa0";
+    }
+
+    .page-btn.first:before {
+      content: "\ea97";
+    }
+
+    .page-btn.last:before {
+      content: "\ea98";
+    }
+
+  }
+}
