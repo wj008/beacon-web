@@ -57,13 +57,4 @@ readyDialog(function (dlg) {
     timeOut(function () {
         window.location.href = backBtn.href;
     });
-    var nTimer = window.setInterval(function () {
-        var width = document.body.clientWidth;
-        if (width > 800) {
-            document.getElementById('error-main').style.width = '800px';
-        }
-        if (width > 0) {
-            window.clearInterval(nTimer);
-        }
-    }, 20);
 });
