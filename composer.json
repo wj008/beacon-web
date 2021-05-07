@@ -19,8 +19,8 @@
   },
   "require": {
     "php": ">=8.0",
-    "wj008/beacon": ">=3.0.1",
-    "wj354/tool": ">=3.0.0"
+    "wj008/beacon": ">=3.0.11",
+    "wj354/tool": ">=3.0.13"
   },
   "extra": {
     "beacon-app-dir": "app/*",
