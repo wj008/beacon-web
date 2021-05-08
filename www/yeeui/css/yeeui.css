@@ -823,7 +823,7 @@ select.form-inp option {
 .xheLayout {
   line-height: 22px;
 }
-.multiple-dialog label {
+.multi-dialog label {
   display: inline-block;
   padding: 1px 5px 1px 10px;
   background: #f2f4f9;
@@ -832,15 +832,15 @@ select.form-inp option {
   margin-right: 3px;
   border-radius: 3px;
 }
-.multiple-dialog label > i {
+.multi-dialog label > i {
   margin-left: 5px;
   cursor: pointer;
   color: #bfd4e0;
 }
-.multiple-dialog label > i:hover {
+.multi-dialog label > i:hover {
   color: #2c6fe0;
 }
-.multiple-dialog {
+.multi-dialog {
   min-width: 300px;
   min-height: 20px;
   display: inline-block;
