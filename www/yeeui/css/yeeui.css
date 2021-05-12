@@ -1180,12 +1180,12 @@ input.up-file.yee-input-error + div.yee-file-wrap a.yee-btn.file-btn {
   content: '\efad';
   margin-right: 3px;
 }
-.yee-field-tips {
+.yee-field-prompt {
   line-height: 16px;
   color: #909090;
   padding: 3px 15px 0 15px;
 }
-.yee-field-tips:before {
+.yee-field-prompt:before {
   color: #a0a0a0;
   font-family: YeeFont !important;
   content: '\f0ae';
