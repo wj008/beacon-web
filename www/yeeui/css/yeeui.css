@@ -825,11 +825,11 @@ select.form-inp option {
 }
 .multi-dialog label {
   display: inline-block;
-  padding: 1px 5px 1px 10px;
+  padding: 0 5px 0 10px;
   background: #f2f4f9;
   border: 1px solid #a5d4f9;
   color: #0a86ff;
-  margin-right: 3px;
+  margin: 1px 3px 1px 0;
   border-radius: 3px;
 }
 .multi-dialog label > i {
