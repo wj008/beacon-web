@@ -6,7 +6,7 @@ Yee.setConfig({
     },
     //依赖项,可以用 Yee.use() 引入
     depends: {
-        //定义模块路径
+        //定义依赖路径
         'json': window.JSON ? '' : 'third/json3.min.js',
         'jquery-cookie': 'third/jquery.cookie.js',
         'jquery-mousewheel': 'third/jquery.mousewheel.min.js',
