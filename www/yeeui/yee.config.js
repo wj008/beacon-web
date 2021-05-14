@@ -4,8 +4,8 @@ Yee.setConfig({
     preload: {
         'layer': window.layer ? '' : (Yee.isMobile ? 'layer/mobile/layer.js' : 'layer/layer.js')
     },
-    //模块,可以用 use 引入
-    modules: {
+    //依赖项,可以用 Yee.use() 引入
+    depends: {
         //定义模块路径
         'json': window.JSON ? '' : 'third/json3.min.js',
         'jquery-cookie': 'third/jquery.cookie.js',
