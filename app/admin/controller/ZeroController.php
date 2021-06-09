@@ -5,10 +5,42 @@ namespace app\admin\controller;
 
 
 use beacon\core\DB;
+use beacon\core\DBSelector;
+use beacon\core\Form;
 
 
-class ZeroController extends Admin
+abstract class ZeroController extends Admin
 {
+
+    /**
+     * ZeroController所需的配置信息
+     * @return array
+     * 'table' 表名称,
+     * 'pageSize' 分页数量，如没有分页可为0,
+     * 'template' 列表模板页面,
+     * 'hookTemplate' 数据修饰模板页面
+     */
+    abstract protected function zeroConfig(): array;
+
+    /**
+     * 获取列表数据查询器
+     * @return DBSelector
+     */
+    abstract protected function getSelector(): DBSelector;
+
+    /**
+     * 获取搜索表单
+     * @return ?Form
+     */
+    abstract protected function getSearchForm(): ?Form;
+
+    /**
+     * 获取表单
+     * @param string $type
+     * @return Form
+     */
+    abstract protected function getForm(string $type = ''): Form;
+
 
     protected function index()
     {
