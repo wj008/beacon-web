@@ -11,6 +11,7 @@ class StartUp
     public static function init()
     {
         Config::append([
+            'webname' => 'BeaconPHP',
             'sdopx.template_dir' => ['/app/admin/view', '/app/admin/zero/view'],
         ]);
     }
