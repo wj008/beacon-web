@@ -29,9 +29,9 @@ class UrlPlugin
             $args = array_merge($args, $param);
             $out->html(App::url($uri, $args));
         } else {
-            $app = isset($param['app']) ? $param['app'] : App::get('app');
-            $ctl = isset($param['ctl']) ? $param['ctl'] : App::get('ctl');
-            $act = isset($param['act']) ? $param['act'] : 'index';
+            $app = $param['app'] ?? App::get('app');
+            $ctl = $param['ctl'] ?? App::get('ctl');
+            $act = $param['act'] ?? 'index';
             unset($param['app']);
             unset($param['ctl']);
             unset($param['act']);

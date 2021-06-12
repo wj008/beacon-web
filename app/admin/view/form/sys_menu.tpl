@@ -27,7 +27,7 @@
             <div class="yee-submit">
                 <label class="submit-label"></label>
                 <div class="submit-cell">
-                    {$form->fetchHideBox()|raw}
+                    {$form->fetchHideBox()}
                     <input type="submit" class="form-btn red" value="提交">
                     <input type="hidden" name="__BACK__" value="{url act='index' ctl='SysMenu'}">
                     <a href="{url act='index' ctl='SysMenu'}" class="form-btn back">返回</a>

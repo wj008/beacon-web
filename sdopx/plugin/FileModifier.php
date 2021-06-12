@@ -5,6 +5,7 @@ namespace sdopx\plugin;
 
 
 use beacon\core\Util;
+use sdopx\lib\Raw;
 
 
 class FileModifier
@@ -12,9 +13,9 @@ class FileModifier
     /**
      * 生成文件路径
      * @param $data
-     * @return string
+     * @return Raw
      */
-    public static function render($data): string
+    public static function render($data): Raw
     {
         if (is_string($data) && Util::isJson($data)) {
             $data = json_decode($data, true);
@@ -47,6 +48,6 @@ class FileModifier
                 $html[] = '<a href="' . $item['url'] . '" target="_blank" class="show-file-item">' . $item['name'] . '</a>';
             }
         }
-        return join('', $html);
+        return new Raw(join('', $html));
     }
 }
