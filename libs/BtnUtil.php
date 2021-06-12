@@ -3,6 +3,8 @@
 
 namespace libs;
 
+use sdopx\lib\Raw;
+
 /**
  * 创建动态按钮
  * Class BtnUtil
@@ -14,9 +16,9 @@ class BtnUtil
      * 生成按钮
      * @param array $buttons
      * @param bool $detail
-     * @return string
+     * @return Raw
      */
-    public static function makeButton(array $buttons, bool $detail = false): string
+    public static function makeButton(array $buttons, bool $detail = false): Raw
     {
         $html = [];
         $out = [];
@@ -129,11 +131,11 @@ class BtnUtil
             }
         }
         if ($detail) {
-            return join("\n", $html);
+            return new Raw(join("\n", $html));
         }
         if (count($html) <= 1) {
             $out = array_merge($html, $out);
-            return join("\n", $out);
+            return new Raw(join("\n", $out));
         }
         $warp[] = '<div class="yee-btn-warp">';
         $warp[] = '<div class="yee-btn-more"><a href="javascript:;" class="yee-btn"><i class="icofont-settings"></i>操作</a></div>';
@@ -142,6 +144,6 @@ class BtnUtil
         $warp[] = join("\n", $html);
         $warp[] = '</div></div>';
         $warp[] = join("\n", $out);
-        return join("\n", $warp);
+        return new Raw(join("\n", $warp));
     }
 }
