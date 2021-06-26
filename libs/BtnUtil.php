@@ -3,6 +3,7 @@
 
 namespace libs;
 
+use beacon\core\App;
 use sdopx\lib\Raw;
 
 /**
@@ -23,6 +24,9 @@ class BtnUtil
         $html = [];
         $out = [];
         foreach ($buttons as $name => $btn) {
+            if (isset($btn['url']) && is_array($btn['url'])) {
+                $btn['url'] = App::url($btn['url']);
+            }
             $code = [];
             if (isset($btn['span'])) {
                 $code[] = '<span ';
