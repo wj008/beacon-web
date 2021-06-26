@@ -82,7 +82,6 @@ class BtnUtil
                 if (count($module) > 0) {
                     $code[] = ' yee-module="' . join(' ', $module) . '"';
                 }
-
                 if (isset($btn['top-page']) && $btn['top-page']) {
                     $code[] = ' target="_top"';
                 } elseif (isset($btn['new-page']) && $btn['new-page']) {
@@ -107,8 +106,7 @@ class BtnUtil
             }
             if (!isset($btn['css'])) {
                 $code[] = ' class="yee-btn"';
-            } else if (isset($btn['css']) && empty($btn['css'])) {
-            } else {
+            } else if (!empty($btn['css'])) {
                 $code[] = ' class="yee-btn ' . $btn['css'] . '"';
             }
             if (!empty($btn['style'])) {
