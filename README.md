@@ -6,7 +6,9 @@ The \"Beacon Standard Edition\" distribution
 文档会在有空的时间陆续更新....
 加星是我的动力。
 如果有问题可以 issues 我。
+帮助文档
 
+http://beacon.wj008.net/
 
 #### 安装
 
