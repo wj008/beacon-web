@@ -1,212 +1,282 @@
 //按钮--------
-@blue: #409eff;
-@red: #f56c6c;
-@green: #67c23a;
-@yellow: #e6a23c;
-@org: #F90;
-@org2: #ff8522;
-@normal: #909399;
-@purple: #a989e8;
+a {
+  color: #333;
+}
+
+a:hover {
+  color: #ec5151;
+}
 
 [class^="icofont-"], [class*=" icofont-"] {
   margin-right: 2px;
 }
 
 a.yee-btn, input.yee-btn {
-  line-height: 20px;
-  height: 20px;
+  line-height: 22px;
+  height: 22px;
   display: inline-block;
   padding: 2px 5px;
-  border: 1px solid #c1c1c1;
-  border-radius: 10px;
+  // border: 1px solid #c1c1c1;
+  border-radius: 4px;
   margin: 1px 0;
-  background-color: #F4F4F5;
   color: #909399;
   vertical-align: middle;
   cursor: pointer;
-  font-size: 12px;
+  font-size: 14px;
   transition: .1s;
   overflow: hidden;
-}
-
-div.yee-btn-warp {
-  position: relative;
-  display: inline-block;
-  margin: 1px 0;
-}
-
-div.yee-btn-menu {
-  position: fixed;
-  padding: 10px;
-  background: #fff;
-  min-width: 100px;
-  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-  display: none;
-
-  span.arrow {
-    position: absolute;
-    line-height: 0px;
-    width: 8px;
-    height: 8px;
-    display: block;
-    top: 10px;
-    right: -4px;
-    box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.2);
-    transform: rotate(45deg);
-    display: block;
-    background: #fff;
-  }
-
-  a.yee-btn {
-    display: block;
-    border-radius: 0px;
-    margin: 3px;
-
-    &.blue-bd, &.red-bd, &.green-bd, &.purple-bd, &.yellow-bd, &.org-bd, &.org2-bd {
-      border: none;
-    }
-
-    text-align: center;
-  }
-
-  a.yee-btn:hover {
-    &.blue-bd, &.red-bd, &.green-bd, &.purple-bd, &.yellow-bd, &.org-bd, &.org2-bd {
-      background: #e1e1e1;
-    }
-  }
+  //background-color: #fff;
 }
 
 a.form-btn, input.form-btn {
   height: 28px;
   line-height: 28px;
-  font-size: 12px;
-  padding: 0 8px;
-  border-radius: 10px;
+  font-size: 14px;
+  padding: 0 10px;
+  border-radius: 3px;
   cursor: pointer;
   margin: 0;
-  opacity: 1;
+  opacity: 0.8;
   display: inline-block;
   vertical-align: middle;
-  border: 1px solid #c1c1c1;
-  color: #909399;
+  border: 0.5px solid #c1c1c1;
+  color: #777;
 }
+
 
 .yee-submit {
   a.form-btn, input.form-btn {
-    height: 30px;
-    line-height: 30px;
+    height: 32px;
+    line-height: 32px;
     font-size: 14px;
-    padding: 0 20px;
+    padding: 0 30px;
   }
 }
 
-a.form-btn, input.form-btn, a.yee-btn, input.yee-btn {
-  &:hover, &:hover {
-    opacity: 0.7;
+a.yee-btn, input.yee-btn {
+  &:hover {
+    opacity: 1;
   }
 
   &.blue {
-    border: 1px solid @blue;
+    // border: 0.5px solid #257faf;
     color: #fff;
-    background: @blue;
+    background: #257faf;
   }
 
   &.blue-bd {
-    border: 1px solid lighten(@blue, 20%);
-    background: lighten(@blue, 42%);
-    color: @blue;
+    // border: 0.5px solid #257faf;
+    color: #257faf;
   }
 
-  &.red {
-    border: 1px solid @red;
+  &.violet {
     color: #fff;
-    background: @red;
+    background: #C69;
+  }
+
+  &.violet-bd {
+    color: #C69
+  }
+
+
+  &.red {
+    // border: 0.5px solid #ec5151;
+    color: #fff;
+    background: #ec5151;
   }
 
   &.red-bd {
-    border: 1px solid lighten(@red, 20%);
-    background: lighten(@red, 50%);
-    color: @red;
+    // border: 0.5px solid #ec5051;
+    color: #ec5051;
   }
 
   &.green {
-    border: 1px solid @green;
+    // border: 0.5px solid #2FBC5E;
     color: #fff;
-    background: @green;
+    background: #2FBC5E;
   }
 
   &.green-bd {
-    border: 1px solid lighten(@green, 20%);
-    background: lighten(@green, 60%);
-    color: @green;
-  }
-
-  &.purple {
-    border: 1px solid @purple;
-    color: #fff;
-    background: @purple;
-  }
-
-  &.purple-bd {
-    border: 1px solid lighten(@purple, 5%);
-    background: lighten(@purple, 50%);
-    color: @purple;
+    // border: 0.5px solid #2FBC5E;
+    color: #2FBC5E;
   }
 
   &.yellow {
-    border: 1px solid @yellow;
+    // border: 0.5px solid #ffd031;
     color: #fff;
-    background: @yellow;
+    background: #ffd031;
   }
 
   &.yellow-bd {
-    border: 1px solid lighten(@yellow, 20%);
-    background: lighten(@yellow, 50%);
-    color: @yellow;
+    // border: 0.5px solid #ffd031;
+    color: #ffd031;
   }
 
   &.org {
-    border: 1px solid @org;
+    // border: 0.5px solid #F90;
     color: #fff;
-    background: @org;
+    background: #F90;
   }
 
   &.org-bd {
-    border: 1px solid lighten(@org, 20%);
-    background: lighten(@org, 50%);
-    color: @org;
+    // border: 0.5px solid #F90;
+    color: #F90;
   }
 
   &.org2 {
-    border: 1px solid @org2;
+    // border: 0.5px solid #F60;
     color: #fff;
-    background: @org2;
+    background: #F60;
   }
 
   &.org2-bd {
-    border: 1px solid lighten(@org2, 20%);
-    background: lighten(@org2, 50%);
-    color: @org2;
+    // border: 0.5px solid #F60;
+    color: #F60;
   }
 
   &.normal {
-
-    border: 1px solid lighten(@normal, 20%);
-    background: lighten(@normal, 50%);
-    color: @normal;
-  }
-
-  &.normal2 {
-    border: 1px solid @normal;
-    color: #fff;
-    background: @normal;
+    // border: 0.5px solid #e1e1e1;
+    color: #888;
+    background: #e1e1e1;
   }
 
   &.disabled, &.disabled:hover, &[disabled], &[disabled]:hover {
     background: #f7f7f7;
-    color: #909399;
-    border: 1px solid #e1e1e1;
+    color: #999;
+    border: 0.5px solid #e1e1e1;
   }
+
+  //刷新按钮
+  &.trans {
+    height: 22px;
+    line-height: 22px;
+    padding: 2px 7px 2px 20px;
+    color: #888;
+    display: inline-block;
+    border-radius: 4px;
+    position: relative;
+    border: none;
+    background-color: transparent;
+
+    &:hover {
+      color: #000;
+      background-color: #e1e1e1;
+    }
+  }
+
+}
+
+a.form-btn, input.form-btn {
+  &:hover {
+    opacity: 1;
+  }
+
+  &.blue {
+    border: 0.5px solid #257faf;
+    color: #fff;
+    background: #257faf;
+  }
+
+  &.blue-bd {
+    border: 0.5px solid #257faf;
+    color: #257faf;
+  }
+  &.violet {
+    border: 0.5px solid #C69;
+    color: #fff;
+    background: #C69;
+  }
+
+  &.violet-bd {
+    border: 0.5px solid #C69;
+    color: #C69;
+  }
+
+  &.red {
+    border: 0.5px solid #ec5151;
+    color: #fff;
+    background: #ec5151;
+  }
+
+  &.red-bd {
+    border: 0.5px solid #ec5051;
+    color: #ec5051;
+  }
+
+  &.green {
+    border: 0.5px solid #2FBC5E;
+    color: #fff;
+    background: #2FBC5E;
+  }
+
+  &.green-bd {
+    border: 0.5px solid #2FBC5E;
+    color: #2FBC5E;
+  }
+
+  &.yellow {
+    border: 0.5px solid #ffd031;
+    color: #fff;
+    background: #ffd031;
+  }
+
+  &.yellow-bd {
+    border: 0.5px solid #ffd031;
+    color: #ffd031;
+  }
+
+  &.org {
+    border: 0.5px solid #F90;
+    color: #fff;
+    background: #F90;
+  }
+
+  &.org-bd {
+    border: 0.5px solid #F90;
+    color: #F90;
+  }
+
+  &.org2 {
+    border: 0.5px solid #F60;
+    color: #fff;
+    background: #F60;
+  }
+
+  &.org2-bd {
+    border: 0.5px solid #F60;
+    color: #F60;
+  }
+
+  &.normal {
+    border: 0.5px solid #e1e1e1;
+    color: #888;
+    background: #e1e1e1;
+  }
+
+  &.disabled, &.disabled:hover, &[disabled], &[disabled]:hover {
+    background: #f7f7f7;
+    color: #999;
+    border: 0.5px solid #e1e1e1;
+  }
+
+  //刷新按钮
+  &.trans {
+    height: 22px;
+    line-height: 22px;
+    padding: 2px 7px 2px 20px;
+    color: #888;
+    display: inline-block;
+    border-radius: 4px;
+    position: relative;
+    border: none;
+    background-color: transparent;
+
+    &:hover {
+      color: #000;
+      background-color: #e1e1e1;
+    }
+  }
+
 }
 
 //搜索区域按钮
@@ -230,58 +300,51 @@ a.senior-btn {
   content: "\eb56";
 }
 
-//刷新按钮
-.refresh-btn {
-  height: 22px;
-  line-height: 22px;
-  padding: 2px 7px 2px 20px;
-  color: #777;
-  display: inline-block;
-  border-radius: 4px;
-  position: relative;
-
-  i {
-    margin: 0;
-    text-align: center;
-    position: absolute;
-    left: 4px;
-    top: 7px;
-    transition: transform .8s linear 0s;
-    -o-transition: -o-transform .8s linear 0s;
-    -webkit-transition: -webkit-transform .8s linear 0s
-  }
-
-  &:hover {
-    color: #000;
-    background-color: #e1e1e1
-  }
-}
-
-
-a.yee-back {
-  //border: 1px solid #62b3ff;
-  //border-radius: 50%;
-  // width: 25px;
-  // height: 25px;
-  font-size: 18px;
-  line-height: 23px;
-  display: inline-block;
-  text-align: center;
-
-  i {
-    color: #32a3ff;
-  }
-}
-
 .yee-list-search a.form-btn, .yee-list-search input.form-btn {
   padding: 0 15px;
   margin-right: 5px;
 }
 
-.yee-list-search .form-label a.form-btn {
-  padding: 3px;
-  height: 20px;
-  line-height: 20px;
-  border-radius: 2px;
-  margin-right: 0px;
+div.yee-btn-warp {
+  position: relative;
+  display: inline-block;
+  margin: 1px 0;
+}
+
+div.yee-btn-menu {
+  position: fixed;
+  padding: 10px;
+  background: #fff;
+  min-width: 100px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 9999999;
+
+  span.arrow {
+    position: absolute;
+    line-height: 0px;
+    width: 8px;
+    height: 8px;
+    display: block;
+    top: 10px;
+    right: -4px;
+    box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.2);
+    transform: rotate(45deg);
+    display: block;
+    background: #fff;
+  }
+
+  a.yee-btn {
+    display: block;
+    border-radius: 0px;
+    margin: 3px;
+    border: none;
+    text-align: center;
+  }
+
+  a.yee-btn:hover {
+    &.blue-bd, &.red-bd, &.green-bd, &.purple-bd, &.yellow-bd, &.org-bd, &.org2-bd, &.normal {
+      background: #e1e1e1;
+    }
+  }
 }

@@ -1,11 +1,330 @@
-a.yee-btn,input.yee-btn{font-size:12px;line-height:20px;height:20px;display:inline-block;padding:2px 7px;border:solid 1px #c1c1c1;border-radius:4px;margin:0;background-color:#FFF;color:#777;opacity:.9}
-a.form-btn,input.form-btn{height:35px;line-height:33px;height:30px;line-height:30px;font-size:14px;padding:0 20px;border-radius:3px;cursor:pointer;float:left;margin-right:15px;opacity:.9}
-a.form-btn:hover,a.yee-btn:hover,input.form-btn:hover,input.yee-btn:hover{opacity:1}
-a.form-btn.blue,a.yee-btn.blue,input.form-btn.blue,input.yee-btn.blue{border:1px solid #32a3ff;color:#fff;background:#32a3ff}
-a.form-btn.red,a.yee-btn.red,input.form-btn.red,input.yee-btn.red{border:1px solid #ec5151;color:#fff;background:#ec5151}
-a.form-btn.green,a.yee-btn.green,input.form-btn.green,input.yee-btn.green{border:1px solid #2FBC5E;color:#fff;background:#2FBC5E}
-a.form-btn.yellow,a.yee-btn.yellow,input.form-btn.yellow,input.yee-btn.yellow{border:1px solid #ffd031;color:#fff;background:#ffd031}
-a.form-btn.org,a.yee-btn.org,input.form-btn.org,input.yee-btn.org{border:1px solid #F90;color:#fff;background:#F90}
-a.form-btn.org2,a.yee-btn.org2,input.form-btn.org2,input.yee-btn.org2{border:1px solid #F60;color:#fff;background:#F60}
-a.form-btn.normal,a.yee-btn.normal,input.form-btn.normal,input.yee-btn.normal{border:1px solid #a0a0a0;background-color:#f1f1f1;color:#909090}
-a.form-btn.disabled,a.form-btn.disabled:hover,a.form-btn[disabled],a.form-btn[disabled]:hover,a.yee-btn.disabled,a.yee-btn.disabled:hover,a.yee-btn[disabled],a.yee-btn[disabled]:hover,input.form-btn.disabled,input.form-btn.disabled:hover,input.form-btn[disabled],input.form-btn[disabled]:hover,input.yee-btn.disabled,input.yee-btn.disabled:hover,input.yee-btn[disabled],input.yee-btn[disabled]:hover{background:#f7f7f7;color:#999;border:solid 1px #e1e1e1}/*# sourceMappingURL=btn.css.map */
+a {
+  color: #333;
+}
+a:hover {
+  color: #ec5151;
+}
+[class^="icofont-"],
+[class*=" icofont-"] {
+  margin-right: 2px;
+}
+a.yee-btn,
+input.yee-btn {
+  line-height: 22px;
+  height: 22px;
+  display: inline-block;
+  padding: 2px 5px;
+  border-radius: 4px;
+  margin: 1px 0;
+  color: #909399;
+  vertical-align: middle;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.1s;
+  overflow: hidden;
+}
+a.form-btn,
+input.form-btn {
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+  padding: 0 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0;
+  opacity: 0.8;
+  display: inline-block;
+  vertical-align: middle;
+  border: 0.5px solid #c1c1c1;
+  color: #777;
+}
+.yee-submit a.form-btn,
+.yee-submit input.form-btn {
+  height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  padding: 0 30px;
+}
+a.yee-btn:hover,
+input.yee-btn:hover {
+  opacity: 1;
+}
+a.yee-btn.blue,
+input.yee-btn.blue {
+  color: #fff;
+  background: #257faf;
+}
+a.yee-btn.blue-bd,
+input.yee-btn.blue-bd {
+  color: #257faf;
+}
+a.yee-btn.violet,
+input.yee-btn.violet {
+  color: #fff;
+  background: #C69;
+}
+a.yee-btn.violet-bd,
+input.yee-btn.violet-bd {
+  color: #C69;
+}
+a.yee-btn.red,
+input.yee-btn.red {
+  color: #fff;
+  background: #ec5151;
+}
+a.yee-btn.red-bd,
+input.yee-btn.red-bd {
+  color: #ec5051;
+}
+a.yee-btn.green,
+input.yee-btn.green {
+  color: #fff;
+  background: #2FBC5E;
+}
+a.yee-btn.green-bd,
+input.yee-btn.green-bd {
+  color: #2FBC5E;
+}
+a.yee-btn.yellow,
+input.yee-btn.yellow {
+  color: #fff;
+  background: #ffd031;
+}
+a.yee-btn.yellow-bd,
+input.yee-btn.yellow-bd {
+  color: #ffd031;
+}
+a.yee-btn.org,
+input.yee-btn.org {
+  color: #fff;
+  background: #F90;
+}
+a.yee-btn.org-bd,
+input.yee-btn.org-bd {
+  color: #F90;
+}
+a.yee-btn.org2,
+input.yee-btn.org2 {
+  color: #fff;
+  background: #F60;
+}
+a.yee-btn.org2-bd,
+input.yee-btn.org2-bd {
+  color: #F60;
+}
+a.yee-btn.normal,
+input.yee-btn.normal {
+  color: #888;
+  background: #e1e1e1;
+}
+a.yee-btn.disabled,
+input.yee-btn.disabled,
+a.yee-btn.disabled:hover,
+input.yee-btn.disabled:hover,
+a.yee-btn[disabled],
+input.yee-btn[disabled],
+a.yee-btn[disabled]:hover,
+input.yee-btn[disabled]:hover {
+  background: #f7f7f7;
+  color: #999;
+  border: 0.5px solid #e1e1e1;
+}
+a.yee-btn.trans,
+input.yee-btn.trans {
+  height: 22px;
+  line-height: 22px;
+  padding: 2px 7px 2px 20px;
+  color: #888;
+  display: inline-block;
+  border-radius: 4px;
+  position: relative;
+  border: none;
+  background-color: transparent;
+}
+a.yee-btn.trans:hover,
+input.yee-btn.trans:hover {
+  color: #000;
+  background-color: #e1e1e1;
+}
+a.form-btn:hover,
+input.form-btn:hover {
+  opacity: 1;
+}
+a.form-btn.blue,
+input.form-btn.blue {
+  border: 0.5px solid #257faf;
+  color: #fff;
+  background: #257faf;
+}
+a.form-btn.blue-bd,
+input.form-btn.blue-bd {
+  border: 0.5px solid #257faf;
+  color: #257faf;
+}
+a.form-btn.violet,
+input.form-btn.violet {
+  border: 0.5px solid #C69;
+  color: #fff;
+  background: #C69;
+}
+a.form-btn.violet-bd,
+input.form-btn.violet-bd {
+  border: 0.5px solid #C69;
+  color: #C69;
+}
+a.form-btn.red,
+input.form-btn.red {
+  border: 0.5px solid #ec5151;
+  color: #fff;
+  background: #ec5151;
+}
+a.form-btn.red-bd,
+input.form-btn.red-bd {
+  border: 0.5px solid #ec5051;
+  color: #ec5051;
+}
+a.form-btn.green,
+input.form-btn.green {
+  border: 0.5px solid #2FBC5E;
+  color: #fff;
+  background: #2FBC5E;
+}
+a.form-btn.green-bd,
+input.form-btn.green-bd {
+  border: 0.5px solid #2FBC5E;
+  color: #2FBC5E;
+}
+a.form-btn.yellow,
+input.form-btn.yellow {
+  border: 0.5px solid #ffd031;
+  color: #fff;
+  background: #ffd031;
+}
+a.form-btn.yellow-bd,
+input.form-btn.yellow-bd {
+  border: 0.5px solid #ffd031;
+  color: #ffd031;
+}
+a.form-btn.org,
+input.form-btn.org {
+  border: 0.5px solid #F90;
+  color: #fff;
+  background: #F90;
+}
+a.form-btn.org-bd,
+input.form-btn.org-bd {
+  border: 0.5px solid #F90;
+  color: #F90;
+}
+a.form-btn.org2,
+input.form-btn.org2 {
+  border: 0.5px solid #F60;
+  color: #fff;
+  background: #F60;
+}
+a.form-btn.org2-bd,
+input.form-btn.org2-bd {
+  border: 0.5px solid #F60;
+  color: #F60;
+}
+a.form-btn.normal,
+input.form-btn.normal {
+  border: 0.5px solid #e1e1e1;
+  color: #888;
+  background: #e1e1e1;
+}
+a.form-btn.disabled,
+input.form-btn.disabled,
+a.form-btn.disabled:hover,
+input.form-btn.disabled:hover,
+a.form-btn[disabled],
+input.form-btn[disabled],
+a.form-btn[disabled]:hover,
+input.form-btn[disabled]:hover {
+  background: #f7f7f7;
+  color: #999;
+  border: 0.5px solid #e1e1e1;
+}
+a.form-btn.trans,
+input.form-btn.trans {
+  height: 22px;
+  line-height: 22px;
+  padding: 2px 7px 2px 20px;
+  color: #888;
+  display: inline-block;
+  border-radius: 4px;
+  position: relative;
+  border: none;
+  background-color: transparent;
+}
+a.form-btn.trans:hover,
+input.form-btn.trans:hover {
+  color: #000;
+  background-color: #e1e1e1;
+}
+a.senior-btn {
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+  margin-left: 5px;
+  border: none;
+  background-color: transparent;
+}
+a.senior-btn i:before {
+  font-weight: normal;
+  font-style: normal;
+  font-family: 'YeeFont' !important;
+  content: "\eb53";
+}
+.yee-search.senior .senior-btn i:before {
+  content: "\eb56";
+}
+.yee-list-search a.form-btn,
+.yee-list-search input.form-btn {
+  padding: 0 15px;
+  margin-right: 5px;
+}
+div.yee-btn-warp {
+  position: relative;
+  display: inline-block;
+  margin: 1px 0;
+}
+div.yee-btn-menu {
+  position: fixed;
+  padding: 10px;
+  background: #fff;
+  min-width: 100px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 9999999;
+}
+div.yee-btn-menu span.arrow {
+  position: absolute;
+  line-height: 0px;
+  width: 8px;
+  height: 8px;
+  top: 10px;
+  right: -4px;
+  box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.2);
+  transform: rotate(45deg);
+  display: block;
+  background: #fff;
+}
+div.yee-btn-menu a.yee-btn {
+  display: block;
+  border-radius: 0px;
+  margin: 3px;
+  border: none;
+  text-align: center;
+}
+div.yee-btn-menu a.yee-btn:hover.blue-bd,
+div.yee-btn-menu a.yee-btn:hover.red-bd,
+div.yee-btn-menu a.yee-btn:hover.green-bd,
+div.yee-btn-menu a.yee-btn:hover.purple-bd,
+div.yee-btn-menu a.yee-btn:hover.yellow-bd,
+div.yee-btn-menu a.yee-btn:hover.org-bd,
+div.yee-btn-menu a.yee-btn:hover.org2-bd,
+div.yee-btn-menu a.yee-btn:hover.normal {
+  background: #e1e1e1;
+}
+/*# sourceMappingURL=btn.css.map */

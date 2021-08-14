@@ -9,7 +9,7 @@ window.onload = function () {
     while (i--) {
         var img = imgs[i];
         if (/\.png$/.test(img.src)) {
-            img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(rc='" + img.src + "', sizingMethod='image')";
+            img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(rc='" + img.src + "', sizingMethod='images')";
             img.src='/images/transparent.gif';
         }
     }

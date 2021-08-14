@@ -10,7 +10,10 @@ $(function () {
         var tabH = $('div.yee-tab').outerHeight(true) || 0;
         var grouH = $('div.group-inc').outerHeight(true) || 0;
         var attentionH = $('div.yee-attention').outerHeight(true) || 0;
-        var myH = winH - headH - searchH - barH - tabH - grouH - attentionH - 50;
+        if (tabH > 0) {
+            tabH += 10;
+        }
+        var myH = winH - headH - searchH - barH - tabH - grouH - attentionH - 140;
         list.emit('setHeight', myH);
     }
 
@@ -25,21 +28,25 @@ $(function () {
         if (inp1.length == 0) {
             inp1 = $('<input type="hidden" name="sort"/>').appendTo(form);
         }
-        inp1.val(data.name + "-" + (data.order == 1 ? "asc" : "desc"));
+        if (data.order == 1) {
+            inp1.val(data.name + "-asc");
+        } else if (data.order == -1) {
+            inp1.val(data.name + "-desc");
+        } else {
+            inp1.val('');
+        }
         $("#searchForm").submit();
     });
-
-    $(window).on('resize', function () {
-        updataHeight();
-    });
-
+    $(window).on('resize', updataHeight);
     var shower = null;
     $(document.body).on('mousedown', '.yee-btn-more a.yee-btn', function (ev) {
         var btn = $(this);
         $('.yee-btn-menu').hide();
         var parent = btn.parents('.yee-btn-warp:first');
         var offset = parent.offset();
+
         var menu = parent.find('.yee-btn-menu');
+
         var translateY = -$(document).scrollTop();
         menu.show();
         var arrow = menu.find('span.arrow');

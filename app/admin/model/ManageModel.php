@@ -9,6 +9,7 @@ use beacon\core\Form;
 use beacon\widget\Password;
 use beacon\widget\Select;
 use beacon\widget\Text;
+use beacon\widget\UpImage;
 
 #[Form(title: '账号管理', table: '@pf_manage', template: 'form/manage.tpl')]
 class ManageModel
@@ -21,6 +22,15 @@ class ManageModel
         attrs: ['yee-module' => 'remote', 'data-url' => '/admin/manage/check_name']
     )]
     public string $name = '';
+
+    #[UpImage(
+        label: '上传头像',
+        mode: 'image',
+        extensions: 'jpg,jpeg,bmp,gif,png',
+        imgWidth: 80,
+        imgHeight: 80
+    )]
+    public string $avatar = '';
 
     #[Text(
         label: '真实姓名',

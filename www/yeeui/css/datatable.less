@@ -8,16 +8,18 @@
   margin: 0px;
   box-sizing: border-box;
   background: #FFF;
+  border-radius: 3px;
 
   tbody td, thead th, colgroup col {
-    box-shadow: inset 0 -1px 1px #EDF1F2;
-    height: 36px;
+    border-bottom: 1px #EDF1F2 solid;
+    height: 45px;
     line-height: 22px;
     vertical-align: middle;
     padding: 0px 10px;
     font-weight: normal;
     box-sizing: border-box;
-    color: #777;
+    color: #666;
+    font-size: 13px;
 
     img {
       vertical-align: middle;
@@ -26,12 +28,12 @@
   }
 
   thead th {
-    white-space: nowrap;
-    border-right: 1px #ddd dotted;
-    background: #f0f2f3;
+    border-right: 1px #ccc dotted;
+    background: #EDF1F2;
     color: #555;
-    font-weight: 600;
-
+    line-height: 18px;
+    font-weight: 700;
+    height: 36px;
     &:last-child {
       border-right: none;
     }
@@ -65,25 +67,28 @@
   opacity: 1;
   transition: opacity 0.1s;
   border-radius: 3px;
+
   &.yee-dt-render {
     opacity: 0;
     transition: opacity 0.1s;
   }
+
   .yee-dt-main, .yee-dt-header {
     position: relative;
     overflow-y: auto;
     overflow-x: hidden;
   }
+
   .yee-dt-header {
-    overflow: hidden;
     box-sizing: border-box;
-    background: #f6f6f6;
-    height: 36px;
-    box-shadow: inset 0 -1px 1px #EDF1F2;
+    background: #f5f5f5;
+    height: 37px;
+    box-shadow: 0 1px 1px #EDF1F2;
   }
 
   .yee-dt-main-wrap, .yee-dt-head-wrap {
     position: relative;
+    max-width: 100%;
     overflow-x: hidden;
     overflow-y: hidden;
   }
@@ -108,6 +113,7 @@
     overflow-x: auto;
     max-width: 100%;
     margin-top: -2px;
+
     .yee-dt-scrollbar {
       height: 1px;
     }
@@ -143,7 +149,7 @@
     position: absolute;
     width: 20px;
     cursor: ew-resize;
-    margin-left: -11px;
+    margin-left: 10px;
     background: rgba(0, 0, 0, 0.2);
     opacity: 0;
     top: 0;

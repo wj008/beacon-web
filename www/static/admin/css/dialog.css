@@ -1,9 +1,13 @@
-html, body {
+html,
+body {
     background: #fff;
     height: 100%;
+    padding: 0;
+    margin: 0;
+    font-size: 12px;
 }
-
 .yee-submit {
+    background: #fff;
     padding: 15px 0 15px 0;
     text-align: center;
     display: block;
@@ -13,17 +17,36 @@ html, body {
     right: 0;
     border-top: 1px #eee solid;
 }
-
-.yee-submit .submit-label, .yee-submit .submit-cell {
+.yee-submit .submit-label,
+.yee-submit .submit-cell {
     display: inline;
 }
-
 .yee-row .row-label {
     width: 150px;
     text-align: right;
     vertical-align: top;
 }
-
 .yee-panel {
     padding: 0;
+    margin: 0;
+}
+.yee-wrap {
+    position: relative;
+    padding: 10px 20px;
+}
+.yee-wrap.yee-dialog {
+    position: relative;
+    padding: 10px;
+}
+.yee-dialog .yee-list-search {
+    padding: 0px 0px 5px 0px;
+    display: table;
+    width: 100%;
+    box-sizing: border-box;
+}
+.yee-dialog .yee-list-search .tr.nobr {
+    vertical-align: middle;
+}
+.yee-dialog .yee-list {
+    padding: 5px 0px 5px 0px;
 }

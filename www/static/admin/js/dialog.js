@@ -17,17 +17,11 @@ $(function () {
         }
         return true;
     });
-
     Yee.readyDialog(function (dlg) {
         $('form').on('success', function (ev, ret) {
             dlg.success(ret);
             dlg.close();
             return false;
         });
-        $('a.reload').on('success', function (ev, ret) {
-            dlg.success(ret);
-            window.location.reload();
-        });
     });
-
 });

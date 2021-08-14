@@ -42,7 +42,7 @@ $(function () {
             }
             var bg = $('<div class="lightbox-overlay" style="display: block;"></div>').height($(document).height()).appendTo(document.body);
             var show = $('<div class="lightbox-shower"></div>').appendTo(document.body);
-            var image = $('<div class="lightbox-image-shower"></div>').appendTo(show);
+            var image = $('<div class="lightbox-images-shower"></div>').appendTo(show);
             var leftBtn = null;
             var rightBtn = null;
             var numberLabel = null;
@@ -114,7 +114,7 @@ $(function () {
             }
 
             var currDeg = 0;
-            var toolbar = $('<div class="image-toolbar">' +
+            var toolbar = $('<div class="images-toolbar">' +
                 '<a href="javascript:;" class="open" target="_blank" title="新窗口打开"></a>' +
                 '<a href="javascript:;" class="rotate1" title="逆时间旋转"></a>' +
                 '<a href="javascript:;"  class="rotate2" title="正时间旋转"></a>' +
@@ -122,11 +122,11 @@ $(function () {
                 '</div>').appendTo(document.body);
 
             if (useGroup) {
-                leftBtn = $('<div class="image-left-btn"></div>').appendTo(document.body);
-                rightBtn = $('<div class="image-right-btn"></div>').appendTo(document.body);
+                leftBtn = $('<div class="images-left-btn"></div>').appendTo(document.body);
+                rightBtn = $('<div class="images-right-btn"></div>').appendTo(document.body);
                 leftBtn.on('click', prevImage);
                 rightBtn.on('click', nextImage);
-                numberLabel = $('<div class="image-number"></div>').appendTo(document.body);
+                numberLabel = $('<div class="images-number"></div>').appendTo(document.body);
                 $(window).on('keyup', keyFunc);
             }
             toolbar.find('a.open').attr('href', url);
@@ -156,10 +156,10 @@ $(function () {
 
         var initImg = function () {
             var img = $(this);
-            var imgParent = img.parents('.image-group:first');
+            var imgParent = img.parents('.images-group:first');
             var urlList = [];
             if (imgParent.length) {
-                imgParent.find('a.image-show,img.image-show,div.image-show img').each(function (idx, imgElem) {
+                imgParent.find('a.images-show,img.images-show,div.images-show img').each(function (idx, imgElem) {
                     var it = $(imgElem);
                     var src = null;
                     if (it.is('a')) {
@@ -178,8 +178,8 @@ $(function () {
             }
             window.openShower(url, urlList);
         }
-        $(document).on('click', 'img.image-show', initImg);
-        $(document).on('click', 'div.image-show img', initImg);
-        $(document).on('click', 'a.image-show', initImg);
+        $(document).on('click', 'img.images-show', initImg);
+        $(document).on('click', 'div.images-show img', initImg);
+        $(document).on('click', 'a.images-show', initImg);
     }
 });

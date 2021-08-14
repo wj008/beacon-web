@@ -1,0 +1,636 @@
+@charset "UTF-8";
+/* CSS Document */
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: PingFang SC, '微软雅黑', Helvetica Neue, Helvetica, Tahoma, Arial, sans-serif;
+}
+
+*:focus {
+    outline: none;
+}
+
+html {
+    position: relative;
+    -webkit-text-size-adjust: none;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+body {
+    font-size: 12px;
+    width: 100%;
+    height: 100%;
+    background: #F0F3F4;
+    overflow: hidden;
+    min-width: 1280px;
+    position: relative;
+}
+
+img {
+    border: 0 none;
+    max-width: 100%;
+}
+
+ul, li {
+    display: block;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+}
+
+textarea {
+    resize: none;
+}
+
+.clearfix:after {
+    content: "";
+    height: 0;
+    line-height: 0;
+    display: block;
+    visibility: hidden;
+    clear: both;
+}
+
+.clearfix {
+    zoom: 1;
+}
+
+.clearbox {
+    clear: both;
+    font-size: 0;
+    line-height: 0;
+}
+
+
+/*--header--*/
+.header {
+    width: 100%;
+    height: 60px;
+    background: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .05);
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 9999;
+}
+
+.header .logo {
+    width: auto;
+    height: 60px;
+    position: absolute;
+    left: 20px;
+    top: 0;
+}
+
+.header .logo .img {
+    font-size: 0;
+    float: left;
+    padding: 10px 0;
+}
+
+.header .logo .img a {
+    display: block;
+}
+
+.header .logo .img img {
+    height: 40px;
+}
+
+.header .logo .tag {
+    width: auto;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    padding: 0 10px;
+    background: #eee;
+    font-size: 12px;
+    font-weight: 500;
+    color: #666;
+    border-radius: 12px;
+    float: left;
+    margin-top: 18px;
+}
+
+.header .right {
+    width: auto;
+    height: 60px;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.header .right .back {
+    width: auto;
+    height: 30px;
+    float: left;
+    margin-top: 15px;
+    padding-right: 30px;
+    position: relative;
+}
+
+.header .right .back:after {
+    content: '';
+    display: block;
+    width: 1px;
+    height: 16px;
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    margin-top: -8px;
+    background: #ccc;
+}
+
+.header .right .back a {
+    display: block;
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #999999;
+    position: relative;
+    padding-left: 26px;
+}
+
+.header .right .back a:before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -8px;
+    background: url("../images/header-icon.png") no-repeat left top / 32px 32px;
+}
+
+.header .right .back a:hover {
+    color: #257faf;
+}
+
+.header .right .back a:hover:before {
+    background-position: left bottom;
+}
+
+.header .right .notice {
+    width: 30px;
+    height: 30px;
+    padding: 15px 15px 15px 20px;
+    float: left;
+}
+
+.header .right .notice a {
+    display: block;
+    position: relative;
+    width: 16px;
+    height: 16px;
+    padding: 7px;
+}
+
+.header .right .notice a:before {
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url("../images/header-icon.png") no-repeat right top / 32px 32px;
+}
+
+.header .right .notice a:hover:before {
+    background-position: right bottom;
+}
+
+.header .right .notice a span {
+    display: inline-block;
+    position: absolute;
+    top: -5px;
+    left: 15px;
+    background: #f25353;
+    color: #fff;
+    text-align: center;
+    padding: 0 3px;
+    min-width: 12px;
+    border-radius: 50%;
+}
+
+.header .right .user {
+    width: auto;
+    height: 60px;
+    float: left;
+    position: relative;
+    padding-left: 5px;
+    margin-right: 10px;
+}
+
+.header .right .user .head {
+    width: auto;
+    height: 60px;
+    position: relative;
+    z-index: 20;
+    background: #fff;
+}
+
+.header .right .user .head a {
+    display: block;
+    width: auto;
+    height: 60px;
+    min-width: 100px;
+    padding-right: 10px;
+    padding-left: 30px;
+}
+
+.header .right .user .head a .portrait {
+    width: 30px;
+    height: 30px;
+    font-size: 0;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -15px;
+}
+
+.header .right .user .head a .portrait img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
+
+.header .right .user .head a .name {
+    width: auto;
+    height: 60px;
+    line-height: 60px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #333333;
+    padding: 0 15px;
+    background: url("../images/arrow-s.png") no-repeat right center / auto 6px;
+}
+
+.header .right .user .list {
+    width: 100%;
+    height: auto;
+    background: #fff;
+    border-radius: 0 0 3px 3px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, .1);
+    position: absolute;
+    left: -5px;
+    top: 100%;
+    display: none;
+}
+
+.header .right .user .list ul li {
+    width: auto;
+    height: auto;
+}
+
+.header .right .user .list ul li a {
+    display: block;
+    width: auto;
+    height: 36px;
+    line-height: 36px;
+    padding: 0 15px;
+    font-size: 13px;
+    color: #333333;
+}
+
+.header .right .user .list ul li:last-child a {
+    border-radius: 0 0 3px 3px;
+}
+
+.header .right .user .list ul li a span {
+    display: block;
+    width: auto;
+    height: auto;
+    position: relative;
+    padding: 0 12px 0 22px;
+}
+
+.header .right .user .list ul li a span:after {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 10px;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    margin-top: -5px;
+    background: url("../images/header-user-arrow.png") no-repeat center / 6px 10px;
+}
+
+.header .right .user .list ul li a span:before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    font-size: 0;
+    line-height: 0;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    margin-top: -6px;
+    background-image: url("../images/header-user-icon.png");
+    background-repeat: no-repeat;
+    background-size: auto 12px;
+}
+
+.header .right .user .list ul li a span.icon-data:before {
+    background-position: 0 0;
+}
+
+.header .right .user .list ul li a span.icon-pwd:before {
+    background-position: -12px 0;
+}
+
+.header .right .user .list ul li a span.icon-exit:before {
+    background-position: -24px 0;
+}
+
+.header .right .user .list ul li a:hover {
+    background: #F5F5F5;
+}
+
+
+.header .right .user:hover .list {
+    display: block;
+}
+
+
+
+/*--left-bar--*/
+.left-bar {
+    width: 170px;
+    height: auto;
+    background: #257faf;
+    position: absolute;
+    left: 0;
+    top: 60px;
+    bottom: 0;
+}
+
+.left-bar .user {
+    width: auto;
+    height: 135px;
+    padding: 25px 0;
+    background: rgba(255, 255, 255, .1);
+    text-align: center;
+}
+
+.left-bar .user .portrait {
+    width: 70px;
+    height: 70px;
+    margin: 0 auto;
+    border-radius: 50%;
+    font-size: 0;
+}
+
+.left-bar .user .portrait a {
+    display: block;
+}
+
+.left-bar .user .portrait img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.left-bar .user .name {
+    width: auto;
+    height: auto;
+    line-height: 30px;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 500;
+    padding-top: 10px;
+}
+
+.left-bar .user .note {
+    width: auto;
+    height: auto;
+    line-height: 20px;
+    font-size: 13px;
+    color: #fff;
+    opacity: .5;
+    padding-top: 5px;
+}
+
+.left-bar .user .join {
+    width: auto;
+    height: auto;
+    padding-top: 12px;
+}
+
+.left-bar .user .join a {
+    display: inline-block;
+    width: auto;
+    height: 28px;
+    line-height: 28px;
+    border: 1px solid #257faf;
+    color: #257faf;
+    font-size: 12px;
+    border-radius: 15px;
+    padding: 0 15px;
+    transition: all .2s;
+}
+
+.left-bar .user .join a:hover {
+    background: #257faf;
+    color: #fff;
+}
+
+.left-bar .menu-top {
+    width: auto;
+    height: 35px;
+    background: #257faf;
+    background: rgba(0, 0, 0, .1);
+}
+
+.left-bar .menu-top a {
+    display: block;
+    width: auto;
+    color: #fff;
+    font-size: 14px;
+    line-height: 35px;
+    text-align: center;
+    vertical-align: middle;
+    opacity: .7;
+}
+
+.left-bar .menu-top a:hover {
+    color: #fff;
+    opacity: 1;
+}
+
+.left-bar .menu-top a i {
+    font-size: 24px;
+    vertical-align: middle;
+}
+
+.left-bar .menu {
+    width: auto;
+    height: calc(100% - 50px);
+    overflow: auto;
+}
+
+.left-bar .menu .item {
+    width: auto;
+    height: auto;
+    padding: 5px 0;
+}
+
+.left-bar .menu .item .name {
+    width: auto;
+    height: 40px;
+}
+
+.left-bar .menu .item .name a {
+    display: block;
+    width: auto;
+    height: 40px;
+    line-height: 40px;
+    position: relative;
+    padding-left: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #fff;
+    opacity: .7;
+}
+
+.left-bar .menu .item .name a i {
+    vertical-align: -1px;
+    margin-right: 5px;
+    font-size: 18px;
+    line-height: 18px;
+}
+
+.left-bar .menu .item .name a:hover {
+    color: #fff;
+    opacity: 1;
+}
+
+.left-bar .menu .item .list {
+    display: block;
+}
+
+.left-bar .menu .item .list ul {
+    padding: 5px 0;
+}
+
+.left-bar .menu .item .list ul li {
+    width: auto;
+    height: auto;
+}
+
+.left-bar .menu .item .list ul li a {
+    display: block;
+    width: auto;
+    height: 30px;
+    line-height: 30px;
+    font-size: 12px;
+    color: #ffffff;
+    padding-left: 58px;
+    position: relative;
+}
+
+.left-bar .menu .item .list ul li a:before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 4px;
+    background: #fff;
+    position: absolute;
+    left: 48px;
+    top: 50%;
+    margin-top: -2px;
+    border-radius: 50%;
+    opacity: .5;
+}
+
+.left-bar .menu .item .list ul li a:hover {
+    color: #ffffff;
+}
+
+.left-bar .menu .item .list ul li a:hover:before {
+    opacity: 1;
+}
+
+.left-bar .menu .item .list ul li a.on {
+    background: rgba(255, 255, 255, .1);
+    color: #ffffff;
+}
+
+.left-bar .menu .item .list ul li a.on:before {
+    background: #ffffff;
+    opacity: 1;
+}
+
+.left-bar .menu .item.on .name a {
+    background: rgba(255, 255, 255, .2);
+    color: #ffffff;
+    opacity: 1;
+}
+
+.left-bar .menu .item.on .name a:before {
+    content: '';
+    display: block;
+    width: 4px;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 20;
+    background: #56BFC5;
+}
+
+.left-bar .menu .item.on .list {
+    display: block;
+}
+
+.left-bar .scrollbar::-webkit-scrollbar { /*滚动条整体样式*/
+    width: 6px; /*高宽分别对应横竖滚动条的尺寸*/
+    height: 1px;
+}
+
+.left-bar .scrollbar::-webkit-scrollbar-thumb { /*滚动条里面小方块*/
+    -webkit-box-shadow: inset 0 0 5px rgba(223, 243, 245, 0.2);
+    background: #349bd2;
+    border-radius: 4px;
+}
+
+.left-bar .scrollbar::-webkit-scrollbar-track { /*滚动条里面轨道*/
+    background: #257faf;
+}
+
+.wrapper {
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 170px;
+    top: 60px;
+    right: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    padding: 15px;
+    overflow: auto;
+}
+
+.yee-form-wrap {
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 170px;
+    top: 60px;
+    right: 0;
+    bottom: 0;
+    box-sizing: border-box;
+    padding:3px 15px 15px 15px;
+    overflow: auto;
+}
