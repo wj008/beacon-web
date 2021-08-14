@@ -1133,14 +1133,7 @@ a.file:hover {
   background: #f0f6ff;
   color: #3aa7f5;
 }
-.yee-list-wrap {
-  width: auto;
-  height: auto;
-  position: absolute;
-  left: 170px;
-  top: 60px;
-  right: 0;
-  bottom: 0;
+.yee-wrap {
   box-sizing: border-box;
   padding: 15px;
   overflow: auto;

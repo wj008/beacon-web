@@ -52,6 +52,12 @@ class SysMenuModel
     )]
     public string $url = '';
 
+    #[Check(
+        label: '是否新窗口',
+        after: '是否新窗口打开',
+    )]
+    public int $blank = 0;
+
     #[Integer(
         label: '排序',
         prompt: '越小越靠前'

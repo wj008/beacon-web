@@ -18,7 +18,7 @@ abstract class Admin extends Controller
      * 菜单选项
      * @var int[]
      */
-    protected array $webMenus = [1];
+    protected array $webMenus = [1,6];
     /**
      * 管理员信息
      */
@@ -71,6 +71,9 @@ abstract class Admin extends Controller
                 $child['temp']=$temp=App::parseVirtualUrl($child['url']);
                 $child['url'] = App::url($child['url']);
                 $key = $temp['app'] . '/' . $temp['ctl'];
+                if(!isset($map[$key])){
+                    $map[$key]=[];
+                }
                 if ($temp['act'] != 'index') {
                     $map[$key][] = $temp['act'];
                 }

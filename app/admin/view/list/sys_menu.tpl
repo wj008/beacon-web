@@ -37,6 +37,7 @@
             <th width="40">ICON</th>
             <th align="left">菜单名称</th>
             <th width="100">路径</th>
+            <th width="80">新窗口</th>
             <th width="80">排序</th>
             <th width="80">状态</th>
             <th width="250" width="180" data-fixed="right">操作</th>
@@ -48,6 +49,7 @@
             <td align="center" v-html="rs.icon"></td>
             <td v-html="rs.title"></td>
             <td align="center" v-html="rs.url"></td>
+            <td align="center" v-html="rs._blank"></td>
             <td align="center" v-html="rs._sort"></td>
             <td align="center" v-html="rs._allow"></td>
             <td align="center" v-html="rs._operate"></td>
