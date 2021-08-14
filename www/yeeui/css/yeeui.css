@@ -605,6 +605,8 @@ acronym {
   /* iOS 4.1- */
 }
 .yee-form-header {
+  width: auto;
+  height: auto;
   padding: 0px 15px 15px 15px;
   position: relative;
 }
@@ -615,7 +617,7 @@ acronym {
   font-size: 18px;
   font-weight: 500;
   color: #333;
-  padding-left: 14px;
+  padding-left: 5px;
   display: inline-block;
 }
 .yee-form-header .yee-title.none {
@@ -1132,11 +1134,6 @@ a.file:hover {
   margin-bottom: 10px;
   background: #f0f6ff;
   color: #3aa7f5;
-}
-.yee-wrap {
-  box-sizing: border-box;
-  padding: 15px;
-  overflow: auto;
 }
 .yee-list-header {
   width: auto;
