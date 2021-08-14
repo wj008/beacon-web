@@ -621,16 +621,3 @@ textarea {
     padding: 15px;
     overflow: auto;
 }
-
-.yee-form-wrap {
-    width: auto;
-    height: auto;
-    position: absolute;
-    left: 170px;
-    top: 60px;
-    right: 0;
-    bottom: 0;
-    box-sizing: border-box;
-    padding:3px 15px 15px 15px;
-    overflow: auto;
-}
