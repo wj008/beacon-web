@@ -1,0 +1,100 @@
+input.yee-input-error, select.yee-input-error, textarea.yee-input-error {
+  background: #FFF9F7;
+  border: 0.5px dotted #ffcdb2;
+}
+
+input.yee-input-error[type='checkbox'] + span, input.yee-input-error[type='radio'] + span {
+  //background: #FFF0F0;
+  display: inline-block;
+  border: 0.5px #ffcdb2 dotted;
+  box-sizing: border-box;
+}
+
+input.yee-input-error:focus, select.yee-input-error:focus, textarea.yee-input-error:focus {
+  border: 0.5px dotted #ffcdb2;
+  outline: 0;
+}
+
+input.yee-input-error:focus, select.yee-input-error:focus, textarea.yee-input-error:focus {
+  border: 0.5px dotted #ffcdb2;
+  outline: 0;
+}
+
+
+input.yee-input-correct {
+  background: #F0FCF0;
+  border: 0.5px dotted #96e5cc;
+  border-radius: 3px
+}
+
+input.yee-input-correct:focus {
+  border: 0.5px dotted #96e5cc
+}
+
+//对话框
+input.select-dialog.yee-input-error + input.select-dialog {
+  background: #FFF9F7;
+  border: 0.5px dotted #ffcdb2;
+}
+
+input.select-dialog.yee-input-correct + input.select-dialog {
+  background: #F0FCF0;
+  border: 0.5px dotted #96e5cc;
+  border-radius: 3px
+}
+
+input.select-dialog.yee-input-correct + input.select-dialog:focus {
+  border: 0.5px dotted #96e5cc
+}
+input.up-file.yee-input-error + div.yee-file-wrap a.yee-btn.file-btn{
+  background: #FFF9F7;
+  border: 0.5px dotted #ffcdb2;
+}
+
+.yee-field-error {
+  line-height: 20px;
+  color: #ec7c5e;
+  margin-left: 5px;
+}
+
+.yee-field-correct {
+  line-height: 20px;
+  color: #43d280;
+  margin-left: 5px;
+}
+
+.yee-field-default {
+  color: #909090;
+  margin-left: 5px;
+}
+
+.yee-field-error:before {
+  font-family: YeeFont !important;
+  content: '\efea';
+  display: inline-block;
+  margin-right: 3px
+}
+
+.yee-field-correct:before {
+  display: inline-block;
+  font-family: YeeFont !important;
+  content: '\efad';
+  margin-right: 3px
+}
+
+.yee-field-prompt{
+  line-height: 16px;
+  color: #909090;
+  padding: 3px 15px 0 15px;
+  clear: both;
+  &:before {
+    color: #a0a0a0;
+    font-family: YeeFont !important;
+    content: '\f0ae';
+    width: 15px;
+    height: 16px;
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: -15px
+  }
+}

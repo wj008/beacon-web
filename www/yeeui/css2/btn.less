@@ -1,0 +1,350 @@
+//按钮--------
+a {
+  color: #333;
+}
+
+a:hover {
+  color: #ec5151;
+}
+
+[class^="icofont-"], [class*=" icofont-"] {
+  margin-right: 2px;
+}
+
+a.yee-btn, input.yee-btn {
+  line-height: 22px;
+  height: 22px;
+  display: inline-block;
+  padding: 2px 5px;
+  // border: 1px solid #c1c1c1;
+  border-radius: 4px;
+  margin: 1px 0;
+  color: #909399;
+  vertical-align: middle;
+  cursor: pointer;
+  font-size: 14px;
+  transition: .1s;
+  overflow: hidden;
+  //background-color: #fff;
+}
+
+a.form-btn, input.form-btn {
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+  padding: 0 10px;
+  border-radius: 3px;
+  cursor: pointer;
+  margin: 0;
+  opacity: 0.8;
+  display: inline-block;
+  vertical-align: middle;
+  border: 0.5px solid #c1c1c1;
+  color: #777;
+}
+
+
+.yee-submit {
+  a.form-btn, input.form-btn {
+    height: 32px;
+    line-height: 32px;
+    font-size: 14px;
+    padding: 0 30px;
+  }
+}
+
+a.yee-btn, input.yee-btn {
+  &:hover {
+    opacity: 1;
+  }
+
+  &.blue {
+    // border: 0.5px solid #257faf;
+    color: #fff;
+    background: #257faf;
+  }
+
+  &.blue-bd {
+    // border: 0.5px solid #257faf;
+    color: #257faf;
+  }
+
+  &.violet {
+    color: #fff;
+    background: #C69;
+  }
+
+  &.violet-bd {
+    color: #C69
+  }
+
+
+  &.red {
+    // border: 0.5px solid #ec5151;
+    color: #fff;
+    background: #ec5151;
+  }
+
+  &.red-bd {
+    // border: 0.5px solid #ec5051;
+    color: #ec5051;
+  }
+
+  &.green {
+    // border: 0.5px solid #2FBC5E;
+    color: #fff;
+    background: #2FBC5E;
+  }
+
+  &.green-bd {
+    // border: 0.5px solid #2FBC5E;
+    color: #2FBC5E;
+  }
+
+  &.yellow {
+    // border: 0.5px solid #ffd031;
+    color: #fff;
+    background: #ffd031;
+  }
+
+  &.yellow-bd {
+    // border: 0.5px solid #ffd031;
+    color: #ffd031;
+  }
+
+  &.org {
+    // border: 0.5px solid #F90;
+    color: #fff;
+    background: #F90;
+  }
+
+  &.org-bd {
+    // border: 0.5px solid #F90;
+    color: #F90;
+  }
+
+  &.org2 {
+    // border: 0.5px solid #F60;
+    color: #fff;
+    background: #F60;
+  }
+
+  &.org2-bd {
+    // border: 0.5px solid #F60;
+    color: #F60;
+  }
+
+  &.normal {
+    // border: 0.5px solid #e1e1e1;
+    color: #888;
+    background: #e1e1e1;
+  }
+
+  &.disabled, &.disabled:hover, &[disabled], &[disabled]:hover {
+    background: #f7f7f7;
+    color: #999;
+    border: 0.5px solid #e1e1e1;
+  }
+
+  //刷新按钮
+  &.trans {
+    height: 22px;
+    line-height: 22px;
+    padding: 2px 7px 2px 20px;
+    color: #888;
+    display: inline-block;
+    border-radius: 4px;
+    position: relative;
+    border: none;
+    background-color: transparent;
+
+    &:hover {
+      color: #000;
+      background-color: #e1e1e1;
+    }
+  }
+
+}
+
+a.form-btn, input.form-btn {
+  &:hover {
+    opacity: 1;
+  }
+
+  &.blue {
+    border: 0.5px solid #257faf;
+    color: #fff;
+    background: #257faf;
+  }
+
+  &.blue-bd {
+    border: 0.5px solid #257faf;
+    color: #257faf;
+  }
+  &.violet {
+    border: 0.5px solid #C69;
+    color: #fff;
+    background: #C69;
+  }
+
+  &.violet-bd {
+    border: 0.5px solid #C69;
+    color: #C69;
+  }
+
+  &.red {
+    border: 0.5px solid #ec5151;
+    color: #fff;
+    background: #ec5151;
+  }
+
+  &.red-bd {
+    border: 0.5px solid #ec5051;
+    color: #ec5051;
+  }
+
+  &.green {
+    border: 0.5px solid #2FBC5E;
+    color: #fff;
+    background: #2FBC5E;
+  }
+
+  &.green-bd {
+    border: 0.5px solid #2FBC5E;
+    color: #2FBC5E;
+  }
+
+  &.yellow {
+    border: 0.5px solid #ffd031;
+    color: #fff;
+    background: #ffd031;
+  }
+
+  &.yellow-bd {
+    border: 0.5px solid #ffd031;
+    color: #ffd031;
+  }
+
+  &.org {
+    border: 0.5px solid #F90;
+    color: #fff;
+    background: #F90;
+  }
+
+  &.org-bd {
+    border: 0.5px solid #F90;
+    color: #F90;
+  }
+
+  &.org2 {
+    border: 0.5px solid #F60;
+    color: #fff;
+    background: #F60;
+  }
+
+  &.org2-bd {
+    border: 0.5px solid #F60;
+    color: #F60;
+  }
+
+  &.normal {
+    border: 0.5px solid #e1e1e1;
+    color: #888;
+    background: #e1e1e1;
+  }
+
+  &.disabled, &.disabled:hover, &[disabled], &[disabled]:hover {
+    background: #f7f7f7;
+    color: #999;
+    border: 0.5px solid #e1e1e1;
+  }
+
+  //刷新按钮
+  &.trans {
+    height: 22px;
+    line-height: 22px;
+    padding: 2px 7px 2px 20px;
+    color: #888;
+    display: inline-block;
+    border-radius: 4px;
+    position: relative;
+    border: none;
+    background-color: transparent;
+
+    &:hover {
+      color: #000;
+      background-color: #e1e1e1;
+    }
+  }
+
+}
+
+//搜索区域按钮
+a.senior-btn {
+  height: 30px;
+  line-height: 30px;
+  cursor: pointer;
+  margin-left: 5px;
+  border: none;
+  background-color: transparent;
+
+  i:before {
+    font-weight: normal;
+    font-style: normal;
+    font-family: 'YeeFont' !important;
+    content: "\eb53";
+  }
+}
+
+.yee-search.senior .senior-btn i:before {
+  content: "\eb56";
+}
+
+.yee-list-search a.form-btn, .yee-list-search input.form-btn {
+  padding: 0 15px;
+  margin-right: 5px;
+}
+
+div.yee-btn-warp {
+  position: relative;
+  display: inline-block;
+  margin: 1px 0;
+}
+
+div.yee-btn-menu {
+  position: fixed;
+  padding: 10px;
+  background: #fff;
+  min-width: 100px;
+  box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 9999999;
+
+  span.arrow {
+    position: absolute;
+    line-height: 0px;
+    width: 8px;
+    height: 8px;
+    display: block;
+    top: 10px;
+    right: -4px;
+    box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.2);
+    transform: rotate(45deg);
+    display: block;
+    background: #fff;
+  }
+
+  a.yee-btn {
+    display: block;
+    border-radius: 0px;
+    margin: 3px;
+    border: none;
+    text-align: center;
+  }
+
+  a.yee-btn:hover {
+    &.blue-bd, &.red-bd, &.green-bd, &.purple-bd, &.yellow-bd, &.org-bd, &.org2-bd, &.normal {
+      background: #e1e1e1;
+    }
+  }
+}

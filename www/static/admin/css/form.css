@@ -1,0 +1,92 @@
+
+.form-group .item-table {
+    padding: 5px;
+    border: 1px dashed #DDD;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    width: 980px;
+    border-collapse: collapse;
+
+}
+
+.form-group .item-table th {
+    border: 1px dashed #DDD;
+    line-height: 32px;
+    background: #f7f7f7;
+    text-align: center;
+}
+
+.form-group .item-table td {
+    border: 1px dashed #DDD;
+    line-height: 34px;
+    text-align: center;
+    padding: 3px;
+}
+
+.form-group label.field {
+    border: 1px solid #ddd;
+    background: #f1f1f1;
+    color: #666;
+    display: inline-block;
+    line-height: 26px;
+    cursor: pointer;
+    line-height: 26px;
+    padding: 0 10px;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+.form-group a#field-add, .form-group #field-addopt {
+    border: 1px solid #2FBC5E;
+    background: #EfF8E4;
+    color: #2FBC5E;
+    display: inline-block;
+    line-height: 26px;
+    line-height: 26px;
+    padding: 0 10px;
+    margin-right: 5px;
+    margin-bottom: 3px;
+    margin-top: 3px;
+}
+
+.form-group label.field.custom {
+    border: 1px solid #2FBC5E;
+    background: #EfF8E4;
+    color: #666;
+    cursor: pointer;
+}
+
+.form-group label.field.checked {
+    border: 1px solid #0f94b2;
+    background: #E4EfF8;
+    color: #0f94b2;
+}
+
+.form-group label input {
+    margin-right: 5px;
+}
+
+.check-group {
+    display: inline-block;
+}
+
+.check-group label {
+    margin-right: 15px;
+    line-height: 30px;
+    display: inline-block;
+    width: 80px;
+}
+
+.check-group label input {
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+.form-group .linkage {
+    margin-right: 5px;
+}
+
+.form-group .it-group input.snumber {
+    text-align: center;
+}

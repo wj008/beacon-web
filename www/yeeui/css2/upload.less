@@ -1,0 +1,314 @@
+//上传
+.form-inp.up-file + a.yee-btn, .form-inp.qn-file + a.yee-btn {
+  border: 1px solid #e1e1e1;
+  vertical-align: middle;
+  height: 28px;
+  line-height: 28px;
+  font-size: 14px;
+  padding: 0 10px;
+  border-radius: 3px;
+  margin-left: 2px;
+  cursor: pointer;
+  display: inline-block;
+
+  &:before {
+    color: #a0a0a0;
+    font-family: YeeFont !important;
+    content: '\f0ff';
+    width: 15px;
+    display: inline-block;
+    margin-right: 3px;
+    margin-left: -5px
+  }
+}
+
+
+.form-inp.up-image + div.yee-img-wrap, .form-inp.qn-image + div.yee-img-wrap {
+  position: relative;
+  display: inline-block;
+  vertical-align: bottom;
+
+  .img-btn {
+    border-radius: 3px;
+    background-image: url("img/drive_upload.png");
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 1px #eee solid;
+    float: left;
+    display: inline-block;
+    overflow: hidden;
+  }
+
+  .img-bgnone {
+    background-image: none;
+  }
+
+  .img-del {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    width: 14px;
+    height: 14px;
+    background-image: url("img/pic_close.png");
+  }
+
+  .img-item {
+    border: 1px #eee solid;
+    float: left;
+    display: inline-block;
+    margin-right: 10px;
+    margin-bottom: 5px;
+    padding: 0px;
+    position: relative;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+}
+
+input.form-inp.up-image.yee-input-error + div.yee-img-wrap, input.form-inp.qn-image.yee-input-error + div.yee-img-wrap {
+  .img-btn {
+    border: 1px #ffcdb2 dotted;
+  }
+}
+
+.yee-btn.file-btn {
+  border: 1px solid #e1e1e1;
+  vertical-align: middle;
+  height: 32px;
+  line-height: 32px;
+  font-size: 14px;
+  padding: 0 15px;
+  border-radius: 3px;
+  margin-left: 0px;
+  cursor: pointer;
+  display: inline-block;
+  float: left;
+
+  &:before {
+    color: #a0a0a0;
+    font-family: YeeFont !important;
+    content: '\f0ff';
+    width: 15px;
+    display: inline-block;
+    margin-right: 3px;
+    margin-left: -5px
+  }
+}
+
+.yee-file-wrap {
+  div.file-item {
+    font-size: 13px;
+    color: #222;
+    padding: 2px;
+    border: 1px #eee solid;
+    margin: 0px 3px 3px 0px;
+    float: left;
+    border-radius: 3px;
+    line-height:28px;
+    color: #0c8dc7;
+  }
+  div.file-item.disabled{
+    color: #999;
+    background: #f7f7f7;
+  }
+
+  div.file-item a.file-del {
+    &:after {
+      color: #666;
+      font-family: YeeFont !important;
+      content: '\efb5';
+      width: 15px;
+      font-size: 16px;
+      display: inline-block;
+      margin-right: 3px;
+      margin-left: 15px
+    }
+  }
+}
+
+div.file-item:before {
+  font-family: YeeFont !important;
+  content: "\ec06";
+  font-size: 18px;
+  margin-right: 4px;
+  vertical-align: -1px;
+  font-weight: 100;
+  color: #5f7a88;
+}
+
+div.file-item.audio:before {
+  content: "\ebfd";
+}
+
+div.file-item.avi-mp4:before {
+  content: "\ebfe";
+}
+
+div.file-item.bmp:before {
+  content: "\ebff";
+}
+
+div.file-item.code:before {
+  content: "\ec00";
+}
+
+div.file-item.css:before {
+  content: "\ec01";
+}
+
+div.file-item.document:before {
+  content: "\ec02";
+}
+
+div.file-item.eps:before {
+  content: "\ec03";
+}
+
+div.file-item.excel:before {
+  content: "\ec04";
+}
+
+div.file-item.exe:before {
+  content: "\ec05";
+}
+
+div.file-item.file:before {
+  content: "\ec06";
+}
+
+div.file-item.flv:before {
+  content: "\ec07";
+}
+
+div.file-item.gif:before {
+  content: "\ec08";
+}
+
+div.file-item.html5:before {
+  content: "\ec09";
+}
+
+div.file-item.image:before {
+  content: "\ec0a";
+}
+
+div.file-item.iso:before {
+  content: "\ec0b";
+}
+
+div.file-item.java:before {
+  content: "\ec0c";
+}
+
+div.file-item.javascript:before {
+  content: "\ec0d";
+}
+
+div.file-item.jpg:before {
+  content: "\ec0e";
+}
+
+div.file-item.midi:before {
+  content: "\ec0f";
+}
+
+div.file-item.mov:before {
+  content: "\ec10";
+}
+
+div.file-item.mp3:before {
+  content: "\ec11";
+}
+
+div.file-item.pdf:before {
+  content: "\ec12";
+}
+
+div.file-item.php:before {
+  content: "\ec13";
+}
+
+div.file-item.png:before {
+  content: "\ec14";
+}
+
+div.file-item.powerpoint:before {
+  content: "\ec15";
+}
+
+div.file-item.presentation:before {
+  content: "\ec16";
+}
+
+div.file-item.psb:before {
+  content: "\ec17";
+}
+
+div.file-item.psd:before {
+  content: "\ec18";
+}
+
+div.file-item.python:before {
+  content: "\ec19";
+}
+
+div.file-item.ruby:before {
+  content: "\ec1a";
+}
+
+div.file-item.spreadsheet:before {
+  content: "\ec1b";
+}
+
+div.file-item.sql:before {
+  content: "\ec1c";
+}
+
+div.file-item.svg:before {
+  content: "\ec1d";
+}
+
+div.file-item.text:before {
+  content: "\ec1e";
+}
+
+div.file-item.tiff:before {
+  content: "\ec1f";
+}
+
+div.file-item.video:before {
+  content: "\ec20";
+}
+
+div.file-item.wave:before {
+  content: "\ec21";
+}
+
+div.file-item.wmv:before {
+  content: "\ec22";
+}
+
+div.file-item.word:before {
+  content: "\ec23";
+}
+
+div.file-item.zip:before {
+  content: "\ec24";
+}
+
+.show-file-item {
+  background: url(../images/fujian.png) no-repeat 5px 5px;
+  display: inline-block;
+  border: 1px #eee solid;
+  padding: 3px 5px 3px 25px;
+  border-radius: 5px;
+  color: #253a86;
+  min-height: 20px;
+  margin: 5px 10px 5px 0;
+  font-size: 14px;
+  color: #333;
+}
+
+.show-file-item:hover {
+  color: #1E9FFF;
+}

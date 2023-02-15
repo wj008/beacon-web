@@ -1,0 +1,56 @@
+/*分页样式*/
+.yee-pagebar {
+  transition: all 0.15s ease-in;
+  width: 100%;
+  padding: 20px 0 5px 0;
+  height: 28px;
+  font-size: 14px;
+}
+.yee-pagebar .pagebar {
+  float: left;
+}
+.yee-pagebar .pagebar .break,
+.yee-pagebar .pagebar a,
+.yee-pagebar .pagebar b {
+  text-decoration: none;
+  color: #666;
+  display: inline-block;
+  line-height: 24px;
+  float: left;
+  margin-right: 3px;
+  padding: 2px 9px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.75);
+  cursor: pointer;
+}
+.yee-pagebar .pagebar input.page-inp {
+  height: 26px;
+  line-height: 26px;
+  float: left;
+  width: 40px;
+  text-align: center;
+  border-radius: 3px;
+  border: 1px solid #e1e1e1;
+  margin-right: 3px;
+}
+.yee-pagebar .pagebar .break {
+  background: 0 0;
+  cursor: default;
+}
+.yee-pagebar .pagebar a {
+  background-color: #F4F4F5;
+}
+.yee-pagebar .pagebar a:hover {
+  color: #257faf;
+}
+.yee-pagebar .pagebar b {
+  background: #257faf;
+  color: #fff;
+}
+.yee-pagebar .pagebar-info {
+  float: right;
+  line-height: 22px;
+}
+/*# sourceMappingURL=pagebar.css.map */

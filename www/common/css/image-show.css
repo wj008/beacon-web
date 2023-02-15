@@ -1,0 +1,175 @@
+.lightbox-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999997;
+    background-color: black;
+    filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);
+    opacity: 0.8;
+}
+
+.lightbox-shower {
+    position: fixed;
+    top: 50%;
+    z-index: 999999998;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.lightbox-image-shower img {
+    border: 2px #eeeeee solid;
+    box-shadow: 3px 3px 50px rgba(0, 0, 0, 0.3);
+    max-width: none;
+}
+
+.lightbox-shower a {
+    width: 30px;
+    height: 30px;
+    border-radius: 60px;
+    text-align: center;
+    overflow: hidden;
+    line-height: 30px;
+    background-color: rgba(255, 255, 255, 0.8);
+    background-image: url("img/close.png");
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    border: 2px #eeeeee solid;
+    color: #999999;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(50%, -50%);
+}
+
+.image-toolbar {
+    position: fixed;
+    z-index: 999999999;
+    left: 50%;
+    bottom: 30px;
+    transform: translate(-50%, 0%);
+    height: 40px;
+    background: #fff;
+    border-radius: 10px;
+}
+
+.image-toolbar a {
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-align: center;
+    margin: 0 3px;
+}
+
+.image-toolbar a.open {
+    background-image: url("img/newtag.png");
+}
+
+.image-toolbar a.rotate1 {
+    background-image: url("img/left.png");
+}
+
+.image-toolbar a.rotate2 {
+    background-image: url("img/right.png");
+}
+
+.image-toolbar a.close {
+    background-image: url("img/close.png");
+}
+
+img.image-show {
+    cursor: pointer;
+}
+
+.image-left-btn {
+    position: fixed;
+    z-index: 999999999;
+    left: 5%;
+    top: 50%;
+    transform: translate(0%, -50%);
+    border-radius: 10px;
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+    background-image: url("img/lefta.png");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-align: center;
+}
+
+.image-right-btn {
+    position: fixed;
+    z-index: 999999999;
+    right: 5%;
+    top: 50%;
+    transform: translate(0%, -50%);
+    border-radius: 10px;
+    cursor: pointer;
+    height: 60px;
+    width: 60px;
+    background-image: url("img/righta.png");
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    text-align: center;
+    margin: 0 3px;
+}
+
+.image-number {
+    position: fixed;
+    z-index: 999999999;
+    left: 50%;
+    bottom: 80px;
+    transform: translate(-50%, 0%);
+    height: 30px;
+    text-align: right;
+    background: rgba(0, 0, 0, 0.36);
+    color: #fff;
+    border-radius: 15px;
+    font-size: 16px;
+    padding: 5px 20px;
+    margin: 0 3px;
+}
+
+
+.sinomation-daily .item .box .imgs {
+    width: auto;
+    height: auto;
+    font-size: 0;
+    padding-top: 8px;
+}
+
+ ul.image-group {
+    display: flex;
+    width: 100%;
+    height: auto;
+    flex-wrap: wrap;
+
+}
+
+ul.image-group li {
+    height: 80px;
+    width: 80px;
+    float: left;
+    padding: 2px;
+    border: 1px solid #e1e1e1;
+    box-sizing: border-box;
+    margin-right: 10px;
+}
+ul.image-group li a{
+    display:table; width: 74px; height:74px;
+}
+ul.image-group li a span{
+    display:table-cell; vertical-align: middle; text-align: center;
+}
+ul.image-group li img {
+    max-width: 74px;
+    max-height: 74px;
+    border-radius: 3px;
+}
