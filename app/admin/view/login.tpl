@@ -1,78 +1,82 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="renderer" content="webkit">
+    <title>登录</title>
     <link type="text/css" rel="stylesheet" href="/yeeui/css/yeeui.css"/>
     <link type="text/css" rel="stylesheet" href="/icofont/icofont.css"/>
     <link rel="stylesheet" type="text/css" href="/static/admin/css/login.css"/>
     <script src="/yeeui/third/jquery-3.3.1.min.js"></script>
     <script src="/yeeui/yee.js"></script>
-    <title>登录系统</title>
     <script>if (window.top != window) window.top.location.href = window.location.href;</script>
 </head>
 <body>
-<div id="stars"></div>
-<div style="margin: 0; position: relative; z-index: 3; padding-top: 200px;">
-    <div class="login-wrap">
-        <div class="login-title">{#webname#}</div>
-        <form id="loginForm" method="post" yee-module="validate ajax" on-sussess="window.location.href='{url ctl='index' act='index'}'">
-            <div class="input-wrap">
-                <input id="username" name="username" type="text" class="form-inp" placeholder="请输入账号名" autocomplete="off"/><i class="icofont-business-man-alt-1"></i>
+<div class="centerTable">
+    <div class="centerTd">
+        <div class="login-head" style="width: 440px"><img src="/static/admin/images/logo-login.png" alt=""></div>
+        <div class="login" style="width: 440px">
+            <div class="img" style="display:none"><img src="/static/admin/images/login-img.jpg" alt=""></div>
+            <div class="con">
+                <form id="loginForm" method="post" yee-module="validate ajax" data-mode="2" on-success="loginSuccess();">
+                    <div class="title">账号登录</div>
+                    <div class="list">
+                        <div class="item">
+                            <div class="icobox"><img src="/static/admin/images/login-ico1.png" alt=""></div>
+                            <div class="inpbox"><input id="username" name="username" type="text" class="inp" placeholder="请输入账号名" autocomplete="off"/></div>
+                        </div>
+                        <div class="item">
+                            <div class="icobox"><img src="/static/admin/images/login-ico2.png" alt=""></div>
+                            <div class="inpbox"><input id="password" type="password" name="password" class="inp" placeholder="请输入账号密码" autocomplete="off"/></div>
+                        </div>
+                        <div class="item">
+                            <div class="icobox"><img src="/static/admin/images/login-ico3.png" alt=""></div>
+                            <div class="inpbox inpbox2"><input id="code" type="text" name="code" class="inp" placeholder="请输入验证码" /></div>
+                            <div class="yzmbox">
+                                <img id="codeImg" align="right" height="40" src="/service/img_code?r={time()}" alt="看不清楚点击刷新！" onclick="this.src = '/service/img_code?r=' + Math.random();"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="button"><input type="submit" value="立即登录" class="btn"></div>
+                    <div class="remember">
+                        <label><input id="remember" type="checkbox">记住密码（不要在公用电脑上使用）</label>
+                    </div>
+                </form>
             </div>
-            <div class="input-wrap">
-                <input id="password" type="password" name="password" class="form-inp" placeholder="请输入账号密码" autocomplete="off"/><i class="icofont-unlock"></i>
-            </div>
-            <div class="input-wrap">
-                <input id="code" type="text" name="code" class="form-inp" placeholder="请输入验证码" style="width:120px;"/><i class="icofont-key"></i>
-                <img id="codeImg" align="right" height="40" src="/service/img_code?r={time()}" alt="看不清楚点击刷新！" onclick="this.src = '/service/img_code?r=' + Math.random();"/>
-            </div>
-            <div class="input-wrap">
-                <input type="submit" class="form-btn blue" value="登录"/>
-            </div>
-            <div class="input-wrap">
-                <span id="errorInfo"></span>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 {literal}
     <script>
-        $('#username').data({
-            'valid-rule': {r: '账号名不能为空'},
-            'valid-display': '#errorInfo'
-        });
-        $('#password').data({
-            'valid-rule': {r: '账号密码不能为空'},
-            'valid-display': '#errorInfo'
-        });
-        $('#code').data({
-            'valid-rule': {r: '验证码不能为空'},
-            'valid-display': '#errorInfo'
-        });
-        var stars = document.getElementById('stars')
-        var star = document.getElementsByClassName('star')
-        // js随机生成流星
-        for (var j = 0; j < 30; j++) {
-            var newStar = document.createElement("div")
-            newStar.className = "star"
-            newStar.style.top = randomDistance(30, -30) + 'px'
-            newStar.style.left = randomDistance(150, 20) + 'px'
-            stars.appendChild(newStar)
-        }
 
-        // 封装随机数方法
-        function randomDistance(max, min) {
-            var distance = Math.floor(Math.random() * (max - min + 1) * 10 + min)
-            return distance
-        }
-
-        // 给流星添加动画延时
-        for (var i = 0, len = star.length; i < len; i++) {
-            if (i % 6 == 0) {
-                star[i].style.animationDelay = '0s'
-            } else {
-                star[i].style.animationDelay = i * 0.8 + 's'
+        $(function () {
+            if (window.localStorage) {
+                const userName = window.localStorage.getItem("userName") || '';
+                const passWord = window.localStorage.getItem("passWord") || '';
+                const remember = window.localStorage.getItem("remember") || '';
+                $('#username').val(userName);
+                $('#password').val(passWord);
+                if (remember == '1') {
+                    $('#remember').prop('checked', true);
+                }
             }
+        });
+
+        function loginSuccess() {
+            const rememberBox = $('#remember');
+            if (rememberBox.is(':checked')) {
+                const userName = $('#username').val() || '';
+                const passWord = $('#password').val() || '';
+                if (window.localStorage) {
+                    window.localStorage.setItem("userName", userName);
+                    window.localStorage.setItem("passWord", passWord);
+                    window.localStorage.setItem("remember", '1');
+                }
+            } else {
+                window.localStorage.clear();
+            }
+            window.location.href = '/admin/';
         }
     </script>
 {/literal}

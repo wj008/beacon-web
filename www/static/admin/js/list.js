@@ -15,6 +15,7 @@ $(function () {
         }
         var myH = winH - headH - searchH - barH - tabH - grouH - attentionH - 140;
         list.emit('setHeight', myH);
+        //$('.yee-dt-box').height(myH);
     }
 
     list.on("render", function (ev, source) {

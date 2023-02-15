@@ -1,6 +1,6 @@
 {extends file="layout/layout.tpl"}
 {block name="wrapper"}
-    <div class="wrapper">
+    <div class="yee-list-wrap">
         <div class="sdopx-table-box">
             <div class="yee-list-header">
                 <div class="yee-caption">欢迎您登陆 <strong class="blu">{#webname#}</strong> 后台管理系统。</div>

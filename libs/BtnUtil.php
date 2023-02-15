@@ -25,6 +25,10 @@ class BtnUtil
         $out = [];
         foreach ($buttons as $name => $btn) {
             if (isset($btn['url']) && is_array($btn['url'])) {
+                $temp = $btn['url'];
+                if (!Auth::checkAuth($temp['app'] ?? '', $temp['ctl'] ?? '', $temp['act'] ?? 'index')) {
+                    continue;
+                }
                 $btn['url'] = App::url($btn['url']);
             }
             $code = [];
@@ -147,5 +151,24 @@ class BtnUtil
         $warp[] = '</div></div>';
         $warp[] = join("\n", $out);
         return new Raw(join("\n", $warp));
+    }
+
+    public static function makeData(array $buttons, bool $checkAuth = false): array
+    {
+        $items = [];
+        foreach ($buttons as $name => $btn) {
+            if (isset($btn['url']) && is_array($btn['url'])) {
+                if ($checkAuth) {
+                    $temp = $btn['url'];
+                    if (!Auth::checkAuth($temp['app'] ?? '', $temp['ctl'] ?? '', $temp['act'] ?? 'index')) {
+                        continue;
+                    }
+                }
+                $btn['url'] = App::url($btn['url']);
+            }
+            $btn['name'] = $name;
+            $items[] = $btn;
+        }
+        return $items;
     }
 }

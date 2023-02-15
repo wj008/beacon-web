@@ -1,23 +1,14 @@
-@font-face {
-  font-family: "YeeFont";
-  src: url("font/YeeFont.eot"); /* IE9 */
-  src: url("font/YeeFont.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */ url("font/YeeFont.woff") format("woff"), /* chrome firefox */ url("font/YeeFont.ttf") format("truetype"), /* chrome firefox opera safari, Android, iOS 4.2+ */ url("font/YeeFont.svg#uxfonteditor") format("svg"); /* iOS 4.1- */
-}
 
 .yee-form-header {
-  width: auto;
-  height: auto;
-  padding: 0px 15px 15px 15px;
-  position: relative;
+  height: 50px;
+  line-height: 50px;
+  border-bottom: 1px solid #e4eaec;
+  font-size: 18px;
+  padding: 0 20px;
+
   .yee-title {
-    width: auto;
-    height: auto;
-    position: relative;
-    font-size: 18px;
-    font-weight: 500;
-    color: #333;
-    padding-left: 5px;
     display: inline-block;
+
     &.none {
       display: none;
     }
@@ -32,7 +23,7 @@
   padding: 15px 20px;
   box-shadow: 0 0 2px gray(0, 0.05);
 
-  .form-caption, .panel-caption {
+  .panel-caption {
     border-bottom: 1px solid #e4eaec;
     line-height: 40px;
     position: relative;
@@ -41,16 +32,17 @@
       font-size: 16px;
       color: #555
     }
-  }
 
-  .panel-caption i {
-    color: #0c8dc7;
-    float: left;
-    margin: 15px 10px 0 3px
+    i {
+      color: #32a3ff;
+      float: left;
+      margin: 15px 10px 0 3px
+    }
   }
 
   .panel-content {
-    padding-top: 15px
+    padding-top: 15px;
+    position: relative;
   }
 }
 
@@ -194,7 +186,7 @@
   // background: #f2f2f2;
   line-height: 30px;
   padding: 0 20px;
-  border-left: 3px #0c8dc7 solid;
+  border-left: 3px #1E9FFF solid;
 }
 
 .yee-row-column {
@@ -306,12 +298,12 @@
   }
 
   &[type="checkbox"]:hover:after {
-    border: 1px #0c8dc7 solid;
+    border: 1px #62b3ff solid;
   }
 
   &[type="checkbox"]:checked:after {
     content: "\f0f4";
-    color: #0c8dc7;
+    color: #52a3ff;
   }
 
   &[type="checkbox"]:disabled:after {
@@ -361,12 +353,12 @@
   }
 
   &[type="radio"]:hover:after {
-    border: 0.5px #0c8dc7 solid;
+    border: 0.5px #62b3ff solid;
   }
 
   &[type="radio"]:checked:after {
     content: "\f104";
-    color: #0c8dc7;
+    color: #52a3ff;
   }
 
   &[type="radio"]:disabled:after {
@@ -379,7 +371,7 @@
   }
 
   &:focus {
-    border: 0.5px solid #0c8dc7;
+    border: 0.5px solid #62b3ff;
   }
 
   &.small {
@@ -472,46 +464,17 @@
   background-position: top right;
 }
 
-.label-slider [type="checkbox"] {
-  display: none;
+.label-inp .form-inp[type="radio"]:disabled + span, .label-inp .form-inp[type="checkbox"]:disabled + span {
+  color: #999;
+  background-color: #eeeeee;
+  text-shadow: 1px 1px 1px white;
 }
 
-.label-slider [type="checkbox"] + span {
-  background: #f7f7f7;
+.label-inp .form-inp[type="radio"]:checked:disabled + span, .label-inp .form-inp[type="checkbox"]:checked:disabled + span {
   border: 1px #ccc solid;
-  display: inline-block;
-  width: 36px;
-  height: 20px;
-  vertical-align: middle;
-  border-radius: 20px;
-  padding: 0 5px 0 0px;
-  line-height: 24px;
-  cursor: pointer;
-  position: relative;
-  transition: all 0.3s;
-
-  &:after {
-    transition: all 0.3s;
-    content: "";
-    position: absolute;
-    display: inline-block;
-    height: 20px;
-    width: 20px;
-    border-radius: 18px;
-    background: #fff;
-    border: 1px #ccc solid;
-    left: -1px;
-    top: -1px;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-  }
-}
-
-.label-slider [type="checkbox"]:checked + span {
-  background: #0c8dc7;
-  border: 1px #0c8dc7 solid;
-  &:after {
-    left: 21px;
-  }
+  background-color: #eeeeee;
+  color: #999;
+  text-shadow: 1px 1px 1px white;
 }
 
 select.form-inp {
@@ -531,7 +494,7 @@ select.form-inp {
 
 .container-item {
 
-  padding: 2px 0;
+  padding: 0 0 2px 0;
 
   .yee-row-inline:first-child {
     margin-left: 0px;
@@ -542,7 +505,6 @@ select.form-inp {
 .xheLayout {
   line-height: 22px;
 }
-
 
 .multi-dialog label {
   display: inline-block;
@@ -570,39 +532,3 @@ select.form-inp {
   display: inline-block;
   padding: 3px 10px;
 }
-
-.course-table {
-  border: 1px #ddd dashed;
-  margin-right: 5px;
-  padding: 0;
-  background: #f7f7f7;
-
-  td, td {
-    padding: 5px 10px;
-  }
-
-  th {
-    padding: 5px 10px;
-  }
-
-  a.yee-btn {
-    border: none;
-    background: transparent;
-  }
-}
-
-
-a.file {
-  border: 1px #eee solid;
-  line-height: 24px;
-  display: inline-block;
-  border-radius: 5px;
-  padding: 0 12px 0 20px;
-  background: #fefefe url("../images/file.png") no-repeat 3px center;
-  color: #666;
-}
-
-a.file:hover {
-  color: #0a86ff;
-}
-

@@ -8,7 +8,7 @@
         <div class="yee-toolbar">
             <span> 共 <span id="records-count">0</span> 条记录</span>
             <a href="javascript:window.location.reload()" class="refresh-btn"><i class="icofont-refresh"></i>刷新</a>
-            <a id="add-btn" href="{url act='add'}" class="yee-btn red"><i class="icofont-patient-file"></i>添加栏目</a>
+            <a id="add-btn" href="{url act='add'}" yee-module="dialog" data-height="900" on-success="$('#list').emit('reload');" class="yee-btn red"><i class="icofont-plus"></i>添加栏目</a>
         </div>
     </div>
 {/block}
@@ -17,7 +17,7 @@
     <div class="yee-list-search">
         <form id="searchForm" yee-module="search-form" data-bind="#list">
             <div class="yee-cell">
-                <label class="yee-label"><em></em>类别名称：</label>
+                <label class="yee-label"><em></em>菜单名称：</label>
                 <span><input name="name" class="form-inp text" type="text"/></span>
             </div>
             <div class="yee-cell">
@@ -36,8 +36,13 @@
             <th width="40">ID</th>
             <th width="40">ICON</th>
             <th align="left">菜单名称</th>
-            <th width="100">路径</th>
-            <th width="80">新窗口</th>
+            <th width="100">类型</th>
+            <th width="80">权限节点</th>
+            <th width="100">应用</th>
+            <th width="100">控制器</th>
+            <th width="100">方法</th>
+            <th width="100">参数</th>
+            <th width="180">路径</th>
             <th width="80">排序</th>
             <th width="80">状态</th>
             <th width="250" width="180" data-fixed="right">操作</th>
@@ -48,8 +53,13 @@
             <td align="center" v-html="rs.id"></td>
             <td align="center" v-html="rs.icon"></td>
             <td v-html="rs.title"></td>
+            <td align="center" v-html="rs._type"></td>
+            <td align="center" v-html="rs._auth"></td>
+            <td align="center" v-html="rs.app"></td>
+            <td align="center" v-html="rs.ctl"></td>
+            <td align="center" v-html="rs.act"></td>
+            <td align="center" v-html="rs.params"></td>
             <td align="center" v-html="rs.url"></td>
-            <td align="center" v-html="rs._blank"></td>
             <td align="center" v-html="rs._sort"></td>
             <td align="center" v-html="rs._allow"></td>
             <td align="center" v-html="rs._operate"></td>

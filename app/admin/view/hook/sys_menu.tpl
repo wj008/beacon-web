@@ -1,14 +1,15 @@
 {hook fn='id' rs=null}{$rs.id}{/hook}
 {hook fn='icon' rs=null}{if $rs.icon}<i class="{$rs.icon}"></i>{/if}{/hook}
 {hook fn='title' rs=null}{$rs.title|raw}{/hook}
-{hook fn='url' rs=null}{$rs.url}{/hook}
-{hook fn='_blank' rs=null}{if $rs.blank}<span class="green">是</span>{else}否{/if}{/hook}
+
+{hook fn='_type' rs=null}{if $rs.type==1}菜单{elseif $rs.type==2}<span class="org">控制器</span>{else}<span class="blue">外链</span>{/if}{/hook}
+{hook fn='_auth' rs=null}{if !$rs.create}{if $rs.auth}<span class="green">是</span>{else}<span>否</span>{/if}{else}-{/if}{/hook}
+{hook fn='app' rs=null}{$rs.app}{/hook}
+{hook fn='ctl' rs=null}{if !$rs.create}{$rs.ctl}{else}-{/if}{/hook}
+{hook fn='act' rs=null}{if !$rs.create}{$rs.act}{else}-{/if}{/hook}
+{hook fn='params' rs=null}{if !$rs.create}{$rs.params}{else}-{/if}{/hook}
+
+{hook fn='url' rs=null}{if !$rs.create}{$rs.url}{else}-{/if}{/hook}
 {hook fn='_sort' rs=null}<input class="form-inp tc snumber" name="sort" value="{$rs.sort}" yee-module="ajax" data-url="{url act='sort' id=$rs.id}"/>{/hook}
 {hook fn='_allow' rs=null}{if $rs.allow}<span class="green">启用</span>{else}<span>禁用</span>{/if}{/hook}
-{hook fn='_operate' rs=null}
-{if $rs.create}
-    <a href="{url act='add' pid=$rs.id}" class="yee-btn red"><i class="icofont-ui-add"></i>添加子项</a>
-{/if}
-    <a href="{url act='edit' id=$rs.id}" class="yee-btn blue-bd"><i class="icofont-edit"></i>编辑</a>
-    <a href="{url act='delete' id=$rs.id}" yee-module="confirm ajax" on-success="$('#list').emit('reload');" data-confirm="确定要删除该菜单了吗？" class="yee-btn red-bd"><i class="icofont-bin"></i>删除</a>
-{/hook}
+{hook fn='_operate' rs=null}{$this->listBtn($rs)}{/hook}

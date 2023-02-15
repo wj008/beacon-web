@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>{block name='title'}{/block}</title>
-    <link type="text/css" rel="stylesheet" href="/yeeui/css/yeeui.css"/>
+    <link type="text/css" rel="stylesheet" href="/yeeui/css2/yeeui.css"/>
     <link type="text/css" rel="stylesheet" href="/icofont/icofont.css"/>
-    <link type="text/css" rel="stylesheet" href="/static/admin/css/dialog.css"/>
+    <link type="text/css" rel="stylesheet" href="/yeeui/css2/dialog.css"/>
     <script src="/yeeui/third/jquery-3.3.1.min.js"></script>
     <script src="/yeeui/yee.js?v=2.0.1"></script>
-    <script src="/static/admin/js/list.js"></script>
+    <script src="/static/admin/js/dialog_list.js"></script>
     {block name='header'}{/block}
 </head>
 <div class="yee-wrap yee-dialog scrollbar">

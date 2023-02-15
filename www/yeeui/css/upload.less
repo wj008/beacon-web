@@ -1,5 +1,5 @@
 //上传
-.form-inp.up-file + a.yee-btn, .form-inp.qn-file + a.yee-btn {
+.form-inp.up-file + a.yee-btn {
   border: 1px solid #e1e1e1;
   vertical-align: middle;
   height: 28px;
@@ -23,7 +23,8 @@
 }
 
 
-.form-inp.up-image + div.yee-img-wrap, .form-inp.qn-image + div.yee-img-wrap {
+.form-inp.up-img-group + div.yee-img-wrap,
+.form-inp.up-image + div.yee-img-wrap {
   position: relative;
   display: inline-block;
   vertical-align: bottom;
@@ -65,7 +66,9 @@
   }
 }
 
-input.form-inp.up-image.yee-input-error + div.yee-img-wrap, input.form-inp.qn-image.yee-input-error + div.yee-img-wrap {
+input.form-inp.up-img-group.yee-input-error + div.yee-img-wrap,
+input.form-inp.up-image.yee-input-error + div.yee-img-wrap
+{
   .img-btn {
     border: 1px #ffcdb2 dotted;
   }
@@ -73,13 +76,14 @@ input.form-inp.up-image.yee-input-error + div.yee-img-wrap, input.form-inp.qn-im
 
 .yee-btn.file-btn {
   border: 1px solid #e1e1e1;
+  background: #f1f1f1;
   vertical-align: middle;
-  height: 32px;
-  line-height: 32px;
+  height: 28px;
+  line-height: 28px;
   font-size: 14px;
-  padding: 0 15px;
+  padding: 0 10px;
   border-radius: 3px;
-  margin-left: 0px;
+  margin-left: 2px;
   cursor: pointer;
   display: inline-block;
   float: left;
@@ -97,23 +101,20 @@ input.form-inp.up-image.yee-input-error + div.yee-img-wrap, input.form-inp.qn-im
 
 .yee-file-wrap {
   div.file-item {
-    font-size: 13px;
+    font-size: 14px;
     color: #222;
     padding: 2px;
     border: 1px #eee solid;
     margin: 0px 3px 3px 0px;
     float: left;
+    vertical-align: middle;
     border-radius: 3px;
-    line-height:28px;
-    color: #0c8dc7;
-  }
-  div.file-item.disabled{
-    color: #999;
-    background: #f7f7f7;
+    line-height: 22px;
   }
 
   div.file-item a.file-del {
     &:after {
+      vertical-align: -3px;
       color: #666;
       font-family: YeeFont !important;
       content: '\efb5';
@@ -129,9 +130,9 @@ input.form-inp.up-image.yee-input-error + div.yee-img-wrap, input.form-inp.qn-im
 div.file-item:before {
   font-family: YeeFont !important;
   content: "\ec06";
-  font-size: 18px;
+  font-size: 24px;
   margin-right: 4px;
-  vertical-align: -1px;
+  vertical-align: -5px;
   font-weight: 100;
   color: #5f7a88;
 }
@@ -297,7 +298,7 @@ div.file-item.zip:before {
 }
 
 .show-file-item {
-  background: url(../images/fujian.png) no-repeat 5px 5px;
+  background: url(img/fujian.png) no-repeat 5px 5px;
   display: inline-block;
   border: 1px #eee solid;
   padding: 3px 5px 3px 25px;
@@ -311,4 +312,22 @@ div.file-item.zip:before {
 
 .show-file-item:hover {
   color: #1E9FFF;
+}
+
+.show-img-item {
+  display: inline-block;
+  border: 1px #eee solid;
+  margin: 5px 10px 5px 0;
+  vertical-align: middle;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0;
+}
+
+.show-img-item img {
+  display: inline-block;
+  max-height: 100px;
+  max-width: 120px;
+  float: left;
+  margin: 0;
 }

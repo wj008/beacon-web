@@ -40,15 +40,16 @@ class Login extends Controller
             Request::setSession('code', '');
             $this->error(['code' => '验证码有误！']);
         }
-        $row = DB::getRow('select * from @pf_manage where `name`=?', $username);
+        $row = DB::getRow('select * from @pf_manager where `account`=?', $username);
         if ($row == null) {
             $this->error(['username' => '账号不存在！']);
         }
-        if ($row['pwd'] != md5($password)) {
+        if ($row['password'] != md5($password)) {
             $this->error(['password' => '用户密码不正确！']);
         }
         Request::setSession('adminId', $row['id']);
-        Request::setSession('adminName', $row['name']);
+        Request::setSession('adminName', $row['account']);
+        Request::setSession('adminFace', $row['avatar']);
         $value = [];
         if (isset($row['thisTime']) && isset($row['lastTime'])) {
             $value['thisTime'] = date('Y-m-d H:i:s');
@@ -59,7 +60,7 @@ class Login extends Controller
             $value['lastIp'] = $row['thisIp'];
         }
         if (count($value) > 0) {
-            DB::update('@pf_manage', $value, 'id=?', $row['id']);
+            DB::update('@pf_manager', $value, 'id=?', $row['id']);
         }
         $this->success('登录成功', ['back' => App::url('~/index')]);
     }

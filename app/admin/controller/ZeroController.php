@@ -5,6 +5,7 @@ namespace app\admin\controller;
 
 
 use beacon\core\DB;
+use beacon\core\DBException;
 use beacon\core\DBSelector;
 use beacon\core\Form;
 
@@ -42,6 +43,9 @@ abstract class ZeroController extends Admin
     abstract protected function getForm(string $type = ''): Form;
 
 
+    /**
+     * @throws DBException
+     */
     protected function index()
     {
         $config = $this->zeroConfig();
@@ -88,7 +92,7 @@ abstract class ZeroController extends Admin
         }
         $input = $this->completeForm($form);
         DB::update($form->table, $input, $id);
-        $this->success('添加' . $form->title . '成功');
+        $this->success('编辑' . $form->title . '成功');
     }
 
     protected function delete()
@@ -99,7 +103,7 @@ abstract class ZeroController extends Admin
         $this->success('删除' . $form->title . '成功');
     }
 
-    protected function deleteChoice()
+    protected function batchDelete()
     {
         $ids = $this->param('choice:a', []);
         $form = $this->getForm('delete');
@@ -109,26 +113,32 @@ abstract class ZeroController extends Admin
         $this->success('删除' . $form->title . '成功');
     }
 
-    protected function allowChoice()
+    protected function batchEnable()
     {
         $ids = $this->param('choice:a', []);
         $zero = $this->zeroConfig();
+        $table = $zero['table'];
         foreach ($ids as $id) {
-            DB::update($zero['table'], ['allow' => 1], $id);
+            DB::update($table, ['allow' => 1], $id);
         }
         $this->success('设置审核成功');
     }
 
-    protected function revokeChoice()
+    protected function batchDisable()
     {
         $ids = $this->param('choice:a', []);
         $zero = $this->zeroConfig();
+        $table = $zero['table'];
         foreach ($ids as $id) {
-            DB::update($zero['table'], ['allow' => 0], $id);
+            DB::update($table, ['allow' => 0], $id);
         }
         $this->success('设置禁用成功');
     }
 
+    /**
+     * @return void
+     * @throws DBException
+     */
     protected function sort()
     {
         $id = $this->param('id:i');
@@ -136,6 +146,7 @@ abstract class ZeroController extends Admin
         $kind = $this->param('kind:s');
         $bind = $this->param('bind:s');
         $zero = $this->zeroConfig();
+        $table = $zero['table'];
         //上下调整方式更改排序
         if (!empty($kind)) {
             $sql = 'select id,sort';
@@ -143,7 +154,7 @@ abstract class ZeroController extends Admin
             if (!empty($bind) && preg_match('@^\w+(,\w+)*$@', $bind)) {
                 $sql .= ',' . $bind;
             }
-            $sql .= ' from ' . $zero['table'] . ' where id=?';
+            $sql .= ' from ' . $table . ' where id=?';
             $row = DB::getRow($sql, $id);
             if ($row == null) {
                 $this->error('不存在的数据');
@@ -163,39 +174,69 @@ abstract class ZeroController extends Admin
             }
             $args[] = $row['sort'];
             if ($kind == 'up') {
-                $change = DB::getRow('select id,sort from ' . $zero['table'] . ' where ' . $find . ' sort < ? order by sort desc limit 0,1', $args);
+                $change = DB::getRow('select id,sort from ' . $table . ' where ' . $find . ' sort < ? order by sort desc limit 0,1', $args);
             } else {
-                $change = DB::getRow('select id,sort from ' . $zero['table'] . ' where ' . $find . ' sort > ? order by sort asc limit 0,1', $args);
+                $change = DB::getRow('select id,sort from ' . $table . ' where ' . $find . ' sort > ? order by sort asc limit 0,1', $args);
             }
             if ($change) {
-                DB::update($zero['table'], ['sort' => $change['sort']], $row['id']);
-                DB::update($zero['table'], ['sort' => $row['sort']], $change['id']);
+                DB::update($table, ['sort' => $change['sort']], $row['id']);
+                DB::update($table, ['sort' => $row['sort']], $change['id']);
             }
             $this->success('更新排序成功');
         }
         //直接输入形式调整排序
-        $row = DB::getRow('select id from ' . $zero['table'] . ' where id=?', $id);
+        $row = DB::getRow('select id from ' . $table . ' where id=?', $id);
         if ($row == null) {
             $this->error('不存在的数据');
         }
-        DB::update($zero['table'], ['sort' => $sort], $id);
+        DB::update($table, ['sort' => $sort], $id);
         $this->success('更新排序成功');
     }
 
-    protected function toggleAllow()
+    /**
+     * 切换状态
+     * @throws DBException
+     */
+    protected function toggle()
     {
         $id = $this->param('id:i');
         $zero = $this->zeroConfig();
-        $row = DB::getRow('select id,allow from ' . $zero['table'] . ' where id=?', $id);
+        $table = $zero['table'];
+        $row = DB::getRow('select id,allow from ' . $table . ' where id=?', $id);
         if ($row == null) {
             $this->error('不存在的数据');
         }
         $allow = (intval($row['allow']) == 1 ? 0 : 1);
-        DB::update($zero['table'], ['allow' => $allow], $id);
+        DB::update($table, ['allow' => $allow], $id);
         if ($allow == 1) {
             $this->success('设置审核成功');
         }
         $this->success('设置禁用成功');
     }
 
+    /**
+     * 启用
+     * @throws DBException
+     */
+    protected function enable()
+    {
+        $id = $this->param('id:i');
+        $zero = $this->zeroConfig();
+        $table = $zero['table'];
+        DB::update($table, ['allow' => 1], $id);
+        $this->success('设置信息启用成功');
+    }
+
+    /**
+     * 禁用
+     * @throws DBException
+     */
+    protected function disable(int $id = 0)
+    {
+        $id = $this->param('id:i');
+        $zero = $this->zeroConfig();
+        $table = $zero['table'];
+        DB::update($table, ['allow' => 0], $id);
+        $this->success('设置信息禁用成功');
+    }
 }

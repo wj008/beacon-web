@@ -1,12 +1,14 @@
 {extends file="layout/layout.tpl"}
 {block name="wrapper"}
-    <div class="wrapper yee-wrap scrollbar">
+    <div class="yee-list-wrap scrollbar">
         {block name='list-header'}{/block}
         {block name='list-tab'}{/block}
-        {block name='list-attention'}{/block}
+
         <div class="yee-list-main">
             {block name='list-search'}{/block}
+
             <div class="yee-list">
+                {block name='list-attention'}{/block}
                 {block name='list-table'}{/block}
                 {block name='list-pagebar'}{/block}
             </div>

@@ -1,7 +1,8 @@
-{extends file='layout/form.tpl'}
+{extends file='layout/dialog_form.tpl'}
 {block name='title'}{$form->title}{/block}
+
 {block name='form-header'}
-    <a class="yee-back" href="{url act='index' ctl='SysMenu'}"><i class="icofont-reply"></i></a>
+    <a class="yee-setting" href="javascript:;"><i class="icofont-ruler-pencil"></i></a>
     <div class="yee-title">{$form->title}</div>
 {/block}
 
@@ -19,7 +20,7 @@
                         <div class="row-cell">
                             {input field=$field}
                             <span id="{$field->boxId}-validation"></span>
-                            {if $field->prompt}<p class="yee-field-tips">{$field->prompt|raw}</p>{/if}
+                            {if $field->prompt}<p class="yee-field-prompt">{$field->prompt|raw}</p>{/if}
                         </div>
                     </div>
                 {/foreach}
@@ -29,8 +30,7 @@
                 <div class="submit-cell">
                     {$form->fetchHideBox()}
                     <input type="submit" class="form-btn red" value="提交">
-                    <input type="hidden" name="__BACK__" value="{url act='index' ctl='SysMenu'}">
-                    <a href="{url act='index' ctl='SysMenu'}" class="form-btn back">返回</a>
+                    <a href="javascript:;" onclick="Yee.closeDialog()" class="form-btn back">取消</a>
                 </div>
             </div>
 

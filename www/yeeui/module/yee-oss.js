@@ -1,13 +1,90 @@
 Yee.define('oss', ['a', 'input'], function (elem) {
-    let qel = $(elem);
+    const qel = $(elem);
     let pathname = qel.data('folder') || 'upfiles';
     pathname = pathname.replace(/^\/+/, '');
     pathname = pathname.replace(/\/+$/, '');
     let webUrl = qel.data('web-url') || '';
     webUrl = webUrl.replace(/\/+$/, '');
-    let convert = qel.data('convert') || false;
+    const convert = qel.data('convert') || false;
+    const url = qel.data('url') || '';
+    const fieldName = qel.data('field-name') || 'filedata';
     //上传之前
     qel.on('uploadBefore', function (ev, bindData, files) {
+        if (files.length >= 2) {
+            console.log("使用批量上传");
+            const uploads = [];
+            const promiseList = [];
+            for (const file of files) {
+                const promise = new Promise(function (resolve, reject) {
+                    const orgName = file.name.toString();
+                    const extension = orgName.lastIndexOf('.') === -1 ? '' : orgName.substr(orgName.lastIndexOf('.') + 1, orgName.length).toLowerCase();
+                    const name = Yee.randomString(20);
+                    const fd = new FormData();
+                    for (let key in bindData) {
+                        if (bindData[key] !== null) {
+                            fd.append(key, bindData[key]);
+                        }
+                    }
+                    const key = pathname + '/' + name + '.' + extension;
+                    const src = key.replace(/^\/+/, '');
+                    uploads.push({
+                        url: webUrl + '/' + src,
+                        orgName: orgName,
+                        extension: extension
+                    });
+
+                    $.post('/service/aliyun/auth', function (ret) {
+                        if (ret) {
+                            fd.append('key', key);
+                            fd.append('OSSAccessKeyId', ret.OSSAccessKeyId);
+                            fd.append('signature', ret.signature);
+                            fd.append('policy', ret.policy);
+                            fd.append('success_action_status', ret.success_action_status);
+                            fd.append('orgName', orgName);
+                            let forgName = encodeURIComponent(orgName);
+                            if (extension == 'jpg' || extension == 'jpeg' || extension == 'png' || extension == 'gif' || extension == 'mp3' || extension == 'mp4') {
+                                fd.append('Content-Disposition', 'inline;filename="' + forgName + '"');
+                            } else {
+                                fd.append('Content-Disposition', 'attachment;filename="' + forgName + '"');
+                            }
+                            fd.append(fieldName, file);
+                            let xhr = new XMLHttpRequest();
+                            xhr.upload.addEventListener("progress", function (evt) {
+                                let percent = Math.round(evt.loaded / evt.total * 100);
+                                qel.emit('uploadProgress', [{total: evt.total, loaded: evt.loaded, percent: percent}]);
+                            }, false);
+                            xhr.addEventListener("load", function (evt) {
+                                if (Math.floor(xhr.status / 100) === 2) {
+                                    return resolve(key);
+                                } else {
+                                    return reject('上传失败,文件名:' + orgName);
+                                }
+                            }, false);
+                            xhr.open("POST", url);
+                            xhr.send(fd);
+                        } else {
+                            return reject('没有获取到正确的token');
+                        }
+                    }, 'json');
+                });
+                promiseList.push(promise);
+            }
+            Promise.all(promiseList).then(function (items) {
+                const data = {
+                    url: uploads[0].url,
+                    orgName: uploads[0].orgName,
+                    extension: uploads[0].extension,
+                    files: uploads
+                };
+                qel.emit('uploadComplete', {
+                    status: true,
+                    data: data
+                });
+            }).catch(function (e) {
+                console.log(e);
+            });
+            return false;
+        }
         return new Promise(function (resolve, reject) {
             let orgName = files[0].name.toString();
             let extension = orgName.lastIndexOf('.') === -1 ? '' : orgName.substr(orgName.lastIndexOf('.') + 1, orgName.length).toLowerCase();

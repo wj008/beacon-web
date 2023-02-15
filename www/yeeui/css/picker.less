@@ -1,4 +1,4 @@
-@main-color: #56BFC5;
+@main-color: #4ac4f3;
 .yee-picker {
   width: 220px;
   min-height: 220px;
@@ -10,22 +10,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  z-index: 100000;
 }
-
-
-.yee-picker.mobile {
-  width: 100%;
-  position: fixed;
-  z-index: 100000;
-  top: unset;
-  bottom: 0;
-
-  .yee-picker-main {
-    overflow-y: scroll;
-  }
-}
-
 
 .yee-picker-display {
   background: @main-color;
@@ -55,7 +40,6 @@
   position: relative;
   transition: all 0.1s ease;
 }
-
 
 .yee-picker-svg-icon {
   color: rgba(0, 0, 0, .87);
@@ -141,19 +125,10 @@
 
 .yee-picker-sel-year-month {
   padding: 5px 10px 10px 10px;
-
-  a {
-  }
 }
 
 .yee-picker-sel-day {
   padding: 5px 10px;
-}
-
-.yee-picker.mobile {
-  .yee-picker-sel-day, .yee-picker-sel-hms {
-    border-top: 1px #ccc dashed;
-  }
 }
 
 .yee-picker-day-row {
@@ -272,7 +247,6 @@ a.yee-picker-year-layout {
   display: block;
   text-decoration: none;
   color: #333333;
-  width: 50%;
 }
 
 .yee-picker-sel-year ul {
@@ -302,8 +276,7 @@ a.yee-picker-year-layout {
 }
 
 .yee-picker-sel-month button {
-  width: calc(50% - 4px);
-  margin: 0 2px;
+  width: 40px;
   height: 27px;
   background: #ffffff;
   -webkit-appearance: none;
@@ -331,7 +304,7 @@ a.yee-picker-year-layout {
 
 .yee-picker-sel-year {
   height: 156px;
-  width: 80%;
+  width: 90px;
   padding: 3px;
   border: 1px #ddd solid;
   overflow-x: hidden
@@ -339,7 +312,7 @@ a.yee-picker-year-layout {
 
 .yee-picker-sel-month {
   height: 156px;
-  width: 50%;
+  width: 90px;
 }
 
 .yee-picker-sel-year::-webkit-scrollbar {
@@ -373,13 +346,12 @@ a.yee-picker-year-layout {
   justify-content: space-between;
   position: relative;
   clear: both;
-  width: 100%;
+  margin-top: 10px;
 }
 
 .yee-picker-time-display {
   line-height: 24px;
-  height: 30px;
-  padding: 4px 0;
+  height: 26px;
   clear: both;
 }
 
@@ -523,18 +495,12 @@ a.yee-picker-year-layout {
 
 .yee-picker-sel-hour {
   height: 156px;
-  width: calc(50% - 10px);
+  width: 90px;
 }
 
-.yee-picker-sel-minute, .yee-picker-sel-second {
+.yee-picker-sel-minute, yee-picker-sel-second {
   height: 156px;
-  width: calc(25% - 5px);
-}
-
-.yee-picker.mobile {
-  .yee-picker-sel-hour, .yee-picker-sel-minute, .yee-picker-sel-second {
-    padding: 0 3%;
-  }
+  width: 45px;
 }
 
 .yee-picker-sel-hour div, .yee-picker-sel-minute div, .yee-picker-sel-second div {
